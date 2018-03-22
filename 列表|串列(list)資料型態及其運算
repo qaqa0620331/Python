@@ -58,7 +58,7 @@ list3
 將串列中的元素加以反轉:reverse()
 由小至大排序串列中的元素:sort()
 
-items = "Welcome to the MyFirstCTF".split() 
+items = "Welcome to MyFirstCTF".split() 
 print(items)
 
 items = "314#123#738#445".split("#")
