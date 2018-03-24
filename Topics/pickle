@@ -1,0 +1,63 @@
+
+Magic methods @ python
+
+-------------------------------------
+<?php
+
+class MyFirstCTF {
+    protected $test = "CTF";
+    function __wakeup()
+    {
+        print "Wake up yo!<br>";
+        system("echo ".$this->test);
+    }
+}
+
+$input = $_GET['str'];
+$kb = unserialize($input);
+
+highlight_file(__FILE__);
+
+-------------------------------------
+WheRe iS yOur gg?
+<?php
+
+$gg = $_POST['data'];
+if (isset($gg)) {
+        preg_match('/^[a-zA-Z0-9=]+$/', $gg, $m);
+        system("echo $m[0] | python pickle.py");
+} else {
+        echo "WheRe iS yOur gg?<br>";
+}
+highlight_file(__FILE__);
+
+
+preg_match:限制你的
+
+ip:port/pickle.py
+ip:port
+
+hackbar 
+post->送payload
+
+-------------------------------------
+#!/usr/bin/ruby
+class Kaibro
+    def initialize name
+        @name = name
+    end
+
+    def name
+        @name
+    end
+end
+
+c = gets("*").strip
+t = Marshal.load(c)
+puts `#{t.name}`
+
+-------------------------------------
+
+JAVA
+
+
