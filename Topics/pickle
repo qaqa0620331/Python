@@ -1,5 +1,7 @@
 
 Magic methods @ python
+http://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html
+
 
 -------------------------------------
 <?php
@@ -57,6 +59,15 @@ t = Marshal.load(c)
 puts `#{t.name}`
 
 -------------------------------------
+
+產生payload===序列化字串
+使用檔案來存序列化字串(unreadable)
+
+cat payload - | nc IP port
+
+
+
+
 
 JAVA
 
