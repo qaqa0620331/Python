@@ -2,4 +2,14 @@
 
 MVC
 
+SSTI
+
+IP/?name=abc
+
+Hello abc
+
+name 變數有漏洞
+
+
+
 
