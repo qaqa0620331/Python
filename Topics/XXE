@@ -1,1 +1,48 @@
 
+
+Out-of-band XML External Entity (OOB-XXE)
+Hunting in the Dark - Blind XXE
+https://blog.zsec.uk/blind-xxe-learning/
+
+https://dzone.com/articles/out-of-band-xml-external-entity-oob-xxe
+https://bbs.pediy.com/thread-223131.htm
+
+https://www.acunetix.com/blog/articles/band-xml-external-entity-oob-xxe/
+
+
+
+<?php
+include("config.php");
+if(isset($_POST['submit'])) {
+    $xml = file_get_contents($_FILES["upfile"]['tmp_name']);
+    $data = @simplexml_load_string($xml,"SimpleXMLElement",LIBXML_NOENT) ;
+    //$data = new SimpleXMLElement($xml);
+}
+highlight_file(__FILE__);
+echo "<hr>";
+?>
+
+
+<form method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <input type="file" name="upfile" id="fileToUpload">
+    <input type="submit" value="Upload" name="submit">
+</form>
+
+
+server要先放 xxe.dtd
+
+上傳的DTD
+XML
+
+XXE.html
+
+-------------------------------------------
+
+DOC
+
+構造惡意的doc xxe
+進行攻擊
+
+XXE-based DDoS
+
