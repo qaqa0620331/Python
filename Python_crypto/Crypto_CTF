@@ -1,25 +1,163 @@
+替換式密碼[Substitution cipher]
 
+[1]ceasar密碼之破密分析
 ======================================
 ABCTF 2016 : ceasar-salad-10
 ======================================
+
+======================================
+angstromCTF 2017:The Beginning
+======================================
+
+======================================
+RC3 CTF 2016 : salad-100
+======================================
 import string
 
+caesaralpha = "abcdefghijklmnopqrstuvwxyz0123456789"
+
+def caesar(input_string, rot):
+    output_string = ""
+    for i in range(len(input_string)):
+        if input_string[i].isalnum():
+            idx = (caesaralpha.find(input_string[i]) + rot) % len(caesaralpha)
+            output_string += caesaralpha[idx]
+        else:
+            output_string += input_string[i]
+    return output_string
+
+enc = '7sj-ighm-742q3w4t' # encrypt data
+
+for i in range(len(caesaralpha)):
+    print caesar(enc, i)
+
+[2]替換式密碼[Substitution cipher]の頻率分析法
+
+https://zh.wikipedia.org/wiki/%E9%A2%91%E7%8E%87%E5%88%86%E6%9E%90
+
+======================================
+Pico CTF 2014 : Substitution
+======================================
+
+======================================
+angstromCTF 2017: Substitution Cipher
+======================================
+vfauedwyedmtlwylwnawyjfdzltqilqdezfntmwyewyejzettjedmwyfjlzettjyeilwfplxaenmlmpvbldzqwyxadjzyfjxfddemfqwvfavfatwzlqdplnxqyeilexnlewlnnljsfdjqp
+qtqwvwyedvfauedsfjjqptvoewyfbvfazllsofnjedwqexfedmvfauanjlwylbenqdljvfayeilwyewtaranvvfayeilwyltaranvfodfwcdfzqdxzyewqcdfzwyewjedwqexfjmle
+wyzyqtlwnexqusnfpeptvjeilmtqiljedmbvlrqjwldulzyqtlxnfwljgaledmqdufbsnlyldjqptlwfvfajeiljtqiljvfamfdwzedwwylwnawyplueajlmllsmfzdqdsteuljvfa
+mfdwwetcepfawewsenwqljvfazedwblfdwyewzettvfadllmblfdwyewzettzlajlzfnmjtqclyfdfnufmltfvetwvzlajlwyljlzfnmjejwylpeucpfdlwfetqoljsldwmloldmqd
+xjfblwyqdxvfaajllbejesaduytqdlqyeildlqwylnwylwqbldfnwylqdutqdewqfdwflrsteqdbvjltowfebedzyfnqjljedmjtllsjadmlnwylptedclwfowylilnvonllmfbqsn
+fiqmlwyldgaljwqfdjwylbeddlnqdzyquyqsnfiqmlqwqmnewylnvfahajwjeqmwyedcvfaedmzldwfdvfanzevfwylnzqjlqjaxxljwvfasqucasezlesfdedmjwedmesfjwlqwyl
+nzevqmfdwxqilemebdzyewvfawyqdcvfanlldwqwtlmwf{olzxffmbldhljjls}
+
+
+
+you cant handle the truths on we live in a world that has walls and those walls have to be guarded by men with guns whos gonna do it 
+you yoult weinberg i have a greater responsibility than you can possibly fathom you weep for santiago and you curse the marines 
+you have that luxury you have the luxury of not knowing what i know that santiagos death while tragic probably saved lives and 
+my existence while grotesque and incomprehensible to you saves lives you dont want the truth because deep down in places you dont talk 
+about at parties you want me on that wall you need me on that wall we use words like honor code loyalty we use these words as 
+the backbone to a life spent defending something you use em as a punch line i have neither the time nor the inclination to explain 
+myself to a man who rises and sleeps under the blanket of the very freedom i provide then questions the manner in which i provide it id 
+rather you just said thank you and went on your way otherwise 
+i suggest you pick up a weapon and stand a post either way i dont give a damn what you think youre entitled to{ few good men jesse p}
+
+======================================
+angstromCTF 2016 : artifact-20
+======================================
+
+
+======================================
+======================================
+換位加密法Transposition cipher
+https://en.wikipedia.org/wiki/Transposition_cipher
+
+換位加密法の籬笆密碼法{Transposition cipher|Rail fence cipher}
+https://en.wikipedia.org/wiki/Rail_fence_cipher
+
+https://web.archive.org/web/20071104114600/http://www.simonsingh.net/The_Black_Chamber/railfence.html
+
+Scytale cipher{密碼棒}
+https://en.wikipedia.org/wiki/Scytale
+======================================
+======================================
+EKOPARTY CTF 2015: SCYTCRYPTO
+======================================
+
+echo -n 'ERTKSOOTCMCHYRAFYLIPL' | fold -w3
+
+
+======================================
+AlexCTF Fore1-Hit_the_core
+======================================
+file fore1.core 
+
+strings fore1.core 
+
+cvqAeqacLtqazEigwiXobxrCrtuiTzahfFreqc{bnjrKwgk83kgd43j85ePgb_e_rwqr7fvbmHjklo3tews_hmkogooyf0vbnk0ii87Drfgh_n kiwutfb0ghk9ro987k5tfb_hjiouo087ptfcv}
+
+撰寫python code
+----------------------------------------------------
+cipher='cvqAeqacLtqazEigwiXobxrCrtuiTzahfFreqc{bnjrKwgk83kgd43j85ePgb_e_rwqr7fvbmHjklo3tews_hmkogooyf0vbnk0ii87Drfgh_n kiwutfb0ghk9ro987k5tfb_hjiouo087ptfcv}'
+
+cipher=cipher[3:]
+flag = ''
+for x in range(0,len(cipher),1):
+    if x%5==0:
+        flag+=cipher[x]
+print flag
+---------------------------------------------------
+
+cipher='cvqAeqacLtqazEigwiXobxrCrtuiTzahfFreqc{bnjrKwgk83kgd43j85ePgb_e_rwqr7fvbmHjklo3tews_hmkogooyf0vbnk0ii87Drfgh_n kiwutfb0ghk9ro987k5tfb_hjiouo087ptfcv}'
+
+‘’.join(cipher[3 : : 5])
+---------------------------------------------------
+
+
+======================================
+School CTF 2015: affine-cipher-100(教)
+======================================
+import string
+ 
 s = string.ascii_lowercase # a-z
 s += '_'
-
 d = {}
 
 for c in range(len(s)):
 	d[s[(c*4 + 15)%27]] = s[c]
 
 ciphertext = 'ifpmluglesecdlqp_rclfrseljpkq'
+
 s1 = ''
 
-for x in cr:
+for x in ciphertext:
 	s1 += d[x]
 
-print s1 # flag_is_every_haxor_love_math
+print s1
 
 ======================================
-School CTF 2015: affine-cipher-100(教)
+Bacon's cipher
+https://en.wikipedia.org/wiki/Bacon's_cipher
 ======================================
+======================================
+angstromCTF 2016 : shakespeare-60
+======================================
+
+intext = "tOBeoRNottOBeTHATiStHeQueSTIONWHetHErTISnOBlERINTHeMInDtOSuffERThESlINGSaNDaRRowSOFoUTRAGEoUSFoRtuNeORTOTAkeARMSaGAINStaSEAofTRoUBlESANDbYOPpOSInGEnDTHEM"
+outtext = ""
+for c in intext:
+    if c.isupper():
+            outtext += "B"
+    else:
+            outtext += "A"
+
+print outtext
+
+'ABBAABBAAABBABBBBABABABAABBBBBBBAABBABBBABBABBBBBBABBABABBAAABBBABBABBBBABBABBAABBBABBBBBBABBBABAABABBBBBBAABBBBABBBBBAABBBAABBABBABBBBBABBBABBBABBABBBBB'
+
+將上述字串丟到 online Baconian Cipher Decoder
+https://www.geocachingtoolbox.com/index.php?page=baconianCipher
+
+Version: 選v2
+Method: 
+Swap A and B  打勾
