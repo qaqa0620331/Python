@@ -1,0 +1,59 @@
+[1]使用python內建函式
+
+bin():把十進位整形轉換成二進位字元
+#把十進位整型轉換成二進位
+>>> bin(88)
+>>> bin(33)
+
+oct():把十進位轉換成八進制字元
+#把十進位轉換成八進制
+>>> oct(500)
+>>> oct(488)
+
+chr():把一個整形轉換成ASCII碼表中對應的單個字元
+#把一個整形轉換成ASCII碼表中對應的單個字元
+>>> chr(98)
+>>> chr(97)
+
+
+ord():和chr相反，把ASCII碼表中的字元轉換成對應的整形
+>>> ord('b')
+>>> ord('c')
+
+[2]使用binascii模組
+留意底下函式的使用
+a2b_base64
+binascii.b2a_base64(data)
+
+https://docs.python.org/2/library/binascii.html
+binascii.a2b_base64(string)
+Convert a block of base64 data back to binary and return the binary data. More than one line may be passed at a time.
+
+binascii.b2a_base64(data)
+Convert binary data to a line of ASCII characters in base64 coding. 
+
+
+https://docs.python.org/3/library/binascii.html
+binascii.b2a_hex(data)
+binascii.hexlify(data)
+
+binascii.a2b_hex(hexstr)
+binascii.unhexlify(hexstr)
+
+=========================================
+#coding:utf-8
+import binascii
+a = 'worker'
+#先把worker轉換成二進位資料然後在用十六進位表示
+b = binascii.b2a_hex(a)
+print b
+#與b2a_hex相反
+print binascii.a2b_hex(b)
+
+#這個功能和b2a_hex()一樣
+c = binascii.hexlify(a)
+print c
+#這個功能和a2b_hex()一樣
+print binascii.unhexlify(c)
+
+========================================
