@@ -1,0 +1,308 @@
+The Python Library Reference Release 3.2.3
+Guido van Rossum
+Fred L. Drake, Jr., editor
+June 18, 2012
+http://marvin.cs.uidaho.edu/Teaching/CS515/pythonLibrary.pdf
+
+1 Introduction 3
+2 Built-in Functions 5
+3 Built-in Constants 25
+3.1 Constants added by the site module . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+
+4 Built-in Types 27
+4.1 Truth Value Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+4.2 Boolean Operations — and, or, not . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+4.3 Comparisons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+4.4 Numeric Types — int, float, complex . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+4.5 Iterator Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+4.6 Sequence Types — str, bytes, bytearray, list, tuple, range . . . . . . . . . . . . . . . 35
+4.7 Set Types — set, frozenset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+4.8 Mapping Types — dict . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+4.9 memoryview type . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+4.10 Context Manager Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+4.11 Other Built-in Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+4.12 Special Attributes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+
+5 Built-in Exceptions 59
+5.1 Exception hierarchy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+
+6 String Services 65
+6.1 string — Common string operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+6.2 re — Regular expression operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+6.3 struct — Interpret bytes as packed binary data . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+6.4 difflib — Helpers for computing deltas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 95
+6.5 textwrap — Text wrapping and filling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 105
+6.6 codecs — Codec registry and base classes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 107
+6.7 unicodedata — Unicode Database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 121
+6.8 stringprep — Internet String Preparation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 123
+
+7 Data Types 125
+7.1 datetime — Basic date and time types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125
+7.2 calendar — General calendar-related functions . . . . . . . . . . . . . . . . . . . . . . . . . . . 150
+7.3 collections — Container datatypes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 153
+7.4 heapq — Heap queue algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+7.5 bisect — Array bisection algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 172
+7.6 array — Efficient arrays of numeric values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 174
+7.7 sched — Event scheduler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 177
+7.8 queue — A synchronized queue class . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 179
+7.9 weakref — Weak references . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 181
+7.10 types — Names for built-in types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 185
+7.11 copy — Shallow and deep copy operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186
+7.12 pprint — Data pretty printer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 187
+7.13 reprlib — Alternate repr() implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 191
+
+8 Numeric and Mathematical Modules 195
+8.1 numbers — Numeric abstract base classes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 195
+8.2 math — Mathematical functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198
+8.3 cmath — Mathematical functions for complex numbers . . . . . . . . . . . . . . . . . . . . . . . . 202
+8.4 decimal — Decimal fixed point and floating point arithmetic . . . . . . . . . . . . . . . . . . . . 205
+8.5 fractions — Rational numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 229
+8.6 random — Generate pseudo-random numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 231
+
+9 Functional Programming Modules 237
+9.1 itertools — Functions creating iterators for efficient looping . . . . . . . . . . . . . . . . . . . 237
+9.2 functools — Higher-order functions and operations on callable objects . . . . . . . . . . . . . . 250
+9.3 operator — Standard operators as functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253
+
+
+10 File and Directory Access 261
+10.1 os.path — Common pathname manipulations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261
+10.2 fileinput — Iterate over lines from multiple input streams . . . . . . . . . . . . . . . . . . . . . 264
+10.3 stat — Interpreting stat() results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267
+10.4 filecmp — File and Directory Comparisons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 271
+10.5 tempfile — Generate temporary files and directories . . . . . . . . . . . . . . . . . . . . . . . . 272
+10.6 glob — Unix style pathname pattern expansion . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275
+10.7 fnmatch — Unix filename pattern matching . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276
+10.8 linecache — Random access to text lines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 277
+10.9 shutil — High-level file operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278
+10.10 macpath — Mac OS 9 path manipulation functions . . . . . . . . . . . . . . . . . . . . . . . . . . 283
+
+11 Data Persistence 285
+11.1 pickle — Python object serialization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 285
+11.2 copyreg — Register pickle support functions . . . . . . . . . . . . . . . . . . . . . . . . . . . 296
+11.3 shelve — Python object persistence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 296
+11.4 marshal — Internal Python object serialization . . . . . . . . . . . . . . . . . . . . . . . . . . . . 299
+11.5 dbm — Interfaces to Unix “databases” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300
+11.6 sqlite3 — DB-API 2.0 interface for SQLite databases . . . . . . . . . . . . . . . . . . . . . . . 303
+
+12 Data Compression and Archiving 323
+12.1 zlib — Compression compatible with gzip . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323
+12.2 gzip — Support for gzip files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 325
+12.3 bz2 — Compression compatible with bzip2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327
+12.4 zipfile — Work with ZIP archives . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 329
+12.5 tarfile — Read and write tar archive files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 334
+
+13 File Formats 343
+13.1 csv — CSV File Reading and Writing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 343
+13.2 configparser — Configuration file parser . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 349
+13.3 netrc — netrc file processing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 365
+13.4 xdrlib — Encode and decode XDR data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 366
+13.5 plistlib — Generate and parse Mac OS X .plist files . . . . . . . . . . . . . . . . . . . . . . 369
+
+14 Cryptographic Services 371
+14.1 hashlib — Secure hashes and message digests . . . . . . . . . . . . . . . . . . . . . . . . . . . . 371
+14.2 hmac — Keyed-Hashing for Message Authentication . . . . . . . . . . . . . . . . . . . . . . . . . 373
+
+15 Generic Operating System Services 375
+15.1 os — Miscellaneous operating system interfaces . . . . . . . . . . . . . . . . . . . . . . . . . . . . 375
+15.2 io — Core tools for working with streams . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 402
+15.3 time — Time access and conversions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 412
+15.4 argparse — Parser for command-line options, arguments and sub-commands . . . . . . . . . . . 418
+15.5 optparse — Parser for command line options . . . . . . . . . . . . . . . . . . . . . . . . . . . . 446
+15.6 getopt — C-style parser for command line options . . . . . . . . . . . . . . . . . . . . . . . . . . 471
+15.7 logging — Logging facility for Python . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 474
+15.8 logging.config — Logging configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 487
+15.9 logging.handlers — Logging handlers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 496
+15.10 getpass — Portable password input . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 506
+15.11 curses — Terminal handling for character-cell displays . . . . . . . . . . . . . . . . . . . . . . . 506
+15.12 curses.textpad — Text input widget for curses programs . . . . . . . . . . . . . . . . . . . . . 522
+15.13 curses.ascii — Utilities for ASCII characters . . . . . . . . . . . . . . . . . . . . . . . . . . . 523
+15.14 curses.panel — A panel stack extension for curses . . . . . . . . . . . . . . . . . . . . . . . . 525
+15.15 platform — Access to underlying platform’s identifying data . . . . . . . . . . . . . . . . . . . . 527
+15.16 errno — Standard errno system symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 530
+15.17 ctypes — A foreign function library for Python . . . . . . . . . . . . . . . . . . . . . . . . . . . 536
+
+16 Optional Operating System Services 569
+16.1 select — Waiting for I/O completion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 569
+16.2 threading — Thread-based parallelism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 574
+16.3 multiprocessing — Process-based parallelism . . . . . . . . . . . . . . . . . . . . . . . . . . 585
+16.4 concurrent.futures — Launching parallel tasks . . . . . . . . . . . . . . . . . . . . . . . . . 635
+16.5 mmap — Memory-mapped file support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 640
+16.6 readline — GNU readline interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 643
+16.7 rlcompleter — Completion function for GNU readline . . . . . . . . . . . . . . . . . . . . . . 646
+16.8 dummy_threading — Drop-in replacement for the threading module . . . . . . . . . . . . . 647
+16.9 _thread — Low-level threading API . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 647
+16.10 _dummy_thread — Drop-in replacement for the _thread module . . . . . . . . . . . . . . . . 649
+
+17 Interprocess Communication and Networking 651
+17.1 subprocess — Subprocess management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 651
+17.2 socket — Low-level networking interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 663
+17.3 ssl — TLS/SSL wrapper for socket objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 675
+17.4 signal — Set handlers for asynchronous events . . . . . . . . . . . . . . . . . . . . . . . . . . . 689
+17.5 asyncore — Asynchronous socket handler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 692
+17.6 asynchat — Asynchronous socket command/response handler . . . . . . . . . . . . . . . . . . . 696
+
+18 Internet Data Handling 701
+18.1 email — An email and MIME handling package . . . . . . . . . . . . . . . . . . . . . . . . . . . 701
+18.2 json — JSON encoder and decoder . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 733
+18.3 mailcap — Mailcap file handling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 739
+18.4 mailbox — Manipulate mailboxes in various formats . . . . . . . . . . . . . . . . . . . . . . . . . 740
+18.5 mimetypes — Map filenames to MIME types . . . . . . . . . . . . . . . . . . . . . . . . . . . . 756
+18.6 base64 — RFC 3548: Base16, Base32, Base64 Data Encodings . . . . . . . . . . . . . . . . . . . 759
+18.7 binhex — Encode and decode binhex4 files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 761
+18.8 binascii — Convert between binary and ASCII . . . . . . . . . . . . . . . . . . . . . . . . . . . 762
+18.9 quopri — Encode and decode MIME quoted-printable data . . . . . . . . . . . . . . . . . . . . . 763
+18.10 uu — Encode and decode uuencode files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76
+
+19 Structured Markup Processing Tools 767
+19.1 html — HyperText Markup Language support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 767
+19.2 html.parser — Simple HTML and XHTML parser . . . . . . . . . . . . . . . . . . . . . . . . 767
+19.3 html.entities — Definitions of HTML general entities . . . . . . . . . . . . . . . . . . . . . . 772
+19.4 xml.etree.ElementTree — The ElementTree XML API . . . . . . . . . . . . . . . . . . . . 772
+19.5 xml.dom — The Document Object Model API . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779
+19.6 xml.dom.minidom — Lightweight DOM implementation . . . . . . . . . . . . . . . . . . . . . 789
+19.7 xml.dom.pulldom — Support for building partial DOM trees . . . . . . . . . . . . . . . . . . . 794
+19.8 xml.sax — Support for SAX2 parsers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 795
+19.9 xml.sax.handler — Base classes for SAX handlers . . . . . . . . . . . . . . . . . . . . . . . . 797
+19.10 xml.sax.saxutils — SAX Utilities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 802
+19.11 xml.sax.xmlreader — Interface for XML parsers . . . . . . . . . . . . . . . . . . . . . . . . 803
+19.12 xml.parsers.expat — Fast XML parsing using Expat . . . . . . . . . . . . . . . . . . . . . . 807
+
+20 Internet Protocols and Support 817
+20.1 webbrowser — Convenient Web-browser controller . . . . . . . . . . . . . . . . . . . . . . . . . 817
+20.2 cgi — Common Gateway Interface support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 819
+20.3 cgitb — Traceback manager for CGI scripts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 825
+20.4 wsgiref — WSGI Utilities and Reference Implementation . . . . . . . . . . . . . . . . . . . . . . 826
+20.5 urllib.request — Extensible library for opening URLs . . . . . . . . . . . . . . . . . . . . . 835
+20.6 urllib.response — Response classes used by urllib . . . . . . . . . . . . . . . . . . . . . . . 850
+20.7 urllib.parse — Parse URLs into components . . . . . . . . . . . . . . . . . . . . . . . . . . . 850
+20.8 urllib.error — Exception classes raised by urllib.request . . . . . . . . . . . . . . . . . . . . 857
+20.9 urllib.robotparser — Parser for robots.txt . . . . . . . . . . . . . . . . . . . . . . . . . . . 857
+20.10 http.client — HTTP protocol client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 858
+20.11 ftplib — FTP protocol client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 864
+20.12 poplib — POP3 protocol client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 868
+20.13 imaplib — IMAP4 protocol client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 870
+20.14 nntplib — NNTP protocol client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 876
+20.15 smtplib — SMTP protocol client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 882
+20.16 smtpd — SMTP Server . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 887
+20.17 telnetlib — Telnet client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 889
+20.18 uuid — UUID objects according to RFC 4122 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 891
+20.19 socketserver — A framework for network servers . . . . . . . . . . . . . . . . . . . . . . . . . 894
+20.20 http.server — HTTP servers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 902
+20.21 http.cookies — HTTP state management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 906
+20.22 http.cookiejar — Cookie handling for HTTP clients . . . . . . . . . . . . . . . . . . . . . . . 909
+20.23 xmlrpc.client — XML-RPC client access . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 917
+20.24 xmlrpc.server — Basic XML-RPC servers . . . . . . . . . . . . . . . . . . . . . . . . . . . . 924
+
+21 Multimedia Services 929
+21.1 audioop — Manipulate raw audio data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 929
+21.2 aifc — Read and write AIFF and AIFC files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 932
+21.3 sunau — Read and write Sun AU files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 934
+21.4 wave — Read and write WAV files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 937
+21.5 chunk — Read IFF chunked data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 939
+21.6 colorsys — Conversions between color systems . . . . . . . . . . . . . . . . . . . . . . . . . . . 940
+21.7 imghdr — Determine the type of an image . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 941
+21.8 sndhdr — Determine type of sound file . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 941
+21.9 ossaudiodev — Access to OSS-compatible audio devices . . . . . . . . . . . . . . . . . . . . . 942
+
+22 Internationalization 947
+22.1 gettext — Multilingual internationalization services . . . . . . . . . . . . . . . . . . . . . . . . 947
+22.2 locale — Internationalization services . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 955
+
+23 Program Frameworks 963
+23.1 turtle — Turtle graphics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 963
+23.2 cmd — Support for line-oriented command interpreters . . . . . . . . . . . . . . . . . . . . . . . . 998
+23.3 shlex — Simple lexical analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1003
+
+24 Graphical User Interfaces with Tk 1007
+24.1 tkinter — Python interface to Tcl/Tk . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1007
+24.2 tkinter.ttk — Tk themed widgets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1017
+24.3 tkinter.tix — Extension widgets for Tk . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1034
+24.4 tkinter.scrolledtext — Scrolled Text Widget . . . . . . . . . . . . . . . . . . . . . . . . . 1039
+24.5 IDLE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1039
+24.6 Other Graphical User Interface Packages . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1042
+
+25 Development Tools 1045
+25.1 pydoc — Documentation generator and online help system . . . . . . . . . . . . . . . . . . . . . . 1045
+25.2 doctest — Test interactive Python examples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1046
+25.3 unittest — Unit testing framework . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1069
+25.4 2to3 - Automated Python 2 to 3 code translation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1094
+25.5 test — Regression tests package for Python . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1098
+25.6 test.support — Utilities for the Python test suite . . . . . . . . . . . . . . . . . . . . . . . . . 1101
+
+26 Debugging and Profiling 1105
+26.1 bdb — Debugger framework . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1105
+26.2 pdb — The Python Debugger . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1109
+26.3 The Python Profilers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1115
+26.4 timeit — Measure execution time of small code snippets . . . . . . . . . . . . . . . . . . . . . . 1122
+26.5 trace — Trace or track Python statement execution . . . . . . . . . . . . . . . . . . . . . . . . . . 1125
+
+27 Python Runtime Services 1129
+27.1 sys — System-specific parameters and functions . . . . . . . . . . . . . . . . . . . . . . . . . . . 1129
+27.2 sysconfig — Provide access to Python’s configuration information . . . . . . . . . . . . . . . . . 1141
+27.3 builtins — Built-in objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1144
+27.4 __main__ — Top-level script environment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1145
+27.5 warnings — Warning control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1145
+27.6 contextlib — Utilities for with-statement contexts . . . . . . . . . . . . . . . . . . . . . . . . 1150
+27.7 abc — Abstract Base Classes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1152
+27.8 atexit — Exit handlers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1155
+27.9 traceback — Print or retrieve a stack traceback . . . . . . . . . . . . . . . . . . . . . . . . . . . 1157
+27.10 __future__ — Future statement definitions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1160
+27.11 gc — Garbage Collector interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1162
+27.12 inspect — Inspect live objects . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1164
+27.13 site — Site-specific configuration hook . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1171
+27.14 fpectl — Floating point exception control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1173
+27.15 distutils — Building and installing Python modules . . . . . . . . . . . . . . . . . . . . . . . . 1174
+
+28 Custom Python Interpreters 1175
+28.1 code — Interpreter base classes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1175
+28.2 codeop — Compile Python code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1177
+
+29 Importing Modules 1179
+29.1 imp — Access the import internals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1179
+29.2 zipimport — Import modules from Zip archives . . . . . . . . . . . . . . . . . . . . . . . . . . . 1183
+29.3 pkgutil — Package extension utility . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1184
+29.4 modulefinder — Find modules used by a script . . . . . . . . . . . . . . . . . . . . . . . . . . 1187
+29.5 runpy — Locating and executing Python modules . . . . . . . . . . . . . . . . . . . . . . . . . . . 1188
+29.6 importlib – An implementation of import . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1190
+
+30 Python Language Services 1197
+30.1 parser — Access Python parse trees . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1197
+30.2 ast — Abstract Syntax Trees . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1201
+30.3 symtable — Access to the compiler’s symbol tables . . . . . . . . . . . . . . . . . . . . . . . . . 1206
+30.4 symbol — Constants used with Python parse trees . . . . . . . . . . . . . . . . . . . . . . . . . . 1208
+30.5 token — Constants used with Python parse trees . . . . . . . . . . . . . . . . . . . . . . . . . . . 1209
+30.6 keyword — Testing for Python keywords . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1210
+30.7 tokenize — Tokenizer for Python source . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1210
+30.8 tabnanny — Detection of ambiguous indentation . . . . . . . . . . . . . . . . . . . . . . . . . . 1212
+30.9 pyclbr — Python class browser support . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1213
+30.10 py_compile — Compile Python source files . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1214
+30.11 compileall — Byte-compile Python libraries . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1215
+30.12 dis — Disassembler for Python bytecode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1217
+30.13 pickletools — Tools for pickle developers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1225
+
+31 Miscellaneous Services 1227
+31.1 formatter — Generic output formatting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1227
+32 MS Windows Specific Services 1231
+32.1 msilib — Read and write Microsoft Installer files . . . . . . . . . . . . . . . . . . . . . . . . . . 1231
+32.2 msvcrt – Useful routines from the MS VC++ runtime . . . . . . . . . . . . . . . . . . . . . . . . 1236
+32.3 winreg – Windows registry access . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1238
+32.4 winsound — Sound-playing interface for Windows . . . . . . . . . . . . . . . . . . . . . . . . . . 1245
+
+33 Unix Specific Services 1249
+33.1 posix — The most common POSIX system calls . . . . . . . . . . . . . . . . . . . . . . . . . . . 1249
+33.2 pwd — The password database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1250
+33.3 spwd — The shadow password database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1251
+33.4 grp — The group database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1251
+33.5 crypt — Function to check Unix passwords . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1252
+33.6 termios — POSIX style tty control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1253
+33.7 tty — Terminal control functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1254
+33.8 pty — Pseudo-terminal utilities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1254
+33.9 fcntl — The fcntl() and ioctl() system calls . . . . . . . . . . . . . . . . . . . . . . . . . 1255
+33.10 pipes — Interface to shell pipelines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1257
+33.11 resource — Resource usage information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1258
+33.12 nis — Interface to Sun’s NIS (Yellow Pages) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1261
+33.13 syslog — Unix syslog library routines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1262
+
+34 Undocumented Modules 1265
+34.1 Platform specific modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1265
