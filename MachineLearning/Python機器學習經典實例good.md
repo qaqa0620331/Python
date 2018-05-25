@@ -177,26 +177,77 @@ face_recognizer.py
 
 
 
-第11章 深度神經網路
-11.1 簡介
-11.2 創建一個感知器
-11.3 創建一個單層神經網路
-11.4 創建一個深度神經網路
-11.5 創建一個向量量化器
-11.6 為序列資料分析創建一個遞迴神經網路
-11.7 在光學字元辨識資料庫中將字元視覺化
-11.8 用神經網路創建一個光學字元辨識器
+第11章 深度神經網路DEEP NEURAL NETWORKS
 
-第12章 視覺化數據
-12.1 簡介
-12.2 畫3D散點圖
-12.3 畫氣泡圖
-12.4 畫動態氣泡圖
-12.5 畫圓形圖
-12.6 畫日期格式的時間序列資料
-12.7 畫長條圖
-12.8 視覺化熱力圖
-12.9 動態信號的視覺化類比
+11.2 創建一個感知器Building a perceptron
+
+perceptron.py
+
+11.3 創建一個單層神經網路Building a single layer neural network
+
+single_layer.py
+
+11.4 創建一個深度神經網路Building a deep neural network
+
+deep_neural_network.py
+
+
+11.5 創建一個向量量化器Creating a vector quantizer
+
+vector_quantization.py
+
+11.6 為序列資料分析創建一個遞迴神經網路Building a recurrent neural network for sequential data analysis
+
+recurrent_network.py
+
+11.7 在光學字元辨識資料庫中將字元視覺化Visualizing the characters in an optical character recognition database
+
+visualize_characters.py
+
+
+11.8 用神經網路創建一個光學字元辨識器Building an optical character recognizer using neural networks
+
+
+ocr.py
+
+
+
+
+第12章 視覺化數據VISUALIZING DATA
+
+
+12.2 畫3D散點圖Plotting 3D scatter plots
+
+
+
+12.3 畫氣泡圖Plotting bubble plots
+
+
+
+12.4 畫動態氣泡圖Animating bubble plots
+
+
+
+12.5 畫圓形圖Drawing pie charts
+
+
+
+12.6 畫日期格式的時間序列資料Plotting date-formatted time series data
+
+
+
+
+12.7 畫長條圖Plotting histograms
+
+
+
+
+12.8 視覺化熱力圖Visualizing heat maps
+
+
+
+
+12.9 動態信號的視覺化類比Animating dynamic signals
 
 
 ```
