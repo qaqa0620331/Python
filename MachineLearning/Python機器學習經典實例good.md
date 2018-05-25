@@ -25,42 +25,137 @@ June 2016
 1.11 評估共用單車的需求分佈
 
 
-第2章 創建分類器
-2.1 簡介
-2.2 建立簡單分類器
-2.3 建立邏輯回歸分類器
-2.4 建立樸素貝葉斯分類器
-2.5 將資料集分割成訓練集和測試集
-2.6 用交叉驗證檢驗模型準確性
-2.7 混淆矩陣視覺化
-2.8 提取性能報告
-2.9 根據汽車特徵評估品質
-2.10 生成驗證曲線
-2.11 生成學習曲線
-2.12 估算收入階層
+監督學習
+
+第2章 創建分類器CONSTRUCTING A CLASSIFIER
 
 
-第3章 預測建模
-3.1 簡介
-3.2 用SVM建立線性分類器
-3.3 用SVM建立非線性分類器
-3.4 解決類型數量不平衡問題
-3.5 提取置信度
-3.6 尋找最優超參數
-3.7 建立事件預測器
-3.8 估算交通流量
+2.2 建立簡單分類器Building a simple classifier
 
 
-第4章 無監督學習——聚類
-4.1 簡介
-4.2 用k-means演算法聚類資料
-4.3 用向量量化壓縮圖片
-4.4 建立均值漂移聚類模型
-4.5 用凝聚層次聚類進行資料分組
-4.6 評價聚類演算法的聚類效果
-4.7 用DBSCAN演算法自動估算集群數量
-4.8 探索股票資料的模式
-4.9 建立客戶細分模型
+
+
+2.3 建立邏輯回歸分類器Building a logistic regression classifier
+
+
+
+
+
+2.4 建立樸素貝葉斯分類器Building a Naive Bayes classifier
+
+
+
+
+
+2.5 將資料集分割成訓練集和測試集Splitting the dataset for training and testing
+
+
+
+
+2.6 用交叉驗證檢驗模型準確性Evaluating the accuracy using cross-validation
+
+
+
+
+
+2.7 混淆矩陣視覺化Visualizing the confusion matrix
+
+
+
+
+2.8 提取性能報告Extracting the performance report
+
+
+
+
+
+2.9 根據汽車特徵評估品質Evaluating cars based on their characteristics
+
+
+
+2.10 生成驗證曲線Extracting validation curves
+
+
+
+
+
+2.11 生成學習曲線Extracting learning curves
+
+
+
+2.12 估算收入階層Estimating the income bracket
+
+
+第3章 預測建模PREDICTIVE MODELING
+
+
+
+3.2 用SVM建立線性分類器Building a linear classifier using Support Vector Machine (SVMs)
+
+
+
+
+3.3 用SVM建立非線性分類器Building a nonlinear classifier using SVMs
+
+
+
+
+3.4 解決類型數量不平衡問題Tackling class imbalance
+
+
+
+3.5 提取置信度Extracting confidence measurements
+
+
+
+3.6 尋找最優超參數Finding optimal hyperparameters
+
+
+
+3.7 建立事件預測器Building an event predictor
+
+
+
+3.8 估算交通流量Estimating traffic
+
+
+第4章 無監督學習——聚類CLUSTERING WITH UNSUPERVISED LEARNING
+
+4.2 用k-means演算法聚類資料Clustering data using the k-means algorithm
+
+
+
+
+4.3 用向量量化壓縮圖片Compressing an image using vector quantization
+
+
+
+
+4.4 建立均值漂移聚類模型Building a Mean Shift clustering model
+
+
+
+4.5 用凝聚層次聚類進行資料分組Grouping data using agglomerative clustering
+
+
+
+4.6 評價聚類演算法的聚類效果Evaluating the performance of clustering algorithms
+
+
+
+4.7 用DBSCAN演算法自動估算集群數量Automatically estimating the number of clusters using DBSCAN algorithm
+
+
+
+4.8 探索股票資料的模式Finding patterns in stock market data
+
+
+
+4.9 建立客戶細分模型Building a customer segmentation model
+
+
+
+
 
 
 第5章 構建推薦引擎
