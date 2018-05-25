@@ -1,6 +1,5 @@
 https://detail.tmall.com/item.htm?id=558284517556&ns=1&abbucket=19
 
-https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781786464477
 
 https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-cookbook
 
