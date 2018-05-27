@@ -10,10 +10,48 @@ Python Machine Learning Cookbook
 Prateek Joshi
 
 June 2016
+
+# packages and modules
+
+
+
+# 第1章 監督學習: Supervised Learning 
+
+1.2 資料預處理技術==>preprocessing.py
 ```
-第1章 監督學習
-1.1 簡介
-1.2 資料預處理技術
+import numpy as np
+from sklearn import preprocessing
+
+data = np.array([[ 3, -1.5,  2, -5.4],
+                 [ 0,  4,  -0.3, 2.1],
+                 [ 1,  3.3, -1.9, -4.3]])
+
+# mean removal
+data_standardized = preprocessing.scale(data)
+print "\nMean =", data_standardized.mean(axis=0)
+print "Std deviation =", data_standardized.std(axis=0)
+
+# min max scaling
+data_scaler = preprocessing.MinMaxScaler(feature_range=(0, 1))
+data_scaled = data_scaler.fit_transform(data)
+print "\nMin max scaled data:\n", data_scaled
+
+# normalization
+data_normalized = preprocessing.normalize(data, norm='l1')
+print "\nL1 normalized data:\n", data_normalized
+
+# binarization
+data_binarized = preprocessing.Binarizer(threshold=1.4).transform(data)
+print "\nBinarized data:\n", data_binarized
+
+# one hot encoding
+encoder = preprocessing.OneHotEncoder()
+encoder.fit([[0, 2, 1, 12], [1, 3, 5, 3], [2, 3, 2, 12], [1, 2, 4, 3]])
+encoded_vector = encoder.transform([[2, 3, 5, 3]]).toarray()
+print "\nEncoded vector:\n", encoded_vector
+
+
+```
 1.3 標記編碼方法
 1.4 創建線性回歸器
 1.5 計算回歸準確性
@@ -24,16 +62,14 @@ June 2016
 1.10 計算特徵的相對重要性
 1.11 評估共用單車的需求分佈
 
+```
+# 監督學習
 
-監督學習
-
-第2章 創建分類器CONSTRUCTING A CLASSIFIER
+# 第2章 創建分類器CONSTRUCTING A CLASSIFIER
 
 
-2.2 建立簡單分類器Building a simple classifier
-
-simple_classifier.py
-
+## 2.2 建立簡單分類器Building a simple classifier==>simple_classifier.py
+```
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -63,10 +99,12 @@ plt.scatter(class_1[:,0], class_1[:,1], color='black', marker='x')
 plt.plot(line_x, line_y, color='black', linewidth=3)
 
 plt.show()
+```
 
+### 2.3 建立邏輯回歸分類器Building a logistic regression classifier
+```
 
-2.3 建立邏輯回歸分類器Building a logistic regression classifier
-
+```
 
 
 
@@ -147,9 +185,10 @@ plt.show()
 
 
 3.8 估算交通流量Estimating traffic
+```
+# 無監督學習 Unsupervised Learning
 
-
-第4章 無監督學習——聚類CLUSTERING WITH UNSUPERVISED LEARNING
+## 第4章 無監督學習——聚類CLUSTERING WITH UNSUPERVISED LEARNING
 
 4.2 用k-means演算法聚類資料Clustering data using the k-means algorithm
 
@@ -187,7 +226,7 @@ plt.show()
 
 
 
-
+```
 第5章 構建推薦引擎
 5.1 簡介
 5.2 為資料處理構建函數組合
@@ -233,13 +272,9 @@ plt.show()
 8.8 用隱瑪律科夫模型分析股票市場資料
 
 第9章 圖像內容分析 IMAGE CONTENT ANALYSIS
-9.2 用OpenCV-Pyhon操作圖像 Operating on images using OpenCV-Python
+9.2 用OpenCV-Pyhon操作圖像 Operating on images using OpenCV-Python==>operating_on_images.py
 
-operating_on_images.py
-
-9.3 檢測邊 Detecting edges
-
-edge_detector.py
+9.3 檢測邊 Detecting edges==>edge_detector.py
 
 9.4 長條圖均衡化 Histogram equalization
 
@@ -249,14 +284,9 @@ histogram_equalizer.py
 
 corner_detector.py
 
-9.6 檢測SIFT特徵點 Detecting SIFT feature points
+9.6 檢測SIFT特徵點 Detecting SIFT feature points==>feature_detector.py
 
-feature_detector.py
-
-9.7 創建Star特徵檢測器 Building a Star feature detector
-
-
-star_detector.py
+9.7 創建Star特徵檢測器 Building a Star feature detector==>star_detector.py
 
 9.8 利用視覺碼本和向量量化創建特徵 Creating features using visual codebook and vector quantization
 
@@ -266,9 +296,8 @@ build_features.py
 
 trainer.py
 
-9.10 創建一個物件識別器 Building an object recognizer
+9.10 創建一個物件識別器 Building an object recognizer==>object_recognizer.py
 
-object_recognizer.py
 
 第10章 人臉識別 BIOMETRIC FACE RECOGNITION
 
