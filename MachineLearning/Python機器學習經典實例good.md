@@ -167,7 +167,7 @@ python linear_regression_singlevar.py data_singlevar.txt
 
 ## 多元回歸
 
-### 1.7 創建嶺回歸器==>
+### 1.7 創建嶺回歸器Building a ridge regressor==>
 
 ##### 資料集:data_multivar.txt
 ```
@@ -258,18 +258,141 @@ sgd_regressor = linear_model.SGDRegressor(loss='huber', n_iter=50)
 sgd_regressor.fit(X_train, y_train)
 print "\nSGD regressor:\n", sgd_regressor.predict(datapoint)
 ```
-### 1.8 創建多項式回歸器==>
+### 1.8 創建多項式回歸器Building a polynomial regressor ==>
 ```
 ```
-### 1.9 估算房屋價格==>
+### 1.9 估算房屋價格Estimating housing prices ==>housing.py
+```
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn import datasets
+from sklearn.metrics import mean_squared_error, explained_variance_score
+from sklearn.utils import shuffle
+import matplotlib.pyplot as plt
+
+def plot_feature_importances(feature_importances, title, feature_names):
+    # Normalize the importance values 
+    feature_importances = 100.0 * (feature_importances / max(feature_importances))
+
+    # Sort the values and flip them
+    index_sorted = np.flipud(np.argsort(feature_importances))
+
+    # Arrange the X ticks
+    pos = np.arange(index_sorted.shape[0]) + 0.5
+
+    # Plot the bar graph
+    plt.figure()
+    plt.bar(pos, feature_importances[index_sorted], align='center')
+    plt.xticks(pos, feature_names[index_sorted])
+    plt.ylabel('Relative Importance')
+    plt.title(title)
+    plt.show()
+
+if __name__=='__main__':
+    # Load housing data
+    housing_data = datasets.load_boston() 
+
+    # Shuffle the data
+    X, y = shuffle(housing_data.data, housing_data.target, random_state=7)
+
+    # Split the data 80/20 (80% for training, 20% for testing)
+    num_training = int(0.8 * len(X))
+    X_train, y_train = X[:num_training], y[:num_training]
+    X_test, y_test = X[num_training:], y[num_training:]
+
+    # Fit decision tree regression model
+    dt_regressor = DecisionTreeRegressor(max_depth=4)
+    dt_regressor.fit(X_train, y_train)
+
+    # Fit decision tree regression model with AdaBoost
+    ab_regressor = AdaBoostRegressor(DecisionTreeRegressor(max_depth=4), n_estimators=400, random_state=7)
+    ab_regressor.fit(X_train, y_train)
+
+    # Evaluate performance of Decision Tree regressor
+    y_pred_dt = dt_regressor.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred_dt)
+    evs = explained_variance_score(y_test, y_pred_dt) 
+    print "\n#### Decision Tree performance ####"
+    print "Mean squared error =", round(mse, 2)
+    print "Explained variance score =", round(evs, 2)
+
+    # Evaluate performance of AdaBoost
+    y_pred_ab = ab_regressor.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred_ab)
+    evs = explained_variance_score(y_test, y_pred_ab) 
+    print "\n#### AdaBoost performance ####"
+    print "Mean squared error =", round(mse, 2)
+    print "Explained variance score =", round(evs, 2)
+
+    # Plot relative feature importances 
+    plot_feature_importances(dt_regressor.feature_importances_, 
+            'Decision Tree regressor', housing_data.feature_names)
+    plot_feature_importances(ab_regressor.feature_importances_, 
+            'AdaBoost regressor', housing_data.feature_names)
+```
+### 1.10 計算特徵的相對重要性Computing the relative importance of features ==>
 ```
 ```
-### 1.10 計算特徵的相對重要性==>
+### 1.11 評估共用單車的需求分佈Estimating bicycle demand distribution==>bike_sharing.py
+
+>* 問題:共享單車的需求分佈
+>* 演算法:random forest regressor
 ```
+import sys
+import csv
+
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor 
+from sklearn import preprocessing
+from sklearn.metrics import mean_squared_error, explained_variance_score
+from sklearn.utils import shuffle
+import matplotlib.pyplot as plt
+
+from housing import plot_feature_importances
+
+def load_dataset(filename):
+    file_reader = csv.reader(open(filename, 'rb'), delimiter=',')
+    X, y = [], []
+    for row in file_reader:
+        X.append(row[2:13])
+        y.append(row[-1])
+
+    # Extract feature names
+    feature_names = np.array(X[0])
+
+    # Remove the first row because they are feature names
+    return np.array(X[1:]).astype(np.float32), np.array(y[1:]).astype(np.float32), feature_names
+
+if __name__=='__main__':
+    # Load the dataset from the input file
+    X, y, feature_names = load_dataset(sys.argv[1])
+    X, y = shuffle(X, y, random_state=7) 
+
+    # Split the data 80/20 (80% for training, 20% for testing)
+    num_training = int(0.9 * len(X))
+    X_train, y_train = X[:num_training], y[:num_training]
+    X_test, y_test = X[num_training:], y[num_training:]
+
+    # Fit Random Forest regression model
+    rf_regressor = RandomForestRegressor(n_estimators=1000, max_depth=10, min_samples_split=1)
+    rf_regressor.fit(X_train, y_train)
+
+    # Evaluate performance of Random Forest regressor
+    y_pred = rf_regressor.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    evs = explained_variance_score(y_test, y_pred) 
+    print "\n#### Random Forest regressor performance ####"
+    print "Mean squared error =", round(mse, 2)
+    print "Explained variance score =", round(evs, 2)
+
+    # Plot relative feature importances 
+    plot_feature_importances(rf_regressor.feature_importances_, 'Random Forest regressor', feature_names)
+
 ```
-### 1.11 評估共用單車的需求分佈==>
-```
-```
+
+
+
 # 監督學習
 
 # 第2章 創建分類器CONSTRUCTING A CLASSIFIER
