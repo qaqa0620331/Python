@@ -1,15 +1,8 @@
-https://detail.tmall.com/item.htm?id=558284517556&ns=1&abbucket=19
-
-
-https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-cookbook
-
-https://github.com/PacktPublishing/Python-Machine-Learning-Cookbook
-
-Python Machine Learning Cookbook
-
-Prateek Joshi
-
-June 2016
+# 教科書
+>* Python Machine Learning Cookbook: Prateek Joshi  June 2016
+>* https://detail.tmall.com/item.htm?id=558284517556&ns=1&abbucket=19
+>* https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-cookbook
+>* https://github.com/PacktPublishing/Python-Machine-Learning-Cookbook
 
 # packages and modules
 
@@ -53,17 +46,229 @@ encoded_vector = encoder.transform([[2, 3, 5, 3]]).toarray()
 print "\nEncoded vector:\n", encoded_vector
 
 ```
-```
-1.3 標記編碼方法
-1.4 創建線性回歸器
-1.5 計算回歸準確性
-1.6 保存模型資料
-1.7 創建嶺回歸器
-1.8 創建多項式回歸器
-1.9 估算房屋價格
-1.10 計算特徵的相對重要性
-1.11 評估共用單車的需求分佈
 
+### 1.3 標記編碼方法==>label_encoder.py
+```
+
+import numpy as np
+from sklearn import preprocessing
+
+label_encoder = preprocessing.LabelEncoder()
+input_classes = ['audi', 'ford', 'audi', 'toyota', 'ford', 'bmw']
+label_encoder.fit(input_classes)
+
+# print classes
+print "\nClass mapping:"
+for i, item in enumerate(label_encoder.classes_):
+    print item, '-->', i
+
+# transform a set of classes
+labels = ['toyota', 'ford', 'audi']
+encoded_labels = label_encoder.transform(labels)
+print "\nLabels =", labels 
+print "Encoded labels =", list(encoded_labels)
+
+# inverse transform
+encoded_labels = [2, 1, 0, 3, 1]
+decoded_labels = label_encoder.inverse_transform(encoded_labels)
+print "\nEncoded labels =", encoded_labels
+print "Decoded labels =", list(decoded_labels)
+```
+### 1.4 創建線性回歸器==>linear_regression_singlevar.py
+
+##### 線性回歸linear regression
+
+##### 資料集:data_singlevar.txt
+```
+4.94,4.37
+-1.58,1.7
+-4.45,1.88
+-6.06,0.56
+-1.22,2.23
+...............
+```
+
+##### 程式:linear_regression_singlevar.py
+```
+import sys
+
+import numpy as np
+
+filename = sys.argv[1]
+X = []
+y = []
+with open(filename, 'r') as f:
+    for line in f.readlines():
+        xt, yt = [float(i) for i in line.split(',')]
+        X.append(xt)
+        y.append(yt)
+
+# Train/test split
+num_training = int(0.8 * len(X))
+num_test = len(X) - num_training
+
+# Training data
+X_train = np.array(X[:num_training]).reshape((num_training,1))
+y_train = np.array(y[:num_training])
+
+# Test data
+X_test = np.array(X[num_training:]).reshape((num_test,1))
+y_test = np.array(y[num_training:])
+
+# Create linear regression object
+from sklearn import linear_model
+
+linear_regressor = linear_model.LinearRegression()
+
+# Train the model using the training sets
+linear_regressor.fit(X_train, y_train)
+
+# Predict the output
+y_test_pred = linear_regressor.predict(X_test)
+
+# Plot outputs
+import matplotlib.pyplot as plt
+
+plt.scatter(X_test, y_test, color='green')
+plt.plot(X_test, y_test_pred, color='black', linewidth=4)
+plt.xticks(())
+plt.yticks(())
+plt.show()
+
+# Measure performance ### 1.5 計算回歸準確性
+import sklearn.metrics as sm
+
+print "Mean absolute error =", round(sm.mean_absolute_error(y_test, y_test_pred), 2) 
+print "Mean squared error =", round(sm.mean_squared_error(y_test, y_test_pred), 2) 
+print "Median absolute error =", round(sm.median_absolute_error(y_test, y_test_pred), 2) 
+print "Explain variance score =", round(sm.explained_variance_score(y_test, y_test_pred), 2) 
+print "R2 score =", round(sm.r2_score(y_test, y_test_pred), 2)
+
+# Model persistence 1.6 保存模型資料
+import cPickle as pickle
+
+output_model_file = '3_model_linear_regr.pkl'
+
+with open(output_model_file, 'w') as f:
+    pickle.dump(linear_regressor, f)
+
+with open(output_model_file, 'r') as f:
+    model_linregr = pickle.load(f)
+
+y_test_pred_new = model_linregr.predict(X_test)
+print "\nNew mean absolute error =", round(sm.mean_absolute_error(y_test, y_test_pred_new), 2) 
+```
+##### 執行程式
+```
+
+python linear_regression_singlevar.py data_singlevar.txt
+　
+```
+
+## 多元回歸
+
+### 1.7 創建嶺回歸器==>
+
+##### 資料集:data_multivar.txt
+```
+0.39,2.78,7.11,-8.07
+1.65,6.7,2.42,12.24
+5.67,6.38,3.79,23.96
+2.31,6.27,4.8,4.29
+3.67,6.67,2.38,16.37
+3.64,3.14,2.38,12.44
+7.0,3.85,8.39,13.45
+```
+##### 程式:regression_multivar.py
+```
+import sys
+
+import numpy as np
+
+filename = sys.argv[1]
+X = []
+y = []
+with open(filename, 'r') as f:
+    for line in f.readlines():
+        data = [float(i) for i in line.split(',')]
+        xt, yt = data[:-1], data[-1]
+        X.append(xt)
+        y.append(yt)
+
+# Train/test split
+num_training = int(0.8 * len(X))
+num_test = len(X) - num_training
+
+# Training data
+#X_train = np.array(X[:num_training]).reshape((num_training,1))
+X_train = np.array(X[:num_training])
+y_train = np.array(y[:num_training])
+
+# Test data
+#X_test = np.array(X[num_training:]).reshape((num_test,1))
+X_test = np.array(X[num_training:])
+y_test = np.array(y[num_training:])
+
+# Create linear regression object
+from sklearn import linear_model
+
+linear_regressor = linear_model.LinearRegression()
+ridge_regressor = linear_model.Ridge(alpha=0.01, fit_intercept=True, max_iter=10000)
+
+# Train the model using the training sets
+linear_regressor.fit(X_train, y_train)
+ridge_regressor.fit(X_train, y_train)
+
+# Predict the output
+y_test_pred = linear_regressor.predict(X_test)
+y_test_pred_ridge = ridge_regressor.predict(X_test)
+
+# Measure performance
+import sklearn.metrics as sm
+
+print "LINEAR:"
+print "Mean absolute error =", round(sm.mean_absolute_error(y_test, y_test_pred), 2) 
+print "Mean squared error =", round(sm.mean_squared_error(y_test, y_test_pred), 2) 
+print "Median absolute error =", round(sm.median_absolute_error(y_test, y_test_pred), 2) 
+print "Explained variance score =", round(sm.explained_variance_score(y_test, y_test_pred), 2) 
+print "R2 score =", round(sm.r2_score(y_test, y_test_pred), 2)
+
+print "\nRIDGE:"
+print "Mean absolute error =", round(sm.mean_absolute_error(y_test, y_test_pred_ridge), 2) 
+print "Mean squared error =", round(sm.mean_squared_error(y_test, y_test_pred_ridge), 2) 
+print "Median absolute error =", round(sm.median_absolute_error(y_test, y_test_pred_ridge), 2) 
+print "Explained variance score =", round(sm.explained_variance_score(y_test, y_test_pred_ridge), 2) 
+print "R2 score =", round(sm.r2_score(y_test, y_test_pred_ridge), 2)
+
+# Polynomial regression
+from sklearn.preprocessing import PolynomialFeatures
+
+polynomial = PolynomialFeatures(degree=10)
+X_train_transformed = polynomial.fit_transform(X_train)
+datapoint = [0.39,2.78,7.11]
+poly_datapoint = polynomial.fit_transform(datapoint)
+
+poly_linear_model = linear_model.LinearRegression()
+poly_linear_model.fit(X_train_transformed, y_train)
+print "\nLinear regression:\n", linear_regressor.predict(datapoint)
+print "\nPolynomial regression:\n", poly_linear_model.predict(poly_datapoint)
+
+# Stochastic Gradient Descent regressor
+sgd_regressor = linear_model.SGDRegressor(loss='huber', n_iter=50)
+sgd_regressor.fit(X_train, y_train)
+print "\nSGD regressor:\n", sgd_regressor.predict(datapoint)
+```
+### 1.8 創建多項式回歸器==>
+```
+```
+### 1.9 估算房屋價格==>
+```
+```
+### 1.10 計算特徵的相對重要性==>
+```
+```
+### 1.11 評估共用單車的需求分佈==>
+```
 ```
 # 監督學習
 
