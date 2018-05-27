@@ -486,14 +486,67 @@ plt.show()
 2.12 估算收入階層Estimating the income bracket
 
 
-第3章 預測建模PREDICTIVE MODELING
+### 第3章 預測建模PREDICTIVE MODELING
 
 
 
 3.2 用SVM建立線性分類器Building a linear classifier using Support Vector Machine (SVMs)
+```
+import numpy as np
+import matplotlib.pyplot as plt
 
+import utilities 
 
+# Load input data
+input_file = 'data_multivar.txt'
+X, y = utilities.load_data(input_file)
 
+###############################################
+# Separate the data into classes based on 'y'
+class_0 = np.array([X[i] for i in range(len(X)) if y[i]==0])
+class_1 = np.array([X[i] for i in range(len(X)) if y[i]==1])
+
+# Plot the input data
+plt.figure()
+plt.scatter(class_0[:,0], class_0[:,1], facecolors='black', edgecolors='black', marker='s')
+plt.scatter(class_1[:,0], class_1[:,1], facecolors='None', edgecolors='black', marker='s')
+plt.title('Input data')
+
+###############################################
+# Train test split and SVM training
+from sklearn import cross_validation
+from sklearn.svm import SVC
+
+X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.25, random_state=5)
+
+params = {'kernel': 'linear'}
+#params = {'kernel': 'poly', 'degree': 3}
+#params = {'kernel': 'rbf'}
+classifier = SVC(**params)
+classifier.fit(X_train, y_train)
+utilities.plot_classifier(classifier, X_train, y_train, 'Training dataset')
+
+y_test_pred = classifier.predict(X_test)
+utilities.plot_classifier(classifier, X_test, y_test, 'Test dataset')
+
+###############################################
+# Evaluate classifier performance
+
+from sklearn.metrics import classification_report
+
+target_names = ['Class-' + str(int(i)) for i in set(y)]
+print "\n" + "#"*30
+print "\nClassifier performance on training dataset\n"
+print classification_report(y_train, classifier.predict(X_train), target_names=target_names)
+print "#"*30 + "\n"
+
+print "#"*30
+print "\nClassification report on test dataset\n"
+print classification_report(y_test, y_test_pred, target_names=target_names)
+print "#"*30 + "\n"
+
+plt.show()
+```
 
 3.3 用SVM建立非線性分類器Building a nonlinear classifier using SVMs
 
@@ -518,48 +571,214 @@ plt.show()
 
 3.8 估算交通流量Estimating traffic
 ```
+```
 # 無監督學習 Unsupervised Learning
 
 ## 第4章 無監督學習——聚類CLUSTERING WITH UNSUPERVISED LEARNING
 
-4.2 用k-means演算法聚類資料Clustering data using the k-means algorithm
+### 4.2 用k-means演算法聚類資料Clustering data using the k-means algorithm ==>kmeans.py
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import metrics
+from sklearn.cluster import KMeans
+
+import utilities
+
+# Load data
+data = utilities.load_data('data_multivar.txt')
+num_clusters = 4
+
+# Plot data
+plt.figure()
+plt.scatter(data[:,0], data[:,1], marker='o', 
+        facecolors='none', edgecolors='k', s=30)
+x_min, x_max = min(data[:, 0]) - 1, max(data[:, 0]) + 1
+y_min, y_max = min(data[:, 1]) - 1, max(data[:, 1]) + 1
+plt.title('Input data')
+plt.xlim(x_min, x_max)
+plt.ylim(y_min, y_max)
+plt.xticks(())
+plt.yticks(())
+
+# Train the model
+kmeans = KMeans(init='k-means++', n_clusters=num_clusters, n_init=10)
+kmeans.fit(data)
+
+# Step size of the mesh
+step_size = 0.01
+
+# Plot the boundaries
+x_min, x_max = min(data[:, 0]) - 1, max(data[:, 0]) + 1
+y_min, y_max = min(data[:, 1]) - 1, max(data[:, 1]) + 1
+x_values, y_values = np.meshgrid(np.arange(x_min, x_max, step_size), np.arange(y_min, y_max, step_size))
+
+# Predict labels for all points in the mesh
+predicted_labels = kmeans.predict(np.c_[x_values.ravel(), y_values.ravel()])
+
+# Plot the results
+predicted_labels = predicted_labels.reshape(x_values.shape)
+plt.figure()
+plt.clf()
+plt.imshow(predicted_labels, interpolation='nearest',
+           extent=(x_values.min(), x_values.max(), y_values.min(), y_values.max()),
+           cmap=plt.cm.Paired,
+           aspect='auto', origin='lower')
+
+plt.scatter(data[:,0], data[:,1], marker='o', 
+        facecolors='none', edgecolors='k', s=30)
+
+centroids = kmeans.cluster_centers_
+plt.scatter(centroids[:,0], centroids[:,1], marker='o', s=200, linewidths=3,
+        color='k', zorder=10, facecolors='black')
+x_min, x_max = min(data[:, 0]) - 1, max(data[:, 0]) + 1
+y_min, y_max = min(data[:, 1]) - 1, max(data[:, 1]) + 1
+plt.title('Centoids and boundaries obtained using KMeans')
+plt.xlim(x_min, x_max)
+plt.ylim(y_min, y_max)
+plt.xticks(())
+plt.yticks(())
+plt.show()
+```
 
 
+### 4.3 用向量量化壓縮圖片Compressing an image using vector quantization ==> vector_quantization.py
 
+vector quantization is the N-dimensional version of "rounding off".
 
-4.3 用向量量化壓縮圖片Compressing an image using vector quantization
+http://www.datacompression.com/vq.shtml
 
+Vector quantization is popularly used in image compression
+where we store each pixel using fewer bits than the original image to achieve compression
 
+```
+import argparse
 
+import numpy as np
+from scipy import misc 
+from sklearn import cluster
+import matplotlib.pyplot as plt
 
-4.4 建立均值漂移聚類模型Building a Mean Shift clustering model
+def build_arg_parser():
+    parser = argparse.ArgumentParser(description='Compress the input image \
+            using clustering')
+    parser.add_argument("--input-file", dest="input_file", required=True,
+            help="Input image")
+    parser.add_argument("--num-bits", dest="num_bits", required=False,
+            type=int, help="Number of bits used to represent each pixel")
+    return parser
 
+def compress_image(img, num_clusters):
+    # Convert input image into (num_samples, num_features) 
+    # array to run kmeans clustering algorithm 
+    X = img.reshape((-1, 1))  
 
+    # Run kmeans on input data
+    kmeans = cluster.KMeans(n_clusters=num_clusters, n_init=4, random_state=5)
+    kmeans.fit(X)
+    centroids = kmeans.cluster_centers_.squeeze()
+    labels = kmeans.labels_
 
-4.5 用凝聚層次聚類進行資料分組Grouping data using agglomerative clustering
+    # Assign each value to the nearest centroid and 
+    # reshape it to the original image shape
+    input_image_compressed = np.choose(labels, centroids).reshape(img.shape)
 
+    return input_image_compressed
 
+def plot_image(img, title):
+    vmin = img.min()
+    vmax = img.max()
+    plt.figure()
+    plt.title(title)
+    plt.imshow(img, cmap=plt.cm.gray, vmin=vmin, vmax=vmax)
 
-4.6 評價聚類演算法的聚類效果Evaluating the performance of clustering algorithms
+if __name__=='__main__':
+    args = build_arg_parser().parse_args()
+    input_file = args.input_file
+    num_bits = args.num_bits
 
+    if not 1 <= num_bits <= 8:
+        raise TypeError('Number of bits should be between 1 and 8')
 
+    num_clusters = np.power(2, num_bits)
 
-4.7 用DBSCAN演算法自動估算集群數量Automatically estimating the number of clusters using DBSCAN algorithm
+    # Print compression rate
+    compression_rate = round(100 * (8.0 - args.num_bits) / 8.0, 2)
+    print "\nThe size of the image will be reduced by a factor of", 8.0/args.num_bits
+    print "\nCompression rate = " + str(compression_rate) + "%"
 
+    # Load input image
+    input_image = misc.imread(input_file, True).astype(np.uint8)
 
+    # original image 
+    plot_image(input_image, 'Original image')
 
-4.8 探索股票資料的模式Finding patterns in stock market data
+    # compressed image 
+    input_image_compressed = compress_image(input_image, num_clusters)
+    plot_image(input_image_compressed, 'Compressed image; compression rate = ' 
+            + str(compression_rate) + '%')
 
+    plt.show()
 
+```
 
-4.9 建立客戶細分模型Building a customer segmentation model
+python vector_quantization.py --input-file flower_image.jpg --num-bits 4
 
+python vector_quantization.py --input-file flower_image.jpg --num-bits 2
 
+python vector_quantization.py --input-file flower_image.jpg --num-bits 1
 
+### 4.4 建立均值漂移聚類模型Building a Mean Shift clustering model ==> mean_shift.py
+
+>* http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/TUZEL1/MeanShift.pdf
+
+```
 
 
 ```
+
+### 4.5 用凝聚層次聚類進行資料分組Grouping data using agglomerative clustering
+
+```
+
+
+```
+
+
+### 4.6 評價聚類演算法的聚類效果Evaluating the performance of clustering algorithms
+
+```
+
+
+```
+
+### 4.7 用DBSCAN演算法自動估算集群數量Automatically estimating the number of clusters using DBSCAN algorithm
+
+```
+
+
+```
+
+### 4.8 探索股票資料的模式Finding patterns in stock market data
+
+```
+
+
+```
+
+### 4.9 建立客戶細分模型Building a customer segmentation model
+
+```
+
+
+```
+
+
+
+
 第5章 構建推薦引擎
+```
 5.1 簡介
 5.2 為資料處理構建函數組合
 5.3 構建機器學習流水線
@@ -602,8 +821,10 @@ plt.show()
 8.6 針對序列資料創建隱瑪律科夫模型
 8.7 針對序列文本資料創建條件隨機場
 8.8 用隱瑪律科夫模型分析股票市場資料
+```
 
-第9章 圖像內容分析 IMAGE CONTENT ANALYSIS
+## 第9章 圖像內容分析 IMAGE CONTENT ANALYSIS
+```
 9.2 用OpenCV-Pyhon操作圖像 Operating on images using OpenCV-Python==>operating_on_images.py
 
 9.3 檢測邊 Detecting edges==>edge_detector.py
@@ -629,29 +850,19 @@ build_features.py
 trainer.py
 
 9.10 創建一個物件識別器 Building an object recognizer==>object_recognizer.py
+```
 
+## 第10章 人臉識別 BIOMETRIC FACE RECOGNITION
+```
+10.2 從網路攝像頭採集和處理視頻資訊Capturing and processing video from a webcam==> video_capture.py
 
-第10章 人臉識別 BIOMETRIC FACE RECOGNITION
+10.3 用Haar級聯創建一個人臉識別器Building a face detector using Haar cascades==>face_recognizer.py
 
-10.2 從網路攝像頭採集和處理視頻資訊Capturing and processing video from a webcam
+10.4 創建一個眼睛和鼻子檢測器Building eye and nose detectors==>eye_nose_detector.py
 
-video_capture.py
+10.5 做主成分分析Performing Principal Components Analysis==>pca.py
 
-10.3 用Haar級聯創建一個人臉識別器Building a face detector using Haar cascades
-
-face_recognizer.py
-
-10.4 創建一個眼睛和鼻子檢測器Building eye and nose detectors
-
-eye_nose_detector.py
-
-10.5 做主成分分析Performing Principal Components Analysis
-
-pca.py
-
-10.6 做核主成分分析Performing Kernel Principal Components Analysis
-
-kpca.py
+10.6 做核主成分分析Performing Kernel Principal Components Analysis ==>kpca.py
 
 10.7 做盲源分離Performing blind source separation
 
@@ -660,46 +871,53 @@ blind_source_separation.py
 10.8 用局部二值模式長條圖創建一個人臉識別器Building a face recognizer using Local Binary Patterns Histogram
 
 face_recognizer.py
+```
 
 
-
-第11章 深度神經網路DEEP NEURAL NETWORKS
-
-11.2 創建一個感知器Building a perceptron
-
-perceptron.py
-
-11.3 創建一個單層神經網路Building a single layer neural network
-
-single_layer.py
-
-11.4 創建一個深度神經網路Building a deep neural network
-
-deep_neural_network.py
+## 第11章 深度神經網路DEEP NEURAL NETWORKS
 
 
-11.5 創建一個向量量化器Creating a vector quantizer
+### 11.2 創建一個感知器Building a perceptron ==>perceptron.py
+```
 
-vector_quantization.py
+```
+### 11.3 創建一個單層神經網路Building a single layer neural network ==>single_layer.py
 
-11.6 為序列資料分析創建一個遞迴神經網路Building a recurrent neural network for sequential data analysis
+```
 
-recurrent_network.py
+```
 
-11.7 在光學字元辨識資料庫中將字元視覺化Visualizing the characters in an optical character recognition database
+### 11.4 創建一個深度神經網路Building a deep neural network==>deep_neural_network.py
 
-visualize_characters.py
+```
+
+```
+
+### 11.5 創建一個向量量化器Creating a vector quantizer==>vector_quantization.py
+
+```
+
+```
+
+### 11.6 為序列資料分析創建一個遞迴神經網路Building a recurrent neural network for sequential data analysis==>recurrent_network.py
+
+```
+
+```
+### 11.7 在光學字元辨識資料庫中將字元視覺化Visualizing the characters in an optical character recognition database==> visualize_characters.py
+
+```
+
+```
+
+###  11.8 用神經網路創建一個光學字元辨識器Building an optical character recognizer using neural networks==>ocr.py
+
+```
+
+```
 
 
-11.8 用神經網路創建一個光學字元辨識器Building an optical character recognizer using neural networks
-
-
-ocr.py
-
-
-
-
-第12章 視覺化數據VISUALIZING DATA
+## 第12章 視覺化數據VISUALIZING DATA
 
 
 12.2 畫3D散點圖Plotting 3D scatter plots
@@ -736,4 +954,4 @@ ocr.py
 12.9 動態信號的視覺化類比Animating dynamic signals
 
 
-```
+
