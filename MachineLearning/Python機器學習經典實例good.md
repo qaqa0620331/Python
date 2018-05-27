@@ -15,7 +15,9 @@ June 2016
 
 
 
-# 第1章 監督學習: Supervised Learning 
+# 監督學習: Supervised Learning 
+
+### 第1章 監督學習: Supervised Learning 
 
 1.2 資料預處理技術==>preprocessing.py
 ```
@@ -50,7 +52,7 @@ encoder.fit([[0, 2, 1, 12], [1, 3, 5, 3], [2, 3, 2, 12], [1, 2, 4, 3]])
 encoded_vector = encoder.transform([[2, 3, 5, 3]]).toarray()
 print "\nEncoded vector:\n", encoded_vector
 
-
+```
 ```
 1.3 標記編碼方法
 1.4 創建線性回歸器
