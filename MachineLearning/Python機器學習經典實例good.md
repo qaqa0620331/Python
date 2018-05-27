@@ -167,7 +167,8 @@ python linear_regression_singlevar.py data_singlevar.txt
 
 ## 多元回歸
 
-### 1.7 創建嶺回歸器Building a ridge regressor==>
+>* 1.7 創建嶺回歸器Building a ridge regressor==>
+>* 1.8 創建多項式回歸器Building a polynomial regressor ==>
 
 ##### 資料集:data_multivar.txt
 ```
@@ -258,10 +259,11 @@ sgd_regressor = linear_model.SGDRegressor(loss='huber', n_iter=50)
 sgd_regressor.fit(X_train, y_train)
 print "\nSGD regressor:\n", sgd_regressor.predict(datapoint)
 ```
-### 1.8 創建多項式回歸器Building a polynomial regressor ==>
-```
-```
-### 1.9 估算房屋價格Estimating housing prices ==>housing.py
+
+### 房屋價格的估算==>Estimating housing prices==>housing.py
+
+>* 1.9 估算房屋價格Estimating housing prices 
+>* 1.10 計算特徵的相對重要性Computing the relative importance of features
 ```
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
@@ -331,9 +333,9 @@ if __name__=='__main__':
     plot_feature_importances(ab_regressor.feature_importances_, 
             'AdaBoost regressor', housing_data.feature_names)
 ```
-### 1.10 計算特徵的相對重要性Computing the relative importance of features ==>
-```
-```
+
+
+
 ### 1.11 評估共用單車的需求分佈Estimating bicycle demand distribution==>bike_sharing.py
 
 >* 問題:共享單車的需求分佈
