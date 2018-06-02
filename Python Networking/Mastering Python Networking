@@ -1,0 +1,110 @@
+Mastering Python Networking,Eric Chou,June 2017
+
+1: REVIEW OF TCP/IP PROTOCOL SUITE AND PYTHON LANGUAGE
+The internet overview
+The OSI model
+Client server models
+Network protocol suites
+Python language overview
+
+2: LOW-LEVEL NETWORK DEVICE INTERACTIONS
+The challenges of CLI
+Constructing a virtual lab
+Python Pexpect Library
+The Python Paramiko library
+Looking ahead
+
+
+3: API AND INTENT-DRIVEN NETWORKING
+Infrastructure as the Python code
+The Cisco API and ACI
+The Python API for Juniper networks
+The Arista Python API
+Vendor neutral libraries
+
+
+4: THE PYTHON AUTOMATION FRAMEWORK - ANSIBLE BASICS
+A quick Ansible example
+The advantages of Ansible
+The Ansible architecture
+Ansible networking modules
+The Ansible Cisco example
+The Ansible Juniper example
+The Ansible Arista example
+
+
+5: THE PYTHON AUTOMATION FRAMEWORK - ANSIBLE ADVANCE TOPICS
+Ansible conditionals
+Ansible loops
+Templates
+Group and host variables
+The Ansible vault
+The Ansible include and roles
+Writing your own custom module
+
+
+6: NETWORK SECURITY WITH PYTHON
+The lab setup
+Python Scapy
+Access lists
+The syslog search
+Other tools
+
+
+7: NETWORK MONITORING WITH PYTHON - PART 1
+Lab setup
+SNMP
+Python visualization
+Python for Cacti
+
+
+8: NETWORK MONITORING WITH PYTHON - PART 2
+Graphviz
+Flow-based monitoring
+Elasticsearch (ELK stack)
+
+
+9: BUILDING NETWORK WEB SERVICES WITH PYTHON
+Comparing Python web frameworks
+Flask and lab setup
+Introduction to Flask
+Network s API
+Network dynamic operations
+Security
+Additional resources
+
+
+10: OPENFLOW BASICS
+Lab setup
+Introducing OpenFlow
+Mininet
+The Ryu controller with Python
+Layer 2 OpenFlow switch
+The POX controller
+
+
+11: ADVANCED OPENFLOW TOPICS
+Setup
+OpenFlow operations with Ryu
+Packet inspection
+Static router
+Router with API
+BGP router with OpenFlow
+Firewall with OpenFlow
+
+
+12: OPENSTACK, OPENDAYLIGHT, AND NFV
+OpenStack
+OpenDaylight
+
+
+13: HYBRID SDN
+Preparing the network
+Greenfield deployment
+Controller redundancy
+BGP migration example
+More BGP example
+Monitoring integration
+Secure TLS connection
+Physical switch selection
+
