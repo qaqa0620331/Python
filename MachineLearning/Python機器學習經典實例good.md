@@ -394,9 +394,6 @@ if __name__=='__main__':
 ```
 
 
-
-# 監督學習
-
 # 第2章 創建分類器CONSTRUCTING A CLASSIFIER
 
 
@@ -487,8 +484,6 @@ plt.show()
 
 
 ### 第3章 預測建模PREDICTIVE MODELING
-
-
 
 3.2 用SVM建立線性分類器Building a linear classifier using Support Vector Machine (SVMs)
 ```
