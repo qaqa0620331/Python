@@ -1,0 +1,104 @@
+Learning Python Network Programming, Dr. M. O. Faruque Sarker, Sam Washington,June 2015
+
+
+1: NETWORK PROGRAMMING AND PYTHON
+An introduction to TCP/IP networks
+Network programming with Python
+Breaking a few eggs
+
+
+2: HTTP AND WORKING WITH THE WEB
+Request and response
+Requests with urllib
+Response objects
+Status codes
+Handling problems
+HTTP headers
+Customizing requests
+Content negotiation
+User agents
+Cookies
+Redirects
+URLs
+HTTP methods
+Formal inspection
+HTTPS
+The Requests library
+
+
+3: APIS IN ACTION
+Getting started with XML
+The Amazon S3 API
+JSON
+The Twitter API
+HTML and screen scraping
+With great power...
+
+
+4: ENGAGING WITH E-MAILS
+E-mail terminologies
+Sending e-mails with SMTP
+Sending e-mails securely with TLS
+Retrieving e-mails by using POP3 with poplib
+Retrieving e-mails by using IMAP with imaplib
+Sending e-mail attachments
+Sending e-mails via the logging module
+
+
+5: INTERACTING WITH REMOTE SYSTEMS
+Secure shell – access using Python
+Transferring files through SFTP
+Transferring files with FTP
+Fetching Simple Network Management Protocol data
+Reading Light-weight Directory Access Protocol data
+Sharing files with SAMBA
+
+
+
+6: IP AND DNS
+Retrieving the network configuration of a local machine
+Manipulating IP addresses
+GeoIP look-ups
+NTP clients
+
+
+
+7: PROGRAMMING WITH SOCKETS
+Basics of sockets
+Working with TCP sockets
+Working with UDP sockets
+TCP port forwarding
+A non-blocking socket I/O
+Securing sockets with TLS/SSL
+Creating a custom SSL client/server
+
+
+8: CLIENT AND SERVER APPLICATIONS
+Client and server
+An echo protocol
+A simple echo server
+A simple echo client
+Concurrent I/O
+Multithreading and multiprocessing
+A multithreaded echo server
+Designing a chat server
+A chat protocol
+Handling data on persistent connections
+A multithreaded chat server
+A multithreaded chat client
+Event-driven servers
+A low-level event-driven chat server
+Frameworks
+An eventlet-based chat server
+An asyncio-based chat server
+More on frameworks
+Taking our servers forward
+
+
+
+9: APPLICATIONS FOR THE WEB
+What's in a web server?
+Python and the Web
+Flask – a microframework
+Hosting Python web applications
+Hosting in practice
