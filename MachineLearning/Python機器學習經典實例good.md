@@ -871,8 +871,8 @@ plt.show()
 ```
 
 ```
+![SVM](pic/SVM2.png)
 
-![SVM](pic/svm2.png)
 
 3.4 解決類型數量不平衡問題Tackling class imbalance
 
