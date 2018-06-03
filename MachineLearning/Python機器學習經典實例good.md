@@ -4,6 +4,10 @@
 >* https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-cookbook
 >* https://github.com/PacktPublishing/Python-Machine-Learning-Cookbook
 
+>* 可以直接使用scikit-learn的文件直接教學
+>* http://scikit-learn.org/stable/tutorial/index.html
+>* http://scikit-learn.org/stable/supervised_learning.html#supervised-learning
+
 # packages and modules
 
 >* http://scikit-learn.org/stable/
@@ -91,6 +95,7 @@ encoder.fit([[0, 2, 1, 12], [1, 3, 5, 3], [2, 3, 2, 12], [1, 2, 4, 3]])
 encoded_vector = encoder.transform([[2, 3, 5, 3]]).toarray()
 print "\nEncoded vector:\n", encoded_vector
 
+4.3.1.3. Scaling data with outliers(極端值)
 ```
 
 ### 1.3 標記編碼方法==>label_encoder.py
