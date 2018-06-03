@@ -177,7 +177,7 @@ plt.xticks(())
 plt.yticks(())
 plt.show()
 ```
-![叢集範例](pic/clustering)
+![叢集範例](pic/clustering.png)
 ![]()
 
 ### 4.3 用向量量化壓縮圖片Compressing an image using vector quantization ==> vector_quantization.py
