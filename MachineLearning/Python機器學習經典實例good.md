@@ -602,6 +602,7 @@ plt.plot(line_x, line_y, color='black', linewidth=3)
 
 plt.show()
 ```
+![簡單分類器](pic/分類器1.png)
 
 ### 2.3 建立邏輯回歸分類器Building a logistic regression classifier
 ```
