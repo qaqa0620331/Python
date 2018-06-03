@@ -143,13 +143,25 @@ import numpy as np
 from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 
+# metrics評估指標==>http://scikit-learn.org/stable/modules/model_evaluation.html#model-evaluation
+#Regression	 metrics評估指標	 
+‘explained_variance’	metrics.explained_variance_score	 
+‘neg_mean_absolute_error’	metrics.mean_absolute_error	 
+‘neg_mean_squared_error’	metrics.mean_squared_error	 
+‘neg_mean_squared_log_error’	metrics.mean_squared_log_error	 
+‘neg_median_absolute_error’	metrics.median_absolute_error	 
+‘r2’	metrics.r2_score
+
+
 # Load the diabetes dataset
+# http://lijiancheng0614.github.io/scikit-learn/modules/generated/sklearn.datasets.load_diabetes.html
 diabetes = datasets.load_diabetes()
 
 
-# Use only one feature
+# Use only one feature只使用一個特徵值
 diabetes_X = diabetes.data[:, np.newaxis, 2]
 
+#把資料分成兩部分:訓練集+測試集
 # Split the data into training/testing sets
 diabetes_X_train = diabetes_X[:-20]
 diabetes_X_test = diabetes_X[-20:]
