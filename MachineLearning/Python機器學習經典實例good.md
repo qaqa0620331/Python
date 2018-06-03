@@ -6,8 +6,32 @@
 
 # packages and modules
 
+>* http://scikit-learn.org/stable/
+>* http://scikit-learn.org/stable/modules/preprocessing.html#preprocessing
 
+>* scikit-learn套件的preprocessing模組有許多寫好的函示如scale(),...
+>* scale()把資料處理成mean為0,standard devistion為
 
+```
+>> X_train = np.array([[ 1., -1.,  2.],
+...                     [ 2.,  0.,  0.],
+...                     [ 0.,  1., -1.]])
+>>> X_scaled = preprocessing.scale(X_train)
+
+>>> X_scaled                                          
+array([[ 0.  ..., -1.22...,  1.33...],
+       [ 1.22...,  0.  ..., -0.26...],
+       [-1.22...,  1.22..., -1.06...]])
+Scaled data has zero mean and unit variance:
+
+>>>
+>>> X_scaled.mean(axis=0)
+array([ 0.,  0.,  0.])
+
+>>> X_scaled.std(axis=0)
+array([ 1.,  1.,  1.])
+
+```
 # 監督學習: Supervised Learning 
 
 ### 第1章 監督學習: Supervised Learning 
