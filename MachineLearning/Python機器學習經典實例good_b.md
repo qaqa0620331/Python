@@ -107,7 +107,12 @@ gst-stats-1.0                       pyreverse
 
 ## 第4章 無監督學習——聚類CLUSTERING WITH UNSUPERVISED LEARNING
 Clustering
+
+
 ### 4.2 用k-means演算法聚類資料Clustering data using the k-means algorithm ==>kmeans.py
+
+>* 課本是for python 2
+>* 我們的教學環境是python 3 ==> 注意錯誤代碼的訊息,在修改相關程式(通常是print)
 
 ```
 import numpy as np
@@ -172,7 +177,8 @@ plt.xticks(())
 plt.yticks(())
 plt.show()
 ```
-
+![叢集範例](pic/clustering)
+![]()
 
 ### 4.3 用向量量化壓縮圖片Compressing an image using vector quantization ==> vector_quantization.py
 
