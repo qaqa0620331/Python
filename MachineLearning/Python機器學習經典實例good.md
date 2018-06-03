@@ -10,6 +10,8 @@
 
 # packages and modules
 
+>* 本次上課所使用的教學環境:Ubuntu_16.04_64bit_TensorFlow_jupyter
+
 >* http://scikit-learn.org/stable/
 >* http://scikit-learn.org/stable/modules/preprocessing.html#preprocessing
 >* https://www.cnblogs.com/chaosimple/p/4153167.html
