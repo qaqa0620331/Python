@@ -225,6 +225,30 @@ Mean squared error: 2548.07
 Variance score: 0.47
 ```
 
+>* scikit-learn關鍵程式碼解析
+>* https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/metrics/regression.py
+
+```
+def mean_squared_error(y_true, y_pred,
+                       sample_weight=None,
+                       multioutput='uniform_average'):
+                       
+    y_type, y_true, y_pred, multioutput = _check_reg_targets(
+        y_true, y_pred, multioutput)
+    check_consistent_length(y_true, y_pred, sample_weight)
+    
+    output_errors = np.average((y_true - y_pred) ** 2, axis=0,
+                               weights=sample_weight)
+    if isinstance(multioutput, string_types):
+        if multioutput == 'raw_values':
+            return output_errors
+        elif multioutput == 'uniform_average':
+            # pass None as weights to np.average: uniform mean
+            multioutput = None
+
+    return np.average(output_errors, weights=multioutput)
+```
+
 ##### 線性回歸linear regression
 
 ##### 資料集:data_singlevar.txt
