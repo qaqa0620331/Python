@@ -8,29 +8,40 @@
 
 >* http://scikit-learn.org/stable/
 >* http://scikit-learn.org/stable/modules/preprocessing.html#preprocessing
-
+>* https://www.cnblogs.com/chaosimple/p/4153167.html
+>* https://blog.csdn.net/Dream_angel_Z/article/details/49406573
 >* scikit-learn套件的preprocessing模組有許多寫好的函示如scale(),...
 >* scale()把資料處理成mean為0,standard devistion為
 
 ```
->> X_train = np.array([[ 1., -1.,  2.],
-...                     [ 2.,  0.,  0.],
-...                     [ 0.,  1., -1.]])
+ksu@ksu:~$ python
+Python 3.6.0 |Anaconda 4.3.0 (64-bit)| (default, Dec 23 2016, 12:22:00) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from sklearn import preprocessing
+>>> import numpy as np
+
+>>> X_train = np.array([[ 1., -1.,  2.],
+... ...                     [ 2.,  0.,  0.],
+... ...                     [ 0.,  1., -1.]])
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+TypeError: 'ellipsis' object is not subscriptable
+
+>>> X_train = np.array([[ 1., -1.,  2.],
+... [ 2.,  0.,  0.],
+... [ 0.,  1., -1.]])
 >>> X_scaled = preprocessing.scale(X_train)
-
->>> X_scaled                                          
-array([[ 0.  ..., -1.22...,  1.33...],
-       [ 1.22...,  0.  ..., -0.26...],
-       [-1.22...,  1.22..., -1.06...]])
-Scaled data has zero mean and unit variance:
-
->>>
+>>> X_scaled
+array([[ 0.        , -1.22474487,  1.33630621],
+       [ 1.22474487,  0.        , -0.26726124],
+       [-1.22474487,  1.22474487, -1.06904497]])
 >>> X_scaled.mean(axis=0)
 array([ 0.,  0.,  0.])
-
 >>> X_scaled.std(axis=0)
 array([ 1.,  1.,  1.])
 
+Scaled data has zero mean and unit variance
 ```
 # 監督學習: Supervised Learning 
 
@@ -45,21 +56,32 @@ data = np.array([[ 3, -1.5,  2, -5.4],
                  [ 0,  4,  -0.3, 2.1],
                  [ 1,  3.3, -1.9, -4.3]])
 
-# mean removal
+#資料預處理常用技術===>preprocessing模組有許多寫好的函示
+# mean removal(移除平均值)
 data_standardized = preprocessing.scale(data)
 print "\nMean =", data_standardized.mean(axis=0)
 print "Std deviation =", data_standardized.std(axis=0)
 
-# min max scaling
+# min max scaling(最小_最大_縮放)  see 4.3.1.1. Scaling features to a range
 data_scaler = preprocessing.MinMaxScaler(feature_range=(0, 1))
 data_scaled = data_scaler.fit_transform(data)
 print "\nMin max scaled data:\n", data_scaled
 
-# normalization
+# normalization(正規化)
+"""
+正則化的過程是將每個樣本縮放到單位範數(每個樣本的範數為1)，
+如果要使用如二次型(點積)或者其它核方法計算兩個樣本之間的相似性這個方法會很有用。
+
+該方法是文本分類和聚類分析中經常使用的向量空間模型（Vector Space Model)的基礎.
+
+Normalization主要思想是對每個樣本計算其p-範數，然後對該樣本中每個元素除以該範數，
+這樣處理的結果是使得每個處理後樣本的p-範數(l1-norm,l2-norm)等於1。
+"""
+
 data_normalized = preprocessing.normalize(data, norm='l1')
 print "\nL1 normalized data:\n", data_normalized
 
-# binarization
+# binarization(二元化處理)
 data_binarized = preprocessing.Binarizer(threshold=1.4).transform(data)
 print "\nBinarized data:\n", data_binarized
 
