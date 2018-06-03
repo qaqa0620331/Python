@@ -185,7 +185,7 @@ plt.yticks(())
 plt.show()
 ```
 
-![線性回歸成果](linear_regression.png)
+![線性回歸成果](pic/linear_regression.png)
 
 
 ##### 線性回歸linear regression
@@ -272,9 +272,7 @@ print "\nNew mean absolute error =", round(sm.mean_absolute_error(y_test, y_test
 ```
 ##### 執行程式
 ```
-
 python linear_regression_singlevar.py data_singlevar.txt
-　
 ```
 
 ## 多元回歸
