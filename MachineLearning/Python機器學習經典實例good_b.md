@@ -113,7 +113,7 @@ Clustering
 
 >* 課本是for python 2
 >* 我們的教學環境是python 3 ==> 注意錯誤代碼的訊息,在修改相關程式(通常是print)
-
+>* https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/cluster/k_means_.py
 ```
 import numpy as np
 import matplotlib.pyplot as plt
