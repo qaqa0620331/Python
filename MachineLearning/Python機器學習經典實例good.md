@@ -186,6 +186,8 @@ print("Mean squared error: %.2f"
       % mean_squared_error(diabetes_y_test, diabetes_y_pred))
 # Explained variance score: 1 is perfect prediction
 print('Variance score: %.2f' % r2_score(diabetes_y_test, diabetes_y_pred))
+# 
+print('mean_absolute_error: %.2f' % mean_absolute_error(diabetes_y_test, diabetes_y_pred))
 
 # Plot outputs
 plt.scatter(diabetes_X_test, diabetes_y_test,  color='black')
@@ -198,7 +200,30 @@ plt.show()
 ```
 
 ![線性回歸成果](pic/linear_regression.png)
+```
+=========================================================
+Linear Regression Example
+=========================================================
+This example uses the only the first feature of the `diabetes` dataset, in
+order to illustrate a two-dimensional plot of this regression technique. The
+straight line can be seen in the plot, showing how linear regression attempts
+to draw a straight line that will best minimize the residual sum of squares
+between the observed responses in the dataset, and the responses predicted by
+the linear approximation.
 
+The coefficients, the residual sum of squares and the variance score are also
+calculated.
+
+
+/home/ksu/anaconda3/lib/python3.6/site-packages/matplotlib/font_manager.py:280: 
+UserWarning: Matplotlib is building the font cache using fc-list. This may take a moment.
+  'Matplotlib is building the font cache using fc-list. '
+
+Coefficients: 
+ [ 938.23786125]
+Mean squared error: 2548.07
+Variance score: 0.47
+```
 
 ##### 線性回歸linear regression
 
