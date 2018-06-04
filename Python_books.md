@@ -19,6 +19,7 @@ Python 也可以這樣學 董付國 著、廖信彥 審校/博碩出版日期：
 Python 入門邁向高手之路王者歸來 洪錦魁/上奇資訊出版日期：2017-12-15
 
 Python 程式設計入門：金融商管實務案例, 2/e 林萍珍/博碩出版日期：2017-05-07
+https://github.com/letylin/pyprogbook
 ```
 ```
 精通 Python 3 程式設計 (Programming in Python 3: A Complete Introduction to the Python Language, 2/e)
