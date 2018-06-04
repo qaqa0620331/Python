@@ -243,6 +243,12 @@ print(items)
 將串列中的元素加以反轉:reverse()
 由小至大排序串列中的元素:sort()
 ```
+### list的超強大功能:序列拆解
+```
+a=[12,212,321,325]
+x,y,z,k = a
+z
+```
 
 ### list的超強大功能list comprehension列表生成式 
 ```
