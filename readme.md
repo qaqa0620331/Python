@@ -83,11 +83,12 @@ Collection Data Types組合類型資料型態
 集合(set)資料型態及其運算
 ```
 ### 運算子:
->* Arithmetic Operators
+>* Arithmetic Operators算術運算子
 >* 餘數運算子 (remainder|modulo)
 >* Membership Operator
 >* Comparison Operators
-Logical Operators
+>* Logical Operators邏輯運算子
+>* 關係運算子
 
 ### 組合類型資料型態的高級特性:切片|迭代 |列表生成式 |生成器|迭代器
 
@@ -98,20 +99,6 @@ Logical Operators
 range break continue
 
 [3.1]選擇:If |if-else| ..沒有switch
-
-#猜數字游戲_版本一
-
-西元年代對應到的十二生肖
-
-[3.3]while 迴圈
-
-#猜數字游戲_版本二:Python3
-
-[程式開發作業]最大公因數
-
-
-[3.3]range
-range(start, stop[, step])
 ```
 
 # [4]函式/函數/function
