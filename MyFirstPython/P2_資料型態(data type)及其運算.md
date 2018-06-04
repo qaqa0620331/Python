@@ -30,12 +30,31 @@ Collection Data Types組合類型資料型態
 
 # 2.2.數字型(numeric)資料型態及其運算
 
+#### 餘數運算子 (remainder|modulo)
+```
+題目:將以秒表示的總時間長，分別取得分鐘數及剩餘的秒數。
+```
+```
+#!/usr/bin/env python
+#coding=utf-8
+
+seconds = eval(input("Enter an integer for seconds: "))
+
+minutes = seconds // 60     # Find minutes in seconds
+remainingSeconds = seconds % 60   # Seconds remaining
+print(seconds, "seconds is", minutes, "minutes and", remainingSeconds, "seconds")
+```
+
 # 2.3:二進位,八進位,十進位與十六進位
 
 >* Python有許多內建函數(built-in functions)
 >* https://docs.python.org/3/library/functions.html
 >* https://docs.python.org/2/library/functions.html
 >* https://www.programiz.com/python-programming/methods/built-in
+
+```
+題目:將十六進位的0xabcd寫出其二進位,八進位,十進位的表示
+```
 
 ```
 
