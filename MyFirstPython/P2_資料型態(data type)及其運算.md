@@ -10,6 +10,8 @@ Integral 類型:整數類型|布爾型
 二進位八進位十進位十六進位數字
 
 字串(string)資料型態及其運算
+
+文數字編碼與解碼
 如何操縱Unicode字串
 
 Collection Data Types組合類型資料型態 
