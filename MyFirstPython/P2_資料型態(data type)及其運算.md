@@ -58,9 +58,6 @@ print(seconds, "seconds is", minutes, "minutes and", remainingSeconds, "seconds"
 題目:將十六進位的0xabcd寫出其二進位,八進位,十進位的表示
 ```
 
-```
-
-```
 # 2.4. 字串(string)資料型態及其運算
 
 ```
@@ -122,7 +119,18 @@ string1.swapcase()
 string11 = "   I love you  "
 string11.strip()
 ```
-
+### 索引(indexing)與切片(slicing)
+```
+s = 'Hello World'
+s[0]
+s[4]
+s[-2]
+s[1:3]
+s[1:-2]
+s[0:3]
+s[::2]
+s[::-1]
+```
 
 
 ### 字串(string)的應用:編碼與解碼
@@ -140,6 +148,12 @@ ASCII 採用 1 個byte編碼字元，最多只能表示 256 個符號。
 
 ### 如何操縱Unicode字串[Python3]
 ```
+s=u'台南'
+type(s)
+len(s)
+s
+
+
 s1='台南'
 len(s1)
 
@@ -352,7 +366,7 @@ list3 = list1 + list2
 list3
 list4 = 3 * list1
 list4
-list5 = list3[2 : 4]
+list5 = list3[2:4]
 list5
 ```
 ### list的各種函數3:串列的分割運算
