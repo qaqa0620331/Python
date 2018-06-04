@@ -106,11 +106,14 @@ string1.replace("love","hate")
 ```
 #### split()
 ```
+string1 = "I love you"
 string1.split()
 
 #string2 = 'x'.join("Dragon")
 #string2.split(sep='x')
-
+```
+#### upper() swapcase()
+```
 string1.upper()
 string1.swapcase()
 ```
@@ -129,7 +132,6 @@ string11.strip()
 僅對 10 個數字、26 個大寫英文字母、26個小寫英文字母， 以及一些符號進行編碼。 
 ASCII 採用 1 個byte編碼字元，最多只能表示 256 個符號。
 ```
-
 
 >* 各國文字的編碼:UTF-8 、UTF-16 、UTF-32 、GB2312 、GBK 、CP936 、Big5 、base64 
 >* UTF-8 是國際適用的編碼， 以l個位元組表示英語字元(相容於 ASCII)， 以 3個byte(位元組)表示中文
@@ -229,14 +231,26 @@ s_16 = "%x"%zzz
 ```
 
 
-方法3:使用format()
+方法2:使用format()
 
 更靈活，不僅能透過位置， 還支援與位置無關的參數名稱進行格式化， 以及序列拆解格式化字串等，為程式人員提供極大的便利性
 
 ```
+2/3
 
+print('{0:.3f}'.format(2/3))
 
 ```
+```
+print ("The number {0:,} in hex is:{0:#x}, in oct is:{0:#o}".format (5566))
+```
+```
+print ("The number {0:,} in hex is:{0:#x},The number {1} in oct is:{1:#o}".format (5566,56))
+```
+```
+print ("The number {1} in hex is:{1:#x},The number {0} in oct is:{0:,:#o}".format (5566,56))
+```
+
 ### 字串(string)的應用:破密分析
 
 擴充版凱薩加密及暴力破解
