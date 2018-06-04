@@ -1,6 +1,6 @@
 # Python程式設計{基礎課程}
 
-# [2]各種資料型態(data type)及其運算[1][2][3][4]...[X]
+# 2_1.各種資料型態(data type)及其運算[1][2][3][4]...[X]
 ```
 識別字與關鍵字
 
@@ -28,7 +28,20 @@ Collection Data Types組合類型資料型態
 
 ### 組合類型資料型態的高級特性:切片|迭代 |列表生成式 |生成器|迭代器
 
-# 列表|串列(list)資料型態及其運算
+# 2.2.數字型(numeric)資料型態及其運算
+
+# 2.3:二進位,八進位,十進位與十六進位
+
+>* Python有許多內建函數(built-in functions)
+>* https://docs.python.org/3/library/functions.html
+>* https://docs.python.org/2/library/functions.html
+>* https://www.programiz.com/python-programming/methods/built-in
+
+```
+
+```
+
+# 2_4.列表|串列(list)資料型態及其運算
 
 >* python提供內建的list類別
 
@@ -89,17 +102,46 @@ print(items)
 ```
 
 ### list的超強大功能list comprehension列表生成式 
+```
 A list comprehension consists of brackets containing an expression followed by a for clause, 
 then zero or more for or if clauses. 
 The result will be a new list resulting from evaluating the expression 
 in the context of the for and if clauses which follow it. 
 
 https://en.wikipedia.org/wiki/List_comprehension
+```
 
+```
 list1 = [x for x range(0, 5)] # Returns a list of 0, 1, 2, 4
 list1 
 list2 = [0.5 * x for x in list1] 
 list2
 list3 = [x for x in list2 if x < 1.5]
 list3
-------------------------------------------------
+```
+
+# 綜合練習
+```
+import random
+import time
+
+x = list(range(10000))		#產生成列表
+y = set(range(10000))		#產生成集合
+z = dict(zip(range(1000),range(10000)))		#產生成字典
+r = random.randint(0, 9999)	#產生成亂數
+
+start = time.time()
+for i in range(9999999):
+    r in x 				#測試清單列表中是否包含某個元素
+print('list,time used:', time.time()-start)
+
+start = time.time()
+for i in range(9999999):
+    r in y					#測試集合中是否包含某個元素
+print('set,time used:', time.time()-start)
+
+start = time.time()
+for i in range(9999999):
+    r in z					#測試字典中是否包含某個元素
+print('dict,time used:', time.time()-start)
+```
