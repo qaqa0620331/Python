@@ -29,15 +29,26 @@ C:\p3code>path=c:\python3;%path%
 C:\p3code>python hello.py
 ```
 
+### Python開發環境@windwos
+```
+Anaconda 
+```
+
 ### Python開發環境@Ubuntu 16.04 LTS 64-bit
 
 ### 使用虛擬開發環境
 >* virtualenv 
 >* 使用Vagrant的虛擬開發環境
 
-### 使用IDE
->* 
->* 
+### 使用
+>* ipython
+>* IDLE
+>* jupyter notebook
+>* [Spyder]
+```
+Spyder===Scientific PYthon Development EnviRonment: 
+a powerful interactive development environment for the Python language)
+```
 
 # [1]輸入與輸出 USER INPUTS AND OUTPUTS:
 ```
