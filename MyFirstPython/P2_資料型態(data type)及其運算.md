@@ -40,8 +40,133 @@ Collection Data Types組合類型資料型態
 ```
 
 ```
+# 2.4. 字串(string)資料型態及其運算
 
-# 2_4.列表|串列(list)資料型態及其運算
+```
+>* python提供內建的str字串類別
+>* 字串物件是不可變更的
+>* 字串物件是不可變更的。一旦被建立，其內容就不可以改變。
+>* 為了效率最佳化，若字串內容相同，則Python只使用一物件。
+```
+
+#### 建立字串(string)==>使用引號'或"來創建字串
+```
+string = ""
+stringa = str()
+id(string)
+id(stringa)
+
+stringb = str("MyfirstCTF")
+
+string1 = "I love you"
+```
+
+#### str 類別有許多方法(運算子)與函數
+```
+len(stringb)
+max(stringb)
+min(stringb)
+索引運算子[]
+```
+
+#### str 類別的+、 *、 [ : ] 與 in 運算子
+
+s = '}FTC NOCTIH ot emocleW{noctih'
+''.join(reversed(s))
+
+#### replace()取代
+```
+string1 = "I love you"
+string1.replace("love","hate")
+```
+#### join()
+```
+'_'.join("Dragon")
+'x'.join("Dragon")
+```
+#### split()
+```
+string1.split()
+
+#string2 = 'x'.join("Dragon")
+#string2.split(sep='x')
+
+string1.upper()
+string1.swapcase()
+```
+### 有空白==>去除空白
+```
+string11 = "   I love you  "
+string11.strip()
+```
+
+### 如何操縱Unicode字串
+
+### 字串(string)的應用:編碼與解碼
+
+### 字串(string)的應用:破密分析
+
+擴充版凱薩加密及暴力破解
+```
+#!/usr/bin/env python3
+
+alpha = 'abcdefghijklmnopqrstuvwxyz'
+num = '0123456789'
+alnum = alpha + num
+
+ctext = '7sj-ighm-742q3w4t'
+
+def rotate(s, num):
+    new1 = ''
+    for c in s:
+        if c in alnum:
+            new1 += alnum[(alnum.index(c) + num) % 36]
+        else:
+            new1 += c
+    return new1
+
+for x in range(36):
+    print("{}".format(rotate(ctext, x)))
+
+```
+
+```
+#!/usr/bin/env python3
+import string
+
+alphabet =  string.ascii_lowercase + string.ascii_uppercase + string.digits 
+
+ctext = "7sj-ighm-742q3w4t"
+
+def shift(n):
+    message = ""
+    for index, char in enumerate(ctext):
+        if char == "-":
+            message += char
+        else:
+            message += alphabet[(alphabet.index(ctext[index])+n)%len(alphabet)]
+    return message.upper()
+
+for i in range(len(alphabet)):
+    message = shift(i)
+    if "RC3" in message:
+        print(message)
+```
+```
+a='cvqAeqacLtqazEigwiXobxrCrtuiTzahfFreqc{bnjrKwgk83kgd43j85ePgb_e_rwqr7fvbmHjklo3tews_hmkogooyf0vbnk0ii87Drfgh_n kiwutfb0ghk9ro987k5tfb_hjiouo087ptfcv}'
+
+a=a[3:]
+flag = ''
+for x in range(0,len(a),1):
+    if x%5==0:
+        flag+=a[x]
+print flag
+```
+
+re模組與正規表達法(NeXT)
+
+
+# 2_5.列表|串列(list)資料型態及其運算
 
 >* python提供內建的list類別
 
