@@ -110,7 +110,7 @@ decrypted = crypt(encrypted, key)
 print('解密過的答案:'+decrypted)
 print('使用的金鑰:'+ key)
 ```
-#有無回傳值的函式
+# 有無回傳值的函式
 
 無回傳值的函式
 ```
