@@ -87,10 +87,11 @@ min(stringb)
 ```
 
 #### str 類別的+、 *、 [ : ] 與 in 運算子
-
+```
 s = '}FTC NOCTIH ot emocleW{noctih'
-''.join(reversed(s))
 
+''.join(reversed(s))
+```
 #### replace()取代
 ```
 string1 = "I love you"
