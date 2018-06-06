@@ -121,6 +121,12 @@ range break continue
 ```
 #### 遞迴函式
 
+#### Functional Python Programming
+```
+Functional Python Programming - Second Edition
+Steven F. Lott
+April 2018 
+```
 # [5]異常,例外處理與斷言 Exception Handling
 
 # [6]各種類型檔案存取技術
