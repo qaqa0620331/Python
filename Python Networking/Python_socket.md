@@ -51,7 +51,7 @@ print 'The address of', hostname, 'is', addr
 
 Python Network Programming Cookbook - Second Edition,Pradeeban Kathiravelu, Dr. M. O. Faruque Sarker
 
-# 使用urllib2 
+# 使用urllib2 模組
 
 >* Python Penetration Testing Cookbook,Rejah Rehim,November 2017
 
