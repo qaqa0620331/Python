@@ -26,6 +26,11 @@ https://github.com/letylin/pyprogbook
 繁體中文/Mark Summerfield 著、蔣大偉 譯/碁峰出版日期：2010-11-24
 ```
 ```
+Secret Recipes of the Python Ninja
+Cody Jackson
+May 2018 
+```
+```
 Python 錦囊妙計, 3/e (Python Cookbook, 3/e)
 繁體中文/David Beazley, Brian K. Jones 著、黃銘偉 譯/歐萊禮出版日期：2014-04-14
 ```
