@@ -305,7 +305,7 @@ print fib(10)
 ================================================================
 ```
 
-# Python內建函數==>python內建函式Built-in Functions:
+# Python內建函數==>Built-in Functions:
 
 >* https://docs.python.org/2/library/functions.html
 ```
