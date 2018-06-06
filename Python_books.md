@@ -94,6 +94,14 @@ Python 架站特訓班 -- Django 最強實戰
 Ryan Mitchell 著，Studio Tib 譯/歐萊禮出版日期：2016-10-02
 ```
 ```
+Python Web Scraping Cookbook
+Michael Heydt
+February 2018
+https://www.packtpub.com/big-data-and-business-intelligence/python-web-scraping-cookbook
+```
+
+
+```
 用 Python 寫網絡爬蟲 (Web Scraping with Python)
 簡體中文/[澳]理乍得 勞森/人民郵電出版社出版日期：2016-08-01
 ```
@@ -105,6 +113,12 @@ Python 網絡爬蟲實戰
 ```
 Python 爬蟲開發與項目實戰
 簡體中文/範傳輝/機械工業出版社出版日期：2017-06-01
+```
+# Python 雲端程式開發
+```
+Building Serverless Applications with Python
+Jalem Raj Rohit
+April 2018 
 ```
 # Python and IOT
 ```
