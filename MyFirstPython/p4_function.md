@@ -246,7 +246,7 @@ r[7]()
 r[9]()
 ```
 
-# 遞迴函式遞迴函式==recursive vs iterative(loop)
+# 遞迴函式 ==> recursive vs iterative(loop)
 ```
 [程式開發作業]費氏數列
 [程式開發作業]n!
