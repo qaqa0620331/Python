@@ -68,6 +68,9 @@ main() # Call the main function
 >* 實質參數(引數)==當函式被呼叫時，你必須給予的參數則被稱為
 >* 函式會使用關鍵字return 回傳一個結果數值，此數值被稱為回傳值。
 
+
+# 函式呼叫:傳值呼叫(pass by value) vs 傳參考呼叫(pass by reference)
+
 ```
 ================================================================
 【Python 練習實例47】練習撰寫函式swap(a,b)
@@ -110,7 +113,8 @@ decrypted = crypt(encrypted, key)
 print('解密過的答案:'+decrypted)
 print('使用的金鑰:'+ key)
 ```
-# 有無回傳值的函式
+
+# 函式與回傳值
 
 無回傳值的函式
 ```
@@ -156,12 +160,75 @@ def main():
 
 main() # Call the main function
 ```
-# 匿名函數==>
+
+多個回傳值的函式
+```
+
+```
+
+# 匿名函數==>lambda 運算式
+
+>* 匿名函數==沒有函數名稱、臨時使用的小函數
+>* 使用lambda 運算式來宣告匿名函數
+>* lambda 運算式只能包含一個運算式， 不允許複雜的語旬，但運算式中可呼叫其他函數
+
+#### 把lambda運算式當做函數
+```
+f1 = lambda x, y, z: x+2y+3z
+print(f(2,3,1))
+```
+
+#### 使用預設值參數
+```
+f2 = lambda x, y=2, z=4: x+2y+3z
+print(f2(2))
+
+print(f2(2,z=3, y=4)) #使用關鍵參數呼叫
+```
+
+#### 在lambda 運算式中呼叫其他函式
+```
+def myfunc(m):
+    return m*m
+
+my_list = [1, 3, 5, 7, 9]
+
+#使用python的map()
+map(lambda x:myfunc(x), my_list)
+```
+
+### lambda 運算式與區域變數{常見錯誤}
+
+```
+r ＝ []
+for x in range(10):
+ r.append(lambda: x**3)
+
+r[0]()
+r[1]()
+r[5]()
+r[7]()
+r[9]()
+```
+
+```
+r ＝ []
+for x in range(10):
+ r.append(lambda m=x: m**3)
+
+r[0]()
+r[1]()
+r[5]()
+r[7]()
+r[9]()
+```
 
 # 遞迴函式遞迴函式==recursive vs iterative(loop)
 ```
 [程式開發作業]費氏數列
 [程式開發作業]n!
+[程式開發作業]二項係數
+[程式開發作業][Ackermann函式](https://en.wikipedia.org/wiki/Ackermann_function)
 [程式開發作業]河內塔
 ```
 ```
