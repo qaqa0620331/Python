@@ -1,21 +1,16 @@
 # [4]函式/函數/function
 
-```
-函數是組織好的，可重複使用的，用來實現單一，或相關聯功能的程式碼片段。
-函數能提高應用的模組性，和代碼的重複利用率。
-Python提供了許多內建函數，比如print()。
-使用者也可以自己創建函數，這被叫做使用者自訂函數。
+>* 函數是組織好的，可重複使用的，用來實現單一，或相關聯功能的程式碼片段。
+>* 函數能提高應用的模組性，和代碼的重複利用率。
+>* Python提供了許多內建函數，比如print()。
+>* 使用者也可以自己創建函數，這被叫做使用者自訂函數。
 
-定義一個函數
-你可以定義一個由自己想要功能的函數，以下是簡單的規則：
-函數代碼塊以 def 關鍵字開頭，後接函數識別字名稱和圓括號()。
-任何傳入參數和引數必須放在圓括號中間。圓括號之間可以用於定義參數。
-函數的第一行語句可以選擇性地使用文檔字串—用於存放函數說明。
-函數內容以冒號起始，並且縮進。
-return [運算式] 結束函數，選擇性地返回一個值給調用方。不帶運算式的return相當於返回 None。
-```
-
-定義語法:
+### 定義語法:
+>* 函數代碼塊以 def 關鍵字開頭，後接函數識別字名稱和圓括號()。
+>* 任何傳入參數和引數必須放在圓括號中間。圓括號之間可以用於定義參數。
+>* 函數的第一行語句可以選擇性地使用文檔字串—用於存放函數說明。
+>* 函數內容以冒號起始，並且縮排。
+>* return [運算式] 結束函數，選擇性地返回一個值給調用方。不帶運算式的return相當於返回 None。
 >* 函式包含標頭和主體。
 >* 標頭(header)起源於def關鍵字，後接函式名稱和參數，最後以冒號結尾。 
 
@@ -118,10 +113,43 @@ print('解密過的答案:'+decrypted)
 print('使用的金鑰:'+ key)
 ```
 
+# 函式與參數
+
+>* Default arguments預設參數
+>* Positional arguments位置參數
+>* Keyword arguments關鍵字參數
+
+### 預設參數值的函式
+
+>* Python允許定義含有預設參數值的函式。
+>* 當呼叫函式時，若沒有傳送參數，此時將使用預設參數值。
+
+```
+#!/usr/bin/python 
+# -*- coding: UTF-8 -*- 
+
+def printArea(width = 11, height = 12):
+    area = width * height
+    print("width:", width, "\theight:", height, "\tarea:", area)
+
+printArea() # Default arguments width = 1 and height = 2
+printArea(4, 2.5) # Positional arguments width = 4 and height = 2.5
+printArea(height = 5, width = 3) # Keyword arguments width 
+printArea(width = 1.2) # Default height = 2
+printArea(height = 6.2) # Default widht = 1
+```
+
 # 函式與回傳值
+
+>* Python的函式是否有無回傳值，端視函式是否有無return敘述。
+>* 若函式沒有回傳值，預設是回傳一None特殊值。因此，沒有回傳值的函式也稱為None函式。
+>* None值可以指定給一變數，表示此變數沒有參考到任何的物件
 
 無回傳值的函式
 ```
+#!/usr/bin/python 
+# -*- coding: UTF-8 -*- 
+
 # Print grade for the score 
 def printGrade(score):
     if score >= 90.0:
@@ -145,6 +173,9 @@ main() # Call the main function
 
 有回傳值的函式
 ```
+#!/usr/bin/python 
+# -*- coding: UTF-8 -*- 
+
 # Return the grade for the score 
 def getGrade(score):
     if score >= 90.0:
@@ -167,9 +198,51 @@ main() # Call the main function
 
 多個回傳值的函式
 ```
+#!/usr/bin/python 
+# -*- coding: UTF-8 -*- 
 
+def sort(number1, number2):
+    if number1 < number2:
+        return number1, number2
+    else:
+        return number2, number1
+
+num1, num2 = sort(31, 25)
+
+print("num1 is", num1)
+print("num2 is", num2)
 ```
 
+### 作業:撰寫十進位轉換為十六進位的程式
+
+```
+# Convert a decimal to a hex as a string 
+def decimalToHex(decimalValue):
+    hex = ""
+ 
+    while decimalValue != 0:
+        hexValue = decimalValue % 16 
+        hex = toHexChar(hexValue) + hex
+        decimalValue = decimalValue // 16
+    
+    return hex
+  
+# Convert an integer to a single hex digit in a character 
+def toHexChar(hexValue):
+    if 0 <= hexValue <= 9:
+        return chr(hexValue + ord('0'))
+    else:  # 10 <= hexValue <= 15
+        return chr(hexValue - 10 + ord('A'))
+
+def main():
+    # Prompt the user to enter a decimal integer
+    decimalValue = eval(input("Enter a decimal number: "))
+
+    print("The hex number for decimal", 
+        decimalValue, "is", decimalToHex(decimalValue))
+  
+main() # Call the main function
+```
 ### 作業:撰寫計算任意數目的黑洞數
 
 https://zh.wikipedia.org/wiki/黑洞數
@@ -188,6 +261,58 @@ https://zh.wikipedia.org/wiki/黑洞數
 ### 作業:韓信是如何點兵的??
 
 韓信為了不讓敵人知道自己的兵力有多少， 士兵報數時先從1至3報數，再1至5重新報數，再1至7重新報數，只需記下最佳一名士兵每次報數是錯，即可快速計算出自己有多少士兵。
+
+# 變數的有效範圍
+
+變數的有效範圍(Scope)：變數在程式可參考的範圍。
+
+>* 區域變數(local variable):宣告在函式內部的變數
+>* 全域變數(global variables):宣告在所有函式外部的變數
+
+```
+x = 111
+
+def f1():
+    x = 222
+    print(x) 
+
+f1()
+print(x) 
+```
+
+```
+globalVar = 1
+
+def f1():
+    localVar = 2
+    print(globalVar)
+    print(localVar)
+
+f1()
+print(globalVar)
+print(localVar)  # Out of scope. This gives an error
+```
+
+```
+sum = 10
+
+for i in range(0, 15):
+    sum += i
+
+print(i)
+print(sum)
+```
+```
+x = 1
+
+def increase():
+    global x
+    x =  x + 1
+    print(x) 
+
+increase()
+print(x)
+```
 
 # 匿名函數==>lambda 運算式
 
@@ -325,7 +450,7 @@ chr(97)
 chr(ord('A')+1)
 ```
 
-# [4.5]使用函式來模組化程式
+# 使用函式來模組化程式
 
 函式可用來減少多餘的程式碼，允許程式碼重複使用，還可以用來模組化程式碼，提升程式品質
 
