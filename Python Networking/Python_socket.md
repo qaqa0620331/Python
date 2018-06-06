@@ -25,7 +25,11 @@ November 2017
 https://www.packtpub.com/networking-and-servers/python-penetration-testing-cookbook
 https://github.com/PacktPublishing/Python-Penetration-Testing-Cookbook
 ```
-
+```
+Python For Offensive PenTest
+Hussam Khrais
+April 2018
+```
 # 使用 socket 模組
 
 >* 使用python2內建socket模組
