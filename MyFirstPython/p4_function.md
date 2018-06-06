@@ -15,7 +15,9 @@ Python提供了許多內建函數，比如print()。
 return [運算式] 結束函數，選擇性地返回一個值給調用方。不帶運算式的return相當於返回 None。
 ```
 
-定義語法:函式包含標頭和主體。標頭(header)起源於def關鍵字，後接函式名稱和參數，最後以冒號結尾。 
+定義語法:
+>* 函式包含標頭和主體。
+>* 標頭(header)起源於def關鍵字，後接函式名稱和參數，最後以冒號結尾。 
 
 ```
 def functionname(parameters):
@@ -40,7 +42,7 @@ print("Sum from 1 to 10 is", sum)
 sum = 0
 for i in range(20, 37):
     sum += i
-print("Sum from 20 to 37 is", sum)
+print("Sum from 20 to 37 is", sum)
 sum = 0
 for i in range(35, 49):
     sum += i
