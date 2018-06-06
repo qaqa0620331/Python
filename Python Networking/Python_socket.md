@@ -8,7 +8,11 @@ https://github.com/Apress/foundations-of-python-network-programming
 Python网络编程 第3版
 
 ```
-
+```
+Learning Python Network Programming
+Dr. M. O. Faruque Sarker, Sam Washington
+June 2015
+```
 
 ```
 Python Network Programming Cookbook - Second Edition
@@ -18,6 +22,13 @@ https://www.packtpub.com/networking-and-servers/python-network-programming-cookb
 https://github.com/lovexiaov/learn-python/tree/master/python-network-programming-cookbook
 ```
 
+```
+Mastering Python Networking
+Eric Chou
+June 2017
+```
+
+# 教科書2:python與網路攻防
 ```
 Python Penetration Testing Cookbook
 Rejah Rehim
@@ -30,6 +41,7 @@ Python For Offensive PenTest
 Hussam Khrais
 April 2018
 ```
+
 # 使用 socket 模組
 
 >* 使用python2內建socket模組
