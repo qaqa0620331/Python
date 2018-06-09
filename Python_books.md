@@ -22,6 +22,13 @@ Python 程式設計入門：金融商管實務案例, 2/e 林萍珍/博碩出版
 https://github.com/letylin/pyprogbook
 ```
 ```
+Beginning Python:From Novice to Professional
+Authors: Lie Hetland, Magnus
+2008
+https://www.apress.com/gp/book/9781590599822#otherversion=9781430206347
+https://github.com/apress/beg-python
+```
+```
 精通 Python 3 程式設計 (Programming in Python 3: A Complete Introduction to the Python Language, 2/e)
 繁體中文/Mark Summerfield 著、蔣大偉 譯/碁峰出版日期：2010-11-24
 ```
