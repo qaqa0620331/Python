@@ -30,9 +30,57 @@ https://github.com/Santostang/PythonScraping
 2.2.3條件語句和循環語句
 2.2.4函數
 2.2 .5面向對象編程
-2.3編寫第1個簡單的爬蟲
 ```
+### 2.3編寫第1個簡單的爬蟲
+
+2.3.1 第一步：獲取頁面
 ```
+#!/usr/bin/python
+# coding: utf-8
+
+import requests
+link = "http://www.santostang.com/"
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'} 
+
+r = requests.get(link, headers= headers)
+print (r.text)
+```
+2.3.2 第二步：提取需要的資料
+```
+
+#!/usr/bin/python#!/usr/ 
+# coding: utf-8
+
+import requests
+from bs4 import BeautifulSoup    
+
+link = "http://www.santostang.com/"
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'} 
+r = requests.get(link, headers= headers)
+
+soup = BeautifulSoup(r.text, "html.parser")     
+title = soup.find("h1", class_="post-title").a.text.strip()
+print (title)
+
+```
+
+```
+import requests
+from bs4 import BeautifulSoup   #從bs4這個第三方函士庫中導入BeautifulSoup
+
+link = "http://www.santostang.com/"
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'} 
+r = requests.get(link, headers= headers)
+
+soup = BeautifulSoup(r.text, "html.parser")   #使用BeautifulSoup解析這段代碼
+title = soup.find("h1", class_="post-title").a.text.strip()
+print (title)
+
+with open('title_test.txt', "a+") as f:
+    f.write(title)
+    f.close()
+```
+
 第3章靜態網頁抓取
 第4章動態網頁抓取
 第5章解析網頁
