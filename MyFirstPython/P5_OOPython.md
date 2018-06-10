@@ -273,7 +273,8 @@ Class GG:
 
 常用的special method 
 >* https://docs.python.org/3.6/reference/datamodel.html#special-method-names
->* 範例:object.__new__(cls[, ...])
+>* object.__new__(cls[, ...])  ==> __new__(cls,*args,**kwd) 
+>* object.__init__(self[, ...]) ==> __init__(self,...)
 
 ```
  __init__(self,...)    建構子(constructor)::初始化物件，在創建新物件時調用
