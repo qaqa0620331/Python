@@ -433,6 +433,7 @@ print fib(10)
 # Python內建函數==>Built-in Functions:
 
 >* https://docs.python.org/2/library/functions.html
+>* https://www.programiz.com/python-programming/methods/built-in
 
 ### dir():
 
@@ -493,17 +494,31 @@ z = 5
 
 print(pow(x, y, z))
 ```
-### 
 
->>> float('+1.23')
-1.23
->>> float('   -12345\n')
--12345.0
->>> float('1e-003')
-0.001
->>> float('+1E6')
-1000000.0
+### float()
+```
+>>> float('+1.43')
+>>> float('   -123645\n')
+>>> float('1e-002')
+>>> float('+1E4')
 >>> float('-Infinity')
+```
+### abs(num):絕對值或複數的大小
+```
+# integer
+integer = -210
+print('Absolute value of -210 is:', abs(integer))
+
+#floating number
+floating = -30.343
+print('Absolute value of -30.343 is:', abs(floating))
+
+# complex number
+complex = (5 - 12j)
+print('Magnitude of 5 - 12j is:', abs(complex))
+```
+
+
 Ascii code==> https://zh.wikipedia.org/wiki/ASCII
 ```
 ord('a')
@@ -514,6 +529,27 @@ chr(ord('A')+1)
 ### len(s):Return the length (the number of items) of an object. 
 
 >* The argument may be a sequence (such as a string, bytes, tuple, list, or range) or a collection (such as a dictionary, set, or frozen set).
+
+### reversed(seq):seq的反轉
+
+```
+# string的反轉
+seqString = 'Python'
+print(list(reversed(seqString)))
+
+# tuple的反轉
+seqTuple = ('P', 'y', 't', 'h', 'o', 'n')
+print(list(reversed(seqTuple)))
+
+# list的反轉
+seqList = [1, 2, 4, 3, 5]
+print(list(reversed(seqList)))
+
+# for range
+seqRange = range(5, 9)
+print(list(reversed(seqRange)))
+
+```
 
 # 使用函式來模組化程式
 
