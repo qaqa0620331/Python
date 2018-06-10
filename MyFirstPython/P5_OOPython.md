@@ -24,6 +24,7 @@
 >* 一個圓形物件可呼叫getArea() 來取得面積，呼叫getPerimeter() 來取得周長。
 >* 所有的方法(包括建構子)都有定義的第一個參數是self ，self參數是自動設定參考到剛被建立的物件來呼叫實例方法(instance methods) 。
 
+
 ```
 import math 
 
