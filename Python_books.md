@@ -27,6 +27,8 @@ Authors: Lie Hetland, Magnus
 2008
 https://www.apress.com/gp/book/9781590599822#otherversion=9781430206347
 https://github.com/apress/beg-python
+
+https://github.com/apress/beginning-python-3ed
 ```
 ```
 精通 Python 3 程式設計 (Programming in Python 3: A Complete Introduction to the Python Language, 2/e)
