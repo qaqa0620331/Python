@@ -100,6 +100,10 @@ python shark.py
 ### 作業:完成教科書的練習
 
 ### datetime 類別的練習
+
+>* https://docs.python.org/2/library/datetime.html
+>* https://docs.python.org/3/library/datetime.html
+>* 有空看看https://github.com/python/cpython/blob/3.6/Lib/datetime.py
 ```
 from datetime import datetime
 d = datetime.now()
@@ -257,8 +261,13 @@ main() # Call the main function
 
 >* Python中的類別都是來自object類別 。
 >* 當定義類別沒有指定繼承時，則此類別預設的父類別就是object類別
-
-
+```
+Class GG:
+   pass
+   
+>>> GG.__class__
+>>> GG.__class__.__base__
+```
 
 >* 所有定義於object的方法都是magic method(魔術方法)/special method(特別方法)，它們都有兩個前導底線和兩個後繼的底線。
 
