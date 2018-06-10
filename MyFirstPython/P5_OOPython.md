@@ -24,7 +24,6 @@
 >* 一個圓形物件可呼叫getArea() 來取得面積，呼叫getPerimeter() 來取得周長。
 >* 所有的方法(包括建構子)都有定義的第一個參數是self ，self參數是自動設定參考到剛被建立的物件來呼叫實例方法(instance methods) 。
 
-
 ```
 import math 
 
@@ -68,6 +67,30 @@ def main():
 
 main() # Call the main function
 ```
+
+```
+class Shark:
+    def __init__(self, name):
+        self.name = name
+
+    def swim(self):
+        print(self.name + " is swimming.")
+
+    def be_awesome(self):
+        print(self.name + " is being awesome.")
+
+def main():
+    sammy = Shark("Sammy") #利用類別的建構子產生物件
+    sammy.be_awesome()
+    stevie = Shark("Stevie")#利用類別的建構子產生物件
+    stevie.swim()
+
+if __name__ == "__main__":
+  main()
+```
+
+python shark.py
+
 ### UML類別圖
 
 ### 作業:完成教科書的練習
@@ -110,10 +133,123 @@ class Circle:
 
 
 
-# 繼承(inheritance)
+# 繼承(inheritance):父類別與子類別   
 
+父類別:GeometricObject.py
+```
+class GeometricObject:
+    def __init__(self, color = "green", filled = True):
+        self.__color = color
+        self.__filled = filled
 
-# 多重繼承(multiple inheritance)
+    def getColor(self):
+        return self.__color
+
+    def setColor(self, color):
+        self.__color = color
+
+    def isFilled(self):
+        return self.__filled
+
+    def setFilled(self, filled):
+        self.__filled = filled
+  
+    def __str__(self):
+        return "color: " + self.__color + \
+            " and filled: " + str(self.__filled)
+```
+ 
+CircleFromGeometricObject.py ==>子類別:Circle  繼承 父類別:GeometricObject
+```
+from GeometricObject import GeometricObject
+import math
+
+class Circle(GeometricObject):# 子類別:Circle  繼承 父類別:GeometricObject
+    def __init__(self, radius):
+        super().__init__() # 呼叫父類別的建構子
+        self.__radius = radius
+
+    def getRadius(self):
+        return self.__radius
+
+    def setRadius(self, radius):
+        self.__radius = radius
+
+    def getArea(self):
+        return self.__radius * self.__radius * math.pi
+  
+    def getDiameter(self):
+        return 2 * self.__radius
+  
+    def getPerimeter(self):
+        return 2 * self.__radius * math.pi
+
+    def printCircle(self):
+        print(self.__str__() + " radius: " + str(self.__radius))
+```
+
+RectangleFromGeometricObject.py ==>子類別:Rectangle  繼承 父類別:GeometricObject
+```
+from GeometricObject import GeometricObject
+
+class Rectangle(GeometricObject): #子類別:Rectangle  繼承 父類別:GeometricObject
+    def __init__(self, width = 1, height = 1): 
+        super().__init__()  # 呼叫父類別的建構子
+        self.__width = width
+        self.__height = height
+
+    def getWidth(self):
+        return self.__width
+
+    def setWidth(self, width):
+        self.__width = width
+
+    def getHeight(self):
+        return self.__height
+
+    def setHeight(self, height):
+        self.__height = self.__height
+
+    def getArea(self):
+        return self.__width * self.__height
+
+    def getPerimeter(self):
+        return 2 * (self.__width + self.__height)
+```
+
+主測試程式:
+```
+from CircleFromGeometricObject import Circle
+from RectangleFromGeometricObject import Rectangle
+
+def main():
+    circle = Circle(1.5)
+    print("A circle", circle)
+    print("The radius is", circle.getRadius())
+    print("The area is", circle.getArea())
+    print("The diameter is", circle.getDiameter())
+    
+    rectangle = Rectangle(2, 4)
+    print("\nA rectangle", rectangle)
+    print("The area is", rectangle.getArea())
+    print("The perimeter is", rectangle.getPerimeter())
+
+main() # Call the main function
+
+```
+### object 類別
+
+>* Python中的類別都是來自object類別 。
+>* 當定義類別沒有指定繼承時，則此類別預設的父類別就是object類別
+
+>* 所有定義於object的方法都是特別的方法，它們都有兩個前導底線和兩個後繼的底線。
+
+### 方法覆寫(method overriding)
+
+>* 子類別繼承從父類別的方法，有時可能會在子類別修改其繼承的父類別方法中的內容
+
+### 多重繼承(multiple inheritance)
+
 
 
 
