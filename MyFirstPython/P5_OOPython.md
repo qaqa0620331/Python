@@ -139,6 +139,13 @@ class Circle:
 
 # 繼承(inheritance):父類別與子類別   
 
+類別與類別之間的關係 
+>* 關連 (association):是一般的二元關係，用來描述兩類別之間的活動。 學生----課程------老師
+>* 聚合(aggregation):關連的特殊格式，用以表示兩物件之間所有權的關係。聚合的關係通常以聚合類別的資料成員來表示    Name---student ---Address
+>* 合成(composition):一個物件可能被許多聚合物件所擁有，如果一個物件只被一個聚合物件獨家擁有，則它們的關係就是合成(composition)
+>* 繼承(inheritance)
+
+
 子類別繼承父類別:
 >* 子類別就自動擁有父類別的變數與函式。
 >* 子類別==衍生類別(derived class)或子類別(child class)
@@ -283,6 +290,7 @@ main() # Call the main function
 >* 此方法接著呼叫 __init__() 方法，用以初始物件。
 >* 正常情況下，應該只有覆寫 __init__() 方法來初始新類別的資料項目。 
 
+>* __str__() 方法回傳描述此物件的字串。預設回傳的字串包括了物件名稱與物件在記憶體的位址(以16進位表示) 
 
 ### 類別方法(class method)
 >* https://sites.google.com/site/zsgititit/home/python-cheng-shi-she-ji/python-lei-bie
@@ -337,4 +345,88 @@ Welcome.sayhello()
 
 
 
-繼承與多型
+# 多型
+
+繼承的關係讓子類別繼承來自父類別的特性，再加上新的特性，因此子類別可以說是父類別的特例，所以每個子類別所產生的實體物件，也是它父類別的實體物件，但是相反就不是。例如每個圓形物件都是幾何物件，反過來說，不是每個幾何物件都是圓形物件，因此您可以將子類別的物件傳送給父類別的參數。 
+
+```
+from CircleFromGeometricObject import Circle
+from RectangleFromGeometricObject import Rectangle
+
+def main():
+    # Display circle and rectangle properties
+    c = Circle(4)
+    r = Rectangle(1, 3)
+    displayObject(c)
+    displayObject(r)
+    print("Are the circle and rectangle the same size?", 
+        isSameArea(c, r))
+
+# Display geometric object properties 
+def displayObject(g):
+    print(g.__str__())
+
+# Compare the areas of two geometric objects 
+def isSameArea(g1, g2):
+    return g1.getArea() == g2.getArea()
+
+main() # Call the main function
+```
+
+# 類別與類別之間的關係 
+>* 關連 (association):是一般的二元關係，用來描述兩類別之間的活動。 學生----課程------老師
+>* 聚合(aggregation):關連的特殊格式，用以表示兩物件之間所有權的關係。聚合的關係通常以聚合類別的資料成員來表示    Name---student ---Address
+>* 合成(composition):一個物件可能被許多聚合物件所擁有，如果一個物件只被一個聚合物件獨家擁有，則它們的關係就是合成(composition)
+>* 繼承(inheritance)
+
+```
+class Course: 
+    def __init__(self, courseName):
+        self.__courseName = courseName
+        self.__students = []
+  
+    def addStudent(self, student):
+        self.__students.append(student)
+  
+    def getStudents(self):
+        return self.__students
+
+    def getNumberOfStudents(self):
+        return len(self.__students)
+
+    def getCourseName(self):
+        return self.__courseName
+
+    def dropStudent(student): 
+        print("Left as an exercise")
+```
+
+```
+from Course import Course
+
+def main():
+    course1 = Course("Data Structures")
+    course2 = Course("Database Systems")
+
+    course1.addStudent("Peter Jones")
+    course1.addStudent("Brian Smith")
+    course1.addStudent("Anne Kennedy")
+
+    course2.addStudent("Peter Jones")
+    course2.addStudent("Steve Smith")
+
+    print("Number of students in course1:",
+        course1.getNumberOfStudents())
+    students = course1.getStudents()
+    for student in students:
+        print(student, end = ", ")
+    
+    print("\nNumber of students in course2:",
+        course2.getNumberOfStudents())
+
+main() # Call the main function
+
+```
+
+
+# 進階主題:decorator, iteratable,
