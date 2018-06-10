@@ -12,6 +12,10 @@
 
 ### Python與物件導向
 
+The Python Language Reference
+>* https://docs.python.org/3.6/reference/index.html
+>* https://docs.python.org/2.7/reference/index.html
+
 >* Python 是真正物件導向式的高階動態程式語言， 完全支援物件導向的基本功能， 倒如封裝、繼承、多型，以及對基礎類別(class) 方法的覆蓋或重寫。 
 >* Python 中的一切內容都可稱為物件，包括函數等。 
 >* 建立類別(class)時，以變數形式表示物件特徵的成員稱為資料成員(attribute)，以函數形式表示物件行為的成員稱為成員方法(method)， 資料成員和成員方法前稱為錯別的成員。
@@ -242,14 +246,45 @@ def main():
 main() # Call the main function
 
 ```
-### object 類別
+### object 類別(老祖宗)與magic method(魔術方法)/special method(特別方法)
 
 >* Python中的類別都是來自object類別 。
 >* 當定義類別沒有指定繼承時，則此類別預設的父類別就是object類別
 
->* 所有定義於object的方法都是特別的方法，它們都有兩個前導底線和兩個後繼的底線。
 
-### 類別方法
+
+>* 所有定義於object的方法都是magic method(魔術方法)/special method(特別方法)，它們都有兩個前導底線和兩個後繼的底線。
+
+常用的special method 
+>* https://docs.python.org/3.6/reference/datamodel.html#special-method-names
+>* 範例:object.__new__(cls[, ...])
+
+```
+ __init__(self,...)    建構子(constructor)::初始化物件，在創建新物件時調用
+ __del__(self)     解構子(destrcutor)::釋放物件，在物件被刪除之前調用
+ __new__(cls,*args,**kwd)     實例的生成操作
+ __str__(self)     在使用print語句時被調用
+ __getitem__(self,key)     獲取序列的索引key對應的值，等價於seq[key]
+ __len__(self)     在調用內聯函數len()時被調用
+ __cmp__(stc,dst)     比較兩個物件src和dst
+ __getattr__(s,name)     獲取屬性的值
+ __setattr__(s,name,value)     設置屬性的值
+ __delattr__(s,name)     刪除name屬性
+ __getattribute__()     __getattribute__()功能與__getattr__()類似
+ __gt__(self,other)     判斷self物件是否大於other物件
+ __lt__(slef,other)     判斷self物件是否小於other物件
+ __ge__(slef,other)     判斷self物件是否大於或者等於other物件
+ __le__(slef,other)     判斷self物件是否小於或者等於other物件
+ __eq__(slef,other)     判斷self物件是否等於other物件
+ __call__(self,*args)     把實例物件作為函式呼叫
+```
+
+>* 當一物件被建立，將自動呼叫 __new__() 方法。
+>* 此方法接著呼叫 __init__() 方法，用以初始物件。
+>* 正常情況下，應該只有覆寫 __init__() 方法來初始新類別的資料項目。 
+
+
+### 類別方法(class method)
 >* https://sites.google.com/site/zsgititit/home/python-cheng-shi-she-ji/python-lei-bie
 >* 類別方法(class method)作用對象為類別，會影響整個類別，也會影響類別所產生的物件
 >* 類別方法的第一個參數通常取名為cls，需在類別中的函式前一行使用裝飾器「@classmethod」
