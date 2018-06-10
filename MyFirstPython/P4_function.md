@@ -433,22 +433,87 @@ print fib(10)
 # Python內建函數==>Built-in Functions:
 
 >* https://docs.python.org/2/library/functions.html
-```
+
+### dir():
+
 dir(__builtins__)
-help('math')
-help(id)
-```
+
 ```
 import sys
 print(system.builtin_module_names)
 ```
 
+### help()
+```
+help('math')
+help(id)
+```
+### hex(x):Convert an integer number to a lowercase hexadecimal string prefixed with “0x”
+```
+>>> hex(255)
+>>> hex(-42)
+```
+## oct(x):Convert an integer number to an octal string prefixed with “0o”
+```
+>>> oct(8)
+>>> oct(-56)
+```
+
+### bin(x):Convert an integer number to a binary string prefixed with “0b”
+```
+>>> bin(3)
+>>> bin(-10)
+```
+## 數學類
+
+### pow(x, y[, z])
+
+>* pow(x, y)== x**y
+>* pow(x, y, z) == (x**y)%z
+
+```
+# positive x, positive y (x**y)
+print(pow(2, 4))
+
+# negative x, positive y
+print(pow(-2, 4))
+print(pow(-2, 3))
+
+# positive x, negative y (x**-y)
+print(pow(2, -4))
+
+# negative x, negative y
+print(pow(-2, -4))
+```
+>* pow(x, y, z) == (x**y)%z
+```
+x = 7
+y = 2
+z = 5
+
+print(pow(x, y, z))
+```
+### 
+
+>>> float('+1.23')
+1.23
+>>> float('   -12345\n')
+-12345.0
+>>> float('1e-003')
+0.001
+>>> float('+1E6')
+1000000.0
+>>> float('-Infinity')
 Ascii code==> https://zh.wikipedia.org/wiki/ASCII
 ```
 ord('a')
 chr(97)
 chr(ord('A')+1)
 ```
+
+### len(s):Return the length (the number of items) of an object. 
+
+>* The argument may be a sequence (such as a string, bytes, tuple, list, or range) or a collection (such as a dictionary, set, or frozen set).
 
 # 使用函式來模組化程式
 
