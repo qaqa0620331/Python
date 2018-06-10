@@ -135,6 +135,11 @@ class Circle:
 
 # 繼承(inheritance):父類別與子類別   
 
+子類別繼承父類別:
+>* 子類別就自動擁有父類別的變數與函式。
+>* 子類別==衍生類別(derived class)或子類別(child class)
+>* 父類別==基礎類別(base class)或雙親類別(parent class)
+
 父類別:GeometricObject.py
 ```
 class GeometricObject:
@@ -243,6 +248,50 @@ main() # Call the main function
 >* 當定義類別沒有指定繼承時，則此類別預設的父類別就是object類別
 
 >* 所有定義於object的方法都是特別的方法，它們都有兩個前導底線和兩個後繼的底線。
+
+### 類別方法
+>* https://sites.google.com/site/zsgititit/home/python-cheng-shi-she-ji/python-lei-bie
+>* 類別方法(class method)作用對象為類別，會影響整個類別，也會影響類別所產生的物件
+>* 類別方法的第一個參數通常取名為cls，需在類別中的函式前一行使用裝飾器「@classmethod」
+
+```
+class Animal():
+        count = 0  # 初始化類別變數count為0，
+        
+        """變數count是類別變數==>變數count在函式外部且前方沒有加上self，以此類別宣告的所有物件共用一個類別變數
+        類別變數count使用「Animal.count」或「cls.count」進行存取。"""
+        
+        def __init__(self):
+                 Animal.count += 1
+        def kill(self):
+                 Animal.count -= 1
+        
+        @classmethod  #定義類別方法
+        def show_count(cls):
+                 print('現在有',cls.count,'隻動物')
+a = Animal()
+Animal.show_count()
+b = Animal()
+Animal.show_count()
+c = Animal()
+Animal.show_count()
+a.kill()
+Animal.show_count()
+```
+
+### 靜態方法(static method)
+
+>* 讓類別不需要建立物件，就可直接使用該類別的靜態方法
+>* 需在類別中的函式前一行使用裝飾器「@staticmethod」。
+
+```
+class Welcome():
+        @staticmethod  # 靜態方法(static method)
+        def sayhello():
+                 print('Hello Mydeargreatstudent')
+                 
+Welcome.sayhello()
+```
 
 ### 方法覆寫(method overriding)
 
