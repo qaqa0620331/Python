@@ -65,6 +65,70 @@ main() # Call the main function
 >* 實質參數(引數)==當函式被呼叫時，你必須給予的參數則被稱為
 >* 函式會使用關鍵字return 回傳一個結果數值，此數值被稱為回傳值。
 
+# 抽象(abstraction)==>函數     計算費氏序列:
+
+計算前十個費氏序列
+```
+fibs = [0, 1] 
+for i in range(8): 
+    fibs.append(fibs[-2] + fibs[-1]) 
+    
+ >>> fibs 
+```
+計算前個費氏序列
+```
+fibs = [0, 1] 
+num = int(input('How many Fibonacci numbers do you want? ')) 
+for i in range(num-2): 
+    fibs.append(fibs[-2] + fibs[-1]) 
+print(fibs) 
+```
+
+抽象(abstraction)==>函數
+```
+num = input('How many numbers do you want? ') 
+print(fibs(num)) 
+```
+```
+def fibs(num): 
+    result = [0, 1] 
+    for i in range(num-2): 
+        result.append(result[-2] + result[-1]) 
+    return result 
+
+>>> fibs(10) 
+>>> fibs(15) 
+```
+### docstring:為函式註解
+
+撰寫函式註解
+```
+def square(x): 
+   'Calculates the square of the number x.' 
+   return x * x 
+```
+讀取函式註解1:使用__doc__ 
+```
+>>> square.__doc__ 
+```
+讀取函式註解2:使用help()內建函式
+```
+>>> help(square)
+```
+### 函式與return value
+
+所有的函式都return value。如果你沒有告訴它要返回什麼，他就會返回None(也就是有返回值) 
+
+```
+def test(): 
+    print('This is printed') 
+    return 
+    print('This is not printed at all') 
+
+>>> x = test()
+>>> x 
+>>> print(x) 
+```
 
 # 函式呼叫:
 
@@ -137,6 +201,91 @@ printArea(4, 2.5) # Positional arguments width = 4 and height = 2.5
 printArea(height = 5, width = 3) # Keyword arguments width 
 printArea(width = 1.2) # Default height = 2
 printArea(height = 6.2) # Default widht = 1
+```
+
+### collectiong parameters(任意數量的參數):* 與 **
+
+如何撰寫擁有任意數量參數的函式:
+```
+def print_params(*params): 
+    print(params) 
+```
+```
+>>> print_params('Testing') 
+>>> print_params(1, 2, 3) 
+```
+>* return的是tuple資料型態
+
+如何撰寫擁有任意數量參數的函式:可以和一般參數齊用
+```
+def print_params_2(title, *params): 
+    print(title) 
+    print(params)
+```
+```
+>>> print_params_2('Params:', 1, 2, 3)
+>>> print_params_2('Nothing:') 
+```
+如何撰寫擁有任意數量參數的函式:無法支援關鍵字參數??如何支援關鍵字參數
+```
+>>> print_params_2('Hmm...', something=42) 
+```
+如何撰寫擁有任意數量參數的函式:支援關鍵字參數==>使用**
+```
+def print_params_3(**params): 
+    print(params) 
+```
+>>> print_params_3(x=1, y=2, z=3) 
+
+return的是dict(字典資料型態)
+
+##### 測試看看
+```
+def print_params_4(x, y, z=3, *pospar, **keypar): 
+    print(x, y, z) 
+    print(pospar) 
+    print(keypar) 
+
+>>> print_params_4(1, 2, 4, 5, 6, 7, foo=1, bar=2)
+
+>>> print_params_4(1, 2) 
+```
+```
+def store(data, *full_names): 
+   for full_name in full_names: 
+       names = full_name.split() 
+       if len(names) == 2: names.insert(1, '') 
+       labels = 'first', 'middle', 'last' 
+       for label, name in zip(labels, names): 
+           people = lookup(data, label, name) 
+           if people: 
+              people.append(full_name) 
+           else: 
+              data[label][name] = [full_name] 
+```
+#### 小小測驗:執行下列程式並說明其結果
+```
+>>> def add(x, y): return x + y 
+
+>>> params = (1, 2) 
+
+#tuple要使用*
+>>> add(*params)
+```
+#### 小小測驗:執行下列程式並說明其結果
+```
+def hello_3(greeting='Hello', name='world'): 
+    print('{}, {}!'.format(greeting, name)) 
+
+
+>>> hello_3() 
+>>> hello_3('Greetings') 
+>>> hello_3('Greetings', 'universe') 
+>>> hello_3(name='GGGGGGoood') 
+
+#字典dict要使用**
+>>> params = {'name': 'Sir Simon Rattle', 'greeting': 'To my Great Conductor'} 
+>>> hello_3(**params) 
 ```
 
 # 函式與回傳值
