@@ -582,6 +582,24 @@ print fib(10)
 請問第五個人多大？
 ================================================================
 ```
+### x的n次方
+
+方法一:使用iterative
+```
+def power1(x, n): 
+    result = 1 
+    for i in range(n): 
+        result *= x 
+    return result 
+```
+方法二:使用recursive
+```
+def power2(x, n): 
+   if n == 0: 
+      return 1 
+   else: 
+      return x * power(x, n - 1)
+```
 
 ## 搜尋演算法
 
