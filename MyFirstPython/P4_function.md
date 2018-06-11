@@ -523,17 +523,21 @@ r[9]()
 # 遞迴函式 ==> recursive vs iterative(loop)
 ```
 [程式開發作業]費氏數列
+[程式開發作業]1+2+3+....+n
 [程式開發作業]n!
+[程式開發作業]x的n次方
 [程式開發作業]二項係數
 [程式開發作業][Ackermann函式](https://en.wikipedia.org/wiki/Ackermann_function)
 [程式開發作業]河內塔
 [程式開發作業]八皇后問題
+[程式開發作業]binary search二元搜尋法
 ```
+### 費氏數列Fibonacci sequence:recursive vs iterative(loop)
+
 ```
-[程式開發作業]
-費氏數列Fibonacci sequence:recursive vs iterative(loop)
-又稱黃金分割數列
+費氏數列Fibonacci sequence又稱黃金分割數列
 0、1、1、2、3、5、8、13、21、34、……。
+
 在數學上，費波那契數列是以遞迴的方法來定義：
 F(0) = 0    (n=0)
 F(1) = 1    (n=1)
@@ -577,6 +581,75 @@ print fib(10)
 最後問第一個人，他說是10歲。
 請問第五個人多大？
 ================================================================
+```
+
+## 搜尋演算法
+
+### Sequential Search循序搜尋法
+
+>* http://interactivepython.org/runestone/static/pythonds/SortSearch/TheSequentialSearch.html
+
+```
+def sequentialSearch(alist, item):
+	    pos = 0
+	    found = False
+	
+	    while pos < len(alist) and not found:
+	        if alist[pos] == item:
+	            found = True
+	        else:
+	            pos = pos+1
+	
+	    return found
+	
+testlist = [1, 2, 32, 8, 17, 19, 42, 13, 0]
+print(sequentialSearch(testlist, 3))
+print(sequentialSearch(testlist, 13))
+```
+
+### binary search二元搜尋法
+
+recursive
+```
+def search(sequence, number, lower, upper): 
+    if lower == upper: 
+        assert number == sequence[upper] 
+        return upper 
+    else: 
+        middle = (lower + upper) // 2 
+        if number > sequence[middle]: 
+           return search(sequence, number, middle + 1, upper) 
+        else: 
+           return search(sequence, number, lower, middle) 
+
+>>> seq = [34, 67, 8, 123, 4, 100, 95] 
+>>> seq.sort() 
+>>> seq 
+>>> search(seq, 34) 
+>>> search(seq, 100)
+```
+iterative(loop)
+```
+def binarySearch(alist, item):
+	    first = 0
+	    last = len(alist)-1
+	    found = False
+	
+	    while first<=last and not found:
+	        midpoint = (first + last)//2
+	        if alist[midpoint] == item:
+	            found = True
+	        else:
+	            if item < alist[midpoint]:
+	                last = midpoint-1
+	            else:
+	                first = midpoint+1
+	
+	    return found
+	
+testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
+print(binarySearch(testlist, 3))
+print(binarySearch(testlist, 13))
 ```
 
 # Python內建函數==>Built-in Functions:
