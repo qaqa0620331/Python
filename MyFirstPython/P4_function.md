@@ -234,9 +234,9 @@ def print_params_2(title, *params):
 ```
 def print_params_3(**params): 
     print(params) 
-```
->>> print_params_3(x=1, y=2, z=3) 
 
+>>> print_params_3(x=1, y=2, z=3) 
+```
 return的是dict(字典資料型態)
 
 ##### 測試看看
