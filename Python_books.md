@@ -1,3 +1,8 @@
+
+```
+![result](pic/conda-v.png)
+![result](pic/conda%20list.png)
+```
 # Python Programming
 ```
 Python 程式設計入門 (適用於 2.x 與 3.x 版) 葉難/博碩出版日期：2015-04-01
