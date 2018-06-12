@@ -1,6 +1,6 @@
 
 ```
-![result](pic/conda-v.png)
+![result](pic/Jellyfish.jpg)
 ![result](pic/conda%20list.png)
 ```
 # Python Programming
