@@ -34,6 +34,6 @@ AI健康雲平台
 >* 電信業拚智慧醫療！是方電訊推AI健康雲平台，專攻華人健康管理
 >* https://www.bnext.com.tw/article/48664/chief-telecom-and-ibm-launch-ai-health-cloud-platform-specializing-in-chinese-health-management
 
-
+[台灣最大伺服器廠英業達，找Skywatch創辦人陳維超向AI筆電、IoT大伸拳腳](https://www.bnext.com.tw/article/49527/server-inventec-ai-deeplearning-skywatch-nvidia-datacenter)
 
 [為什麼Google、蘋果和Facebook這些大公司聘了這麼多員工，還是不夠用？](https://www.bnext.com.tw/article/49137/why-do-tech-companies-have-so-many-employees)
