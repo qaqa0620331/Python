@@ -160,3 +160,52 @@ Chapter 11 資訊安全與法律道德
 Appendix A RSA密碼方法 
 
 ```
+資安風險評估指南(第三版)Network Security Assessment, 3E, Chris McNab  譯者：江湖海 歐萊禮出版社(2017)
+```
+第一章 網路安全評估概述
+第二章 評估流程和工具
+第三章 漏洞與駭客
+第四章 網際網路探索
+第五章 區域網路探索
+第六章 IP 網路掃描
+第七章 評估常見的網路服務
+第八章 評估微軟的服務
+第九章 評估郵件服務
+第十章 評估 VPN 服務
+第十一章 評估 TLS 服務
+第十二章 網頁應用程式架構
+第十三章 評估網頁伺服器
+第十四章 評估網頁應用程式框架
+第十五章 評估資料儲存機制
+附錄A 常見的端口和訊息類型
+附錄B 漏洞資訊來源
+附錄C 不安全的 TLS 加密套件
+```
+
+資安防禦指南：資訊安全架構實務典範
+>* Defensive Security Handbook: Best Practices for Securing Infrastructure
+>* 作者： Lee Brotherston, Amanda Berlin  譯者:江湖海 歐萊禮出版社(2018)
+```
+chapter 1 擬定資訊安全計畫
+chapter 2 資產管理及文件記錄
+chapter 3 資訊安全政策
+chapter 4 標準與程序
+chapter 5 使用者教育訓練
+chapter 6 事件應變
+chapter 7 災害復原
+chapter 8 產業法規標準及框架
+chapter 9 實體安全
+chapter 10 微軟視窗環境
+chapter 11 Unix 應用伺服器
+chapter 12 端末設備
+chapter 13 密碼管理與多因子身分驗證
+chapter 14 網路架構
+chapter 15 網路分割與職責分離
+chapter 16 漏洞管理
+chapter 17 系統開發
+chapter 18 紫隊 - 防守與攻擊
+chapter 19 IDS 和 IPS
+chapter 20 日誌與監控
+chapter 21 再接再厲
+appendix A 使用者訓練計畫的範本
+```
