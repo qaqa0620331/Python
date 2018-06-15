@@ -54,7 +54,7 @@ AI健康雲平台
 
 # Fintech
 
->* [全球Top30銀行BBVA創投掌門人預測Fintech五大趨勢](https://www.ithome.com.tw/news/103408)
+>* [2016-01-21全球Top30銀行BBVA創投掌門人預測Fintech五大趨勢](https://www.ithome.com.tw/news/103408)
 
 # 資安大事記
 
