@@ -405,7 +405,7 @@ https://en.wikipedia.org/wiki/List_comprehension
 ```
 
 ```
-list1 = [x for x range(0, 5)] # Returns a list of 0, 1, 2, 4
+list1 = [x for x in range(0,5)] # Returns a list of 0, 1, 2, 4
 list1 
 list2 = [0.5 * x for x in list1] 
 list2
