@@ -1,3 +1,5 @@
+https://github.com/thewintersun/tensorflowbook
+
 # Deep Learning with TensorFlow - Second Edition
 ```
 Giancarlo Zaccone, Md. Rezaul Karim
