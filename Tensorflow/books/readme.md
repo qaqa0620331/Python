@@ -10,6 +10,16 @@ April 2017
 https://detail.tmall.com/item.htm?spm=a230r.1.14.143.4fa2270c7Zrwry&id=567135140953&ns=1&abbucket=13
 ```
 
+# Python深度學習Python Deep Learning
+```
+作者： Valentino Zocca, Gianmario Spacagna, Daniel Slater  
+譯者： 劉立民, 吳建華, 陳開煇
+編者： Peter Roelants
+出版社：博碩  
+出版日期：2018/01/05
+
+https://github.com/PacktPublishing/Python-Deep-Learning
+```
 # Getting started with TensorFlow
 ```
 <<深度學習快速入門：使用TensorFlow>>
