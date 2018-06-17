@@ -4,6 +4,9 @@ https://github.com/thewintersun/tensorflowbook
 ```
 Giancarlo Zaccone, Md. Rezaul Karim
 March 2018
+https://www.packtpub.com/big-data-and-business-intelligence/deep-learning-tensorflow-second-edition
+
+
 
 第一版(舊版)Deep Learning with TensorFlow
 Giancarlo Zaccone, Md. Rezaul Karim, Ahmed Menshawy
