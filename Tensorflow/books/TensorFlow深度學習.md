@@ -374,6 +374,8 @@ print(sess.run(y,feed_dict={x: data}))
 
 第二版新增:Linear regression and beyond
 
+https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/training/gradient_descent.py
+
 ```
 # Import libraries (Numpy, Tensorflow, matplotlib)
 import numpy as np
