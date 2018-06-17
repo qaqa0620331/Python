@@ -611,6 +611,35 @@ with tf.Session() as sess:
     print("Model saved to %s" % save_path)
 
 ```
+```
+Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.
+Extracting data/train-images-idx3-ubyte.gz
+Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.
+Extracting data/train-labels-idx1-ubyte.gz
+Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.
+Extracting data/t10k-images-idx3-ubyte.gz
+Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.
+Extracting data/t10k-labels-idx1-ubyte.gz
+2018-06-17 15:40:24.135335: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-06-17 15:40:24.135396: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-06-17 15:40:24.135402: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+Epoch:  0
+Epoch:  1
+Epoch:  2
+Epoch:  3
+Epoch:  4
+Epoch:  5
+Epoch:  6
+Epoch:  7
+Epoch:  8
+Epoch:  9
+Accuracy:  0.8914
+done
+Neural Network predicted 0
+Real label is: 0
+Model saved to data/saved_mnist_cnn.ckpt
+
+```
 
 ```
 3．5 TensorFlow模型的保存和還原 63
