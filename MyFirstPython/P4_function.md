@@ -132,7 +132,13 @@ def test():
 
 # 函式呼叫:
 
-傳值呼叫(pass by value) vs 傳參考呼叫(pass by reference)
+how arguments are passed to functions in Python??
+
+傳值呼叫(pass by value) vs 傳參考呼叫(pass by reference) or "call-by-object," or "call-by-object-reference" OR call-by-assignment
+
+https://jeffknupp.com/blog/2012/11/13/is-python-callbyvalue-or-callbyreference-neither/
+
+https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference
 
 ```
 ================================================================
@@ -153,7 +159,30 @@ if __name__ == '__main__':
     x,y = swap(x,y)
     print 'x = %d,y = %d' % (x,y)
 ```
+```
+def try_to_change_list_contents(the_list):
+    print('got', the_list)
+    the_list.append('four')
+    print('changed to', the_list)
 
+outer_list = ['one', 'two', 'three']
+
+print('before, outer_list =', outer_list)
+try_to_change_list_contents(outer_list)
+print('after, outer_list =', outer_list)
+```
+```
+def try_to_change_list_reference(the_list):
+    print('got', the_list)
+    the_list = ['and', 'we', 'can', 'not', 'lie']
+    print('set to', the_list)
+
+outer_list = ['we', 'like', 'proper', 'English']
+
+print('before, outer_list =', outer_list)
+try_to_change_list_reference(outer_list)
+print('after, outer_list =', outer_list)
+```
 ```
 #!/usr/bin/python 
 # -*- coding: UTF-8 -*- 
@@ -791,7 +820,7 @@ print(list(reversed(seqRange)))
 
 ```
 
-# 使用函式來模組化程式
+# 使用函式來模組化程式 ==> 模組(modules) 標準函式庫(Standard library)
 
 函式可用來減少多餘的程式碼，允許程式碼重複使用，還可以用來模組化程式碼，提升程式品質
 
