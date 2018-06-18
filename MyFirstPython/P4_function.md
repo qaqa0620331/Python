@@ -856,4 +856,14 @@ n2 = eval(input("請輸入第二個整數 "))
 print("兩個整數的最大公因數", n1,
     "and", n2, "is", gcd(n1, n2))
 ```
+```
+當我們導入一個模組時：import  xxx，
+預設情況下python解析器會搜索目前的目錄、已安裝的內置模組和第三方模組，
+搜索路徑存放在sys模組的path中
+import sys
+sys.path
 
+添加自己程式(模組)到path讓python 解釋器找得到你自己寫的模組
+sys.path.append('./home/ksu/haha')
+
+```
