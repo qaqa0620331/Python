@@ -182,6 +182,27 @@ outer_list = ['we', 'like', 'proper', 'English']
 print('before, outer_list =', outer_list)
 try_to_change_list_reference(outer_list)
 print('after, outer_list =', outer_list)
+``` 
+```
+Techs = ['MIT', 'Caltech']
+Ivys = ['Harvard', 'Yale', 'Brown']
+
+Univs = [Techs, Ivys]
+Univs1 = [['MIT', 'Caltech'], ['Harvard', 'Yale', 'Brown']]
+
+print 'Univs =', Univs
+print 'Univs1 =', Univs1
+print Univs == Univs1
+
+
+That Univs and Univs1 are bound to different objects can be verified using the
+built-in Python function id, which returns a unique integer identifier for an
+object. This function allows us to test for object equality
+
+print Univs == Univs1 #test value equality
+print id(Univs) == id(Univs1) #test object equality
+print 'Id of Univs =', id(Univs)
+print 'Id of Univs1 =', id(Univs1)
 ```
 ```
 #!/usr/bin/python 
