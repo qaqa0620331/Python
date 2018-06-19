@@ -350,10 +350,27 @@ Welcome.sayhello()
 
 >* 子類別繼承從父類別的方法，有時可能會在子類別修改其繼承的父類別方法中的內容
 
+
+
 ### 多重繼承(multiple inheritance)
 
+```
+class Calculator:
+  def calculate(self, expression):
+      self.value = eval(expression)
+
+class Talker:
+    def talk(self):
+        print('Hi, my value is', self.value)
+
+class TalkingCalculator(Calculator, Talker):
+    pass
 
 
+tc = TalkingCalculator()
+tc.calculate('1 + 2 * 3')
+tc.talk()
+```
 
 # 多型
 
@@ -369,8 +386,7 @@ def main():
     r = Rectangle(1, 3)
     displayObject(c)
     displayObject(r)
-    print("Are the circle and rectangle the same size?", 
-        isSameArea(c, r))
+    print("Are the circle and rectangle the same size?", isSameArea(c, r))
 
 # Display geometric object properties 
 def displayObject(g):
