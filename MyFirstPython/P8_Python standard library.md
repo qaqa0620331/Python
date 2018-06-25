@@ -25,13 +25,26 @@ More condensed:
 ```
 import hashlib
 
-a = "I am your greatteacher"
-print hashlib.md5(a).hexdigest()
-print hashlib.sha1(a).hexdigest()
-print hashlib.sha224(a).hexdigest()
-print hashlib.sha256(a).hexdigest()
-print hashlib.sha384(a).hexdigest()
-print hashlib.sha512(a).hexdigest()
+data = "I am your greatteacher"
+print hashlib.md5(data).hexdigest()
+print hashlib.sha1(data).hexdigest()
+print hashlib.sha224(data).hexdigest()
+print hashlib.sha256(data).hexdigest()
+print hashlib.sha384(data).hexdigest()
+print hashlib.sha512(data).hexdigest()
+```
+
+```
+#!/usr/bin/python3
+import hashlib
+m = hashlib.md5()
+data = "I am your greatteacher"
+
+# 先將資料編碼，再更新 MD5 雜湊值
+m.update(data.encode("utf-8"))
+
+h = m.hexdigest()
+print(h)
 ```
 
 ##### 只是小改變==>答案就會不一樣
