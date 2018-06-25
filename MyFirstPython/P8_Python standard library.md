@@ -46,7 +46,7 @@ conflict_handler='error', add_help=True, allow_abbrev=True)
 >* add_help - Add a -h/--help option to the parser (default: True)
 >* allow_abbrev - Allows long options to be abbreviated if the abbreviation is unambiguous. (default: True)
 
-## 使用 ArgumentParser.add_argument 加入想解析的參數
+## 使用 ArgumentParser.add_argument() 加入想解析的參數
 
 參數基本上分兩種，一種是位置參數 (positional argument)，另一種就是選擇性參數 (optional argument)，主要差別在於參數指定方式的不同
 >* positional argument ==>根據它出現的位置來指定它的值是多少
