@@ -5,6 +5,79 @@
 >* 使用時請import載入相關函式庫即可
 >* 
 
+## hashlib函式庫/套件/模組
+
+>* hashlib是python專門提供hash演算法的函式庫，包括md5, sha1, sha224, sha256, sha384, sha512等演算法
+
+```
+>>> import hashlib
+>>> m = hashlib.md5()
+>>> m.update(b"Nobody inspects")
+>>> m.update(b" the spammish repetition")
+>>> m.digest()
+    b'\\xbbd\\x9c\\x83\\xdd\\x1e\\xa5\\xc9\\xd9\\xde\\xc9\\xa1\\x8d\\xf0\\xff\\xe9'
+
+More condensed:
+>>> hashlib.sha224(b"Nobody inspects the spammish repetition").hexdigest()
+```
+
+##### Python2的範例==>作業:改成Python3
+```
+import hashlib
+
+a = "I am your greatteacher"
+print hashlib.md5(a).hexdigest()
+print hashlib.sha1(a).hexdigest()
+print hashlib.sha224(a).hexdigest()
+print hashlib.sha256(a).hexdigest()
+print hashlib.sha384(a).hexdigest()
+print hashlib.sha512(a).hexdigest()
+```
+
+##### 只是小改變==>答案就會不一樣
+```
+import hashlib
+
+a = "I am your greatteacher"
+print hashlib.md5(a).hexdigest()
+
+b = "I am your ggreatteacher"
+print hashlib.md5(b).hexdigest()
+
+c = "I am your Greatteacher"
+print hashlib.md5(c).hexdigest()
+```
+
+##### 把你的機密檔案Hash
+```
+#!/usr/bin/env python
+
+import hashlib
+import sys
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit('Usage: %s file' % sys.argv[0])
+
+    filename = sys.argv[1]
+    m = hashlib.md5()
+    with open(filename, 'rb') as fp:
+        while True:
+            blk = fp.read(4096) # 4KB per block
+            if not blk: break
+            m.update(blk)
+    print(m.hexdigest(), filename)
+
+if __name__ == '__main__':
+    main()
+```
+執行看看:
+
+python3 test4.py
+
+python3 test4.py test1.py
+
+
 ## Argparse函式庫/套件/模組
 
 >* https://docs.python.org/3.6/howto/argparse.html
