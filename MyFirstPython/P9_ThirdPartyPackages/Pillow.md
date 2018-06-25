@@ -1,5 +1,7 @@
 # Pillow函式庫/套件/模組(Python3)
 
+>* https://pillow.readthedocs.io/en/5.1.x/
+
 ##### PIL(Python2) vs  Pillow(Python3)
 
 >* PIL(Python Imaging Library)是Python平臺上的影像處理標準庫。PIL功能非常強大，但API卻非常簡單易用。PIL僅支持到Python 2.7
