@@ -900,6 +900,38 @@ n2 = eval(input("請輸入第二個整數 "))
 print("兩個整數的最大公因數", n1,
     "and", n2, "is", gcd(n1, n2))
 ```
+##### 作業:完成模組化程式設計練習
+
+>* 設計一個PYTHON程式(模組)命名為circle.py提供計算圓面積,周長,球體積與表面積的功能
+>* 撰寫測試程式test.py使用上述功能
+
+```
+pi = 3.14159
+
+def area(radius):
+   return pi*(radius**2)
+
+def circumference(radius):
+   return 2*pi*radius
+
+def sphereSurface(radius):
+   return 4.0*area(radius)
+
+def sphereVolume(radius):
+   return (4.0/3.0)*pi*(radius**3)
+```
+
+```
+import circle
+
+print circle.pi
+print circle.area(3)
+print circle.circumference(3)
+print circle.sphereSurface(3)
+```
+
+
+##### 補充
 ```
 當我們導入一個模組時：import  xxx，
 預設情況下python解析器會搜索目前的目錄、已安裝的內置模組和第三方模組，
