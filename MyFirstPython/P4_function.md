@@ -513,6 +513,8 @@ increase()
 print(x)
 ```
 
+遞迴函式的呼叫次數==>全域變數的應用
+
 # 匿名函數==>lambda 運算式
 
 >* 匿名函數==沒有函數名稱、臨時使用的小函數
@@ -719,7 +721,27 @@ testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
 print(binarySearch(testlist, 3))
 print(binarySearch(testlist, 13))
 ```
+# 遞迴函式的呼叫次數==>全域變數的應用
+```
+def fib(x):
+"""Assumes x an int >= 0
+	Returns Fibonacci of x"""
+	
+	global numFibCalls
+	numFibCalls += 1
+	
+	if x == 0 or x == 1:
+           return 1
+	else:
+          return fib(x-1) + fib(x-2)
 
+def testFib(n):
+	for i in range(n+1):
+          global numFibCalls
+          numFibCalls = 0
+          print 'fib of', i, '=', fib(i)
+          print 'fib called', numFibCalls, 'times.'
+```
 # Python內建函數==>Built-in Functions:
 
 >* https://docs.python.org/2/library/functions.html
@@ -841,9 +863,10 @@ print(list(reversed(seqRange)))
 
 ```
 
-# 使用函式來模組化程式 ==> 模組(modules) 標準函式庫(Standard library)
+# 模組化程式設計
 
-函式可用來減少多餘的程式碼，允許程式碼重複使用，還可以用來模組化程式碼，提升程式品質
+>* 使用函式來模組化程式==> 模組(modules) 標準函式庫(Standard library)
+>* 函式可用來減少多餘的程式碼，允許程式碼重複使用，還可以用來模組化程式碼，提升程式品質
 
 步驟一:先將常用的功能寫成函式MyGCD.py
 ```
@@ -886,5 +909,4 @@ sys.path
 
 添加自己程式(模組)到path讓python 解釋器找得到你自己寫的模組
 sys.path.append('./home/ksu/haha')
-
 ```
