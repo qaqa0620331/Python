@@ -350,7 +350,100 @@ Welcome.sayhello()
 
 >* 子類別繼承從父類別的方法，有時可能會在子類別修改其繼承的父類別方法中的內容
 
+範例:學生,修課課程與開課老師
 
+建立Person類別[繼承object類別]
+```
+import datetime
+
+class Person(object):
+   def __init__(self, name):
+     """Create a person"""
+     self.name = name
+     try:
+       lastBlank = name.rindex(' ')
+       self.lastName = name[lastBlank+1:]
+     except:
+       self.lastName = name
+       self.birthday = None
+
+   def getName(self):
+     """Returns self's full name"""
+     return self.name
+
+   def getLastName(self):
+     """Returns self's last name"""
+     return self.lastName
+
+   def setBirthday(self, birthdate):
+     """Assumes birthdate is of type datetime.date
+        Sets self's birthday to birthdate"""
+     self.birthday = birthdate
+
+   def getAge(self):
+     """Returns self's current age in days"""
+     if self.birthday == None:
+        raise ValueError
+        return (datetime.date.today() - self.birthday).days
+
+   def __lt__(self, other):
+     """Returns True if self's name is lexicographically
+        less than other's name, and False otherwise"""
+      if self.lastName == other.lastName:
+         return self.name < other.name
+      return self.lastName < other.lastName
+
+   def __str__(self):
+      """Returns self's name"""
+      return self.name
+```
+>* Person類別複寫object類別定義的__init__,__str__與__lt__
+
+```
+me = Person('Mydeargreatteacher')
+him = Person('Barack Hussein Obama')
+her = Person('Madonna')
+
+print him.getLastName()
+him.setBirthday(datetime.date(1961, 8, 4))
+her.setBirthday(datetime.date(1958, 8, 16))
+print him.getName(), 'is', him.getAge(), 'days old'
+```
+```
+pList = [me, him, her]
+for p in pList:
+print p
+
+pList.sort()
+for p in pList:
+print p
+```
+現在再建立一個子類別繼承Person類別
+```
+class MITPerson(Person):
+    nextIdNum = 0 #identification number
+
+    def __init__(self, name):
+       Person.__init__(self, name)
+       self.idNum = MITPerson.nextIdNum #詳見底下說明
+       MITPerson.nextIdNum += 1
+
+    def getIdNum(self):
+       return self.idNum
+
+    def __lt__(self, other):
+       return self.idNum < other.idNum
+```
+
+The method MITPerson.__init__ first invokes Person.__init__ to initialize the
+inherited instance variable self.name. It then initializes self.idNum, an instance
+variable that instances of MITPerson have but instances of Person do not.
+
+The instance variable self.idNum is initialized using a class variable, nextIdNum,
+that belongs to the class MITPerson, rather than to instances of the class. When
+an instance of MITPerson is created, a new instance of nextIdNum is not created.
+This allows __init__ to ensure that each instance of MITPerson has a unique
+idNum.
 
 ### 多重繼承(multiple inheritance)
 
