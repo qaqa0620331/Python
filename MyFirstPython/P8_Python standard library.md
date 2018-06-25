@@ -1,6 +1,11 @@
 # Python standard library
 
-## Argparse
+>* Python有許多內建的函式庫(可以寫成幾本書)
+>* 不需安裝即可使用(第三方套件需要安裝==>Tensorflow/PyTorch)
+>* 使用時請import載入相關函式庫即可
+>* 
+
+## Argparse函式庫/套件/模組
 
 >* https://docs.python.org/3.6/howto/argparse.html
 >* https://docs.python.org/2.7/howto/argparse.html
@@ -163,6 +168,9 @@ python3 test3.py 2 -v 1
 
 python3 test3.py 2 -v 2
 the square of 2 equals 4
+
+python3 test3.py 2 -v 33
+答案會是甚麼??
 ```
 
 #### 作業:將python 2.7的範例改成Python3的範例
