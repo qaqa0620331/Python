@@ -297,7 +297,6 @@ Class GG:
 >* 當一物件被建立，將自動呼叫 __new__() 方法。
 >* 此方法接著呼叫 __init__() 方法，用以初始物件。
 >* 正常情況下，應該只有覆寫 __init__() 方法來初始新類別的資料項目。 
-
 >* __str__() 方法回傳描述此物件的字串。預設回傳的字串包括了物件名稱與物件在記憶體的位址(以16進位表示) 
 
 ### 類別方法(class method)
@@ -546,7 +545,11 @@ main() # Call the main function
 ```
 
 
-# 進階主題:decorator, iterator,
+# 進階主題:decorator, iterator, generator
+
+http://ot-note.logdown.com/posts/67571/-decorator-with-without-arguments-in-function-class-form
+
+https://dotblogs.com.tw/rickyteng/2013/11/06/126852
 
 ### decorator裝飾器
 
@@ -817,6 +820,28 @@ A triplet (x, y, z) is called pythogorian triplet if x*x + y*y == z*z.
 [(3, 4, 5), (6, 8, 10), (5, 12, 13), (9, 12, 15), (8, 15, 17), (12, 16, 20), (15, 20, 25), (7, 24, 25), (10, 24, 26), (20, 21, 29)]
 
 
+#### enumerates內建函式: takes an iteratable and returns an iterator over pairs (index, value) for each value in the source.
+```
+>>> list(enumerate(["a", "b", "c"])
+[(0, "a"), (1, "b"), (2, "c")]
+>>> for i, c in enumerate(["a", "b", "c"]):
+...     print i, c
+...
+0 a
+1 b
+2 c
+```
+
+#### 如何反覆運算一個序列(list)的同時跟蹤正在被處理的元素索引(index)
+
+see Python cookbook 11.3.1
+```
+>>> my_list = ['a', 'b', 'c']
+>>> for idx, val in enumerate(my_list):
+...     print(idx, val)
+
+```
+
 ### 善用itertools(內建模組)
 
 chain – chains multiple iterators together.
@@ -841,13 +866,6 @@ Generator Tricks for Systems Programmers - Version 2.0
 
 http://www.dabeaz.com/generators-uk/
 
-#### 如何反覆運算一個序列(list)的同時跟蹤正在被處理的元素索引(index)
 
-see Python cookbook 11.3.1
-```
->>> my_list = ['a', 'b', 'c']
->>> for idx, val in enumerate(my_list):
-...     print(idx, val)
 
-```
 
