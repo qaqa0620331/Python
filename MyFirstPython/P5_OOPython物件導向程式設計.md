@@ -139,8 +139,6 @@ class Circle:
         return self.__radius * self.__radius * math.pi
 ```
 
-
-
 # 繼承(inheritance):父類別與子類別   
 
 類別與類別之間的關係 
@@ -838,6 +836,10 @@ a 1
 b 2
 c 3
 ```
+
+Generator Tricks for Systems Programmers - Version 2.0
+
+http://www.dabeaz.com/generators-uk/
 
 #### 如何反覆運算一個序列(list)的同時跟蹤正在被處理的元素索引(index)
 
