@@ -1,6 +1,6 @@
 # 問卷調查
 
-https://goo.gl/isnPhi
+https://goo.gl/
 
 # Python 
 
