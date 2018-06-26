@@ -548,4 +548,304 @@ main() # Call the main function
 ```
 
 
-# 進階主題:decorator, iteratable,
+# 進階主題:decorator, iterator,
+
+### decorator裝飾器
+
+>* 一個裝飾器就是一個函數，它接受一個函數作為參數並返回一個新的函數
+>* 內建的裝飾器如@staticmethod, @classmethod,@property 其運作原理都相同
+
+底下兩段程式效果相同
+```
+class A:
+   @classmethod
+   def method(cls):
+      pass
+```
+```
+class B:
+   def method(cls):
+       pass
+    method = classmethod(method)
+```
+
+#### 應用範例:自訂一個decorator為函式執行提供計時的額外功能
+
+自訂一個decorator裝飾器
+```
+import time
+from functools import wraps
+
+def timethis(func):
+'''
+Decorator that reports the execution time.
+'''
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs) #執行函式的運算
+        end = time.time()
+        print(func.__name__, end-start)
+        return result
+        return wrapper
+```
+
+使用裝飾器
+```
+>>> @timethis
+... def countdown(n):
+... '''
+... Counts down
+... '''
+...    while n > 0:
+...         n -= 1
+...
+
+>>> countdown(100000)
+```
+
+##### 一個裝飾器已經作用在一個函數上，你想撤銷這個裝飾功能，直接去訪問原始的未裝飾的那個函數。
+
+see Python cookbook 11.3.1
+>* http://python3-cookbook.readthedocs.io/zh_CN/latest/
+>* https://github.com/dabeaz/python-cookbook
+
+```
+Python 錦囊妙計, 3/e (Python Cookbook, 3/e) 
+David Beazley, Brian K. Jones 著、黃銘偉 譯
+```
+
+#### 如何定義一個帶參數的裝飾器
+
+### Iterators 迭代器
+
+使用for loop進行迭代運算(iterative)
+```
+>>> for i in [1, 2, 3, 4]:
+...     print i,
+...
+```
+```
+>>> for c in "python":
+...     print c
+...
+```
+
+```
+>>> for k in {"x": 1, "y": 2}:
+...     print k
+...
+```
+
+https://anandology.com/python-practice-book/iterators.html
+
+```
+>>> for line in open("a.txt"):
+...     print line,
+...
+
+```
+
+ 上述都是iterable objects
+ 
+ ```
+ >>> ",".join(["a", "b", "c"])
+'a,b,c'
+>>> ",".join({"x": 1, "y": 2})
+'y,x'
+>>> list("python")
+['p', 'y', 't', 'h', 'o', 'n']
+>>> list({"x": 1, "y": 2})
+['y', 'x']
+```
+
+#### The Iteration Protocol
+
+>* 使用內建函式 built-in function iter 
+>* takes an iterable object and returns an iterator.
+>* Each time we call the next method on the iterator gives us the next element. 
+>* If there are no more elements, it raises a StopIteration.
+
+```
+>>> x = iter([1, 2, 3])
+>>> x
+<listiterator object at 0x1004ca850>
+>>> x.next()
+1
+>>> x.next()
+2
+>>> x.next()
+3
+>>> x.next()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+ ```
+#### 實作一個Iterators類別功能和xrange一樣
+
+Iterators are implemented as classes
+
+```
+ class yrange:
+    def __init__(self, n):
+        self.i = 0
+        self.n = n
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        if self.i < self.n:
+            i = self.i
+            self.i += 1
+            return i
+        else:
+            raise StopIteration()
+```
+
+>* The return value of __iter__ is an iterator. 
+>* It should have a next method and raise StopIteration when there are no more elements.
+
+執行結果==>
+```
+>>> y = yrange(3)
+>>> y.next()
+0
+>>> y.next()
+1
+>>> y.next()
+2
+>>> y.next()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 14, in next
+StopIteration
+```
+
+#### Many built-in functions accept iterators as arguments.
+
+```
+>>> list(yrange(5))
+[0, 1, 2, 3, 4]
+>>> sum(yrange(5))
+10
+```
+
+### Generator產生器
+
+>* A generator is a function that produces a sequence of results instead of a single value.
+>* Generators simplifies creation of iterators.
+>* a generator is also an iterator. You don’t have to worry about the iterator protocol.
+```
+def yrange(n):
+    i = 0
+    while i < n:
+        yield i
+        i += 1
+```
+```
+>>> y = yrange(3)
+>>> y
+<generator object yrange at 0x401f30>
+>>> y.next()
+0
+>>> y.next()
+1
+>>> y.next()
+2
+>>> y.next()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+```
+
+仔細分析底下的程式執行
+```
+>>> def foo():
+...     print "begin"
+...     for i in range(3):
+...         print "before yield", i
+...         yield i
+...         print "after yield", i
+...     print "end"
+...
+>>> f = foo()
+>>> f.next()
+begin
+before yield 0
+0
+>>> f.next()
+after yield 0
+before yield 1
+1
+>>> f.next()
+after yield 1
+before yield 2
+2
+>>> f.next()
+after yield 2
+end
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>>
+```
+
+### generator expression<<產生器>>
+
+>* Generator Expressions are generator version of list comprehensions. 
+>* They look like list comprehensions, but returns a generator back instead of a list
+
+```
+>>> a = (x*x for x in range(10))
+>>> a
+<generator object <genexpr> at 0x401f08>
+>>> sum(a)
+285
+```
+
+#### 可以使用 generator expressions 當作arguments to various functions that consume iterators.
+```
+>>> sum((x*x for x in range(10)))
+285
+```
+#### 應用範例:找出(由小到大的)前十個直角三角形 pythogorian triplet
+
+A triplet (x, y, z) is called pythogorian triplet if x*x + y*y == z*z.
+```
+>>> pyt = ((x, y, z) for z in integers() for y in xrange(1, z) for x in range(1, y) if x*x + y*y == z*z)
+>>> take(10, pyt)
+```
+[(3, 4, 5), (6, 8, 10), (5, 12, 13), (9, 12, 15), (8, 15, 17), (12, 16, 20), (15, 20, 25), (7, 24, 25), (10, 24, 26), (20, 21, 29)]
+
+
+### 善用itertools(內建模組)
+
+chain – chains multiple iterators together.
+```
+>>> it1 = iter([1, 2, 3])
+>>> it2 = iter([4, 5, 6])
+>>> itertools.chain(it1, it2)
+[1, 2, 3, 4, 5, 6]
+```
+
+izip – iterable version of zip
+```
+>>> for x, y in itertools.izip(["a", "b", "c"], [1, 2, 3]):
+...     print x, y
+...
+a 1
+b 2
+c 3
+```
+
+#### 如何反覆運算一個序列(list)的同時跟蹤正在被處理的元素索引(index)
+
+see Python cookbook 11.3.1
+```
+>>> my_list = ['a', 'b', 'c']
+>>> for idx, val in enumerate(my_list):
+...     print(idx, val)
+
+```
+
