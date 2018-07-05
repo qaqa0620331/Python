@@ -16,6 +16,7 @@ sudo apt-get install python3-tk
 成果==>程式碼改成for it in range(10000):
 
 每一個iter會產生結果圖
+
 Iter: 0
 D loss: 1.724
 G_loss: 1.553
