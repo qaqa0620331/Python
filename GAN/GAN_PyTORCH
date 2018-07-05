@@ -10,12 +10,16 @@ $ git clone https://github.com/torch/distro.git ~/torch --recursive
 $ cd ~/torch; bash install-deps;
 $ ./install.sh
 
-
+==> 殘念
 
 sudo pip3 install torch torchvision==> 殘念
 
 
-conda install pytorch torchvision -c pytorch
+conda install -c soumith pytorch ==> 殘念
+ImportError: No module named 'torch.nn'
+
+
+conda install pytorch torchvision -c pytorch ==> 殘念
 Fetching package metadata .............
 Solving package specifications: .
 
