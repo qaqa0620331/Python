@@ -1,7 +1,7 @@
 https://github.com/wiseodd/generative-models
 
 
-# 案例1:
+### 案例1:vanilla_gan
 
 https://github.com/wiseodd/generative-models/blob/master/GAN/vanilla_gan/gan_tensorflow.py
 
@@ -58,10 +58,10 @@ G_loss: 3.099
 
 
 
-# 案例2:CGAN==>把label加進來
+### 案例2:CGAN==>把label加進來
 
 https://github.com/wiseodd/generative-models/blob/master/GAN/conditional_gan/cgan_tensorflow.py
 
-# 案例3:DCGAN
+### 案例3:DCGAN
 
-# 案例4:infoGAN
+### 案例4:infoGAN
