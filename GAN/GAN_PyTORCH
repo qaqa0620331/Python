@@ -1,4 +1,18 @@
-sudo pip3 install torch torchvision
+ubuntu 16.04 LTS上安装Torch7
+https://www.mobibrw.com/2017/6915
+
+1.安装luarocks
+
+$ sudo apt-get install luarocks
+
+
+$ git clone https://github.com/torch/distro.git ~/torch --recursive
+$ cd ~/torch; bash install-deps;
+$ ./install.sh
+
+
+
+sudo pip3 install torch torchvision==> 殘念
 
 
 conda install pytorch torchvision -c pytorch
