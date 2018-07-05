@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import os
 
-
+#定義初始化變數
 def xavier_init(size):
     in_dim = size[0]
     xavier_stddev = 1. / tf.sqrt(in_dim / 2.)
     return tf.random_normal(shape=size, stddev=xavier_stddev)
 
-
+# 
 X = tf.placeholder(tf.float32, shape=[None, 784])
 
 D_W1 = tf.Variable(xavier_init([784, 128]))
