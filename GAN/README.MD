@@ -2,6 +2,33 @@ Computer evolves to generate baroque music!
 
 https://www.youtube.com/watch?v=SacogDL_4JU
 
+https://tw.wxwenku.com/d/100505574
+
+
+[系列活動] 一日搞懂生成式對抗網路
+https://www.slideshare.net/tw_dsconf/ss-78795326
+
+
+生成對抗模式 GAN 的介紹
+
+https://www.slideshare.net/yenlung/gan-90396897
+
+
+與高中生談人工智慧與深度學習'
+https://www.slideshare.net/yenlung/ss-82198270
+
+
+強化學習 Reinforcement Learning
+
+https://www.slideshare.net/yenlung/reinforcement-learning-90737484
+
+Recurrent Neural Network 遞迴式神經網路
+
+https://www.slideshare.net/yenlung/recurrent-neural-network-89538572
+
+
+https://github.com/tkarras/progressive_growing_of_gans
+
 
 吳志忠 - 利用 Python 與人工智慧快速打造人性化聊天機器人 - PyConTW2017
 
@@ -95,5 +122,11 @@ if not os.path.exists('out_cgan/'):
         plt.close(fig)
     
 ### 案例3:infoGAN
+
+
+https://blog.csdn.net/u011699990/article/details/71599067
+
+https://blog.csdn.net/hjimce/article/details/55657325
+
 
 ### 案例4:DCGAN
