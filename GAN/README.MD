@@ -129,4 +129,19 @@ https://blog.csdn.net/u011699990/article/details/71599067
 https://blog.csdn.net/hjimce/article/details/55657325
 
 
+### REGULAR VONVOLUTION VS TRANSPOSE CONVOLUTION
+
+STRIDE
+
+PADDING
+
+3*3 ----> 6*6
+
+ 6*6 ---->3*3 
+
+
 ### 案例4:DCGAN
+
+https://towardsdatascience.com/up-sampling-with-transposed-convolution-9ae4f2df52d0
+
+
