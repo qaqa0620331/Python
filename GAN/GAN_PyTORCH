@@ -1,6 +1,6 @@
 >>> import torch.nn as nn
 
->>> import torch.nn as nn
+>>> import py_torch
 直接在IINTERACTIVE SHELL執行程式
 
 
