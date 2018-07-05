@@ -8,6 +8,8 @@ https://www.youtube.com/watch?v=SacogDL_4JU
 https://www.youtube.com/watch?v=zL2v0czpsyk
 
 
+https://wiseodd.github.io/
+
 https://github.com/wiseodd/generative-models
 
 
@@ -92,6 +94,6 @@ if not os.path.exists('out_cgan/'):
         i += 1
         plt.close(fig)
     
-### 案例3:DCGAN
+### 案例3:infoGAN
 
-### 案例4:infoGAN
+### 案例4:DCGAN
