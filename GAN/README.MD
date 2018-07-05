@@ -40,6 +40,19 @@ https://wiseodd.github.io/
 https://github.com/wiseodd/generative-models
 
 
+
+Awesome-GANs with Tensorflow
+https://github.com/kozistr/Awesome-GANs
+
+
+gans-awesome-applications
+https://github.com/nashory/gans-awesome-applications
+
+
+
+
+https://github.com/tkarras/progressive_growing_of_gans
+
 ### 案例1:vanilla_gan
 
 https://github.com/wiseodd/generative-models/blob/master/GAN/vanilla_gan/gan_tensorflow.py
