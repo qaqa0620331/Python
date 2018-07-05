@@ -1,3 +1,9 @@
+>>> import torch.nn as nn
+
+>>> import torch.nn as nn
+直接在IINTERACTIVE SHELL執行程式
+
+
 ubuntu 16.04 LTS上安装Torch7
 https://www.mobibrw.com/2017/6915
 
