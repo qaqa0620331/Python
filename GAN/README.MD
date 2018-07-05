@@ -63,6 +63,25 @@ G_loss: 3.099
 
 https://github.com/wiseodd/generative-models/blob/master/GAN/conditional_gan/cgan_tensorflow.py
 
+
+if not os.path.exists('out_cgan/'):
+    os.makedirs('out_cgan/')
+    
+    for it in range(100000):
+    if it % 1000 == 0:
+        n_sample = 16
+
+        Z_sample = sample_Z(n_sample, Z_dim)
+        y_sample = np.zeros(shape=[n_sample, y_dim])
+        y_sample[:, 7] = 1
+
+        samples = sess.run(G_sample, feed_dict={Z: Z_sample, y:y_sample})
+
+        fig = plot(samples)
+        plt.savefig('out_cgan/{}.png'.format(str(i).zfill(3)), bbox_inches='tight')
+        i += 1
+        plt.close(fig)
+    
 ### 案例3:DCGAN
 
 ### 案例4:infoGAN
