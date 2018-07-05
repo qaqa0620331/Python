@@ -1,3 +1,13 @@
+Computer evolves to generate baroque music!
+
+https://www.youtube.com/watch?v=SacogDL_4JU
+
+
+吳志忠 - 利用 Python 與人工智慧快速打造人性化聊天機器人 - PyConTW2017
+
+https://www.youtube.com/watch?v=zL2v0czpsyk
+
+
 https://github.com/wiseodd/generative-models
 
 
