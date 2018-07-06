@@ -212,6 +212,7 @@ Viewing the discriminator as an energy function allows to use a wide variety of 
 D==>使用autoencode
 
 Mean-squRED rECONSTRUCTION ERROR AS D(X)
+
 ##### Tensorflow實作
 
 https://github.com/wiseodd/generative-models/tree/master/GAN/ebgan
@@ -251,6 +252,13 @@ Ishaan Gulrajani, Faruk Ahmed, Martin Arjovsky, Vincent Dumoulin, Aaron Courvill
 
 https://arxiv.org/abs/1704.00028
 
+The Wasserstein Metric a.k.a Earth Mover's Distance: A Quick and Convenient Introduction
+https://www.youtube.com/watch?v=ymWDGzpQdls
+
+09. Regularized Wasserstein Distances & Minimum Kantorovich Estimators. Marco Cuturi
+https://www.youtube.com/watch?v=T9O6T5WHdC8
+
+we would like to talk
 
 
 ##### Tensorflow實作
@@ -318,6 +326,8 @@ FID（Frechet Inception Distance）
 
 WAE重建的圖像畫質高於VAE
 
+https://github.com/paruby/Wasserstein-Auto-Encoders
+
 ##### CelebA資料集
 
 定量評估：（FID值越小意味著表現越好）
@@ -326,3 +336,6 @@ WAE重建的圖像畫質高於VAE
 
 https://github.com/tolstikhin/wae
 
+##### PyTorch實作
+
+https://github.com/schelotto/Wasserstein_Autoencoders
