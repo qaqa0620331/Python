@@ -59,3 +59,29 @@ https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
 
 
 人工智慧試衣間
+
+# StackGAN AND Text to Photo-realistic Image Synthesis
+
+給一段文章產生出圖片
+
+https://zhuanlan.zhihu.com/p/29006005
+
+StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks
+Han Zhang, Tao Xu, Hongsheng Li, Shaoting Zhang, Xiaogang Wang, Xiaolei Huang, Dimitris Metaxas
+(Submitted on 10 Dec 2016 (v1), last revised 5 Aug 2017 (this version, v2))
+https://arxiv.org/abs/1612.03242
+
+StackGAN++: Realistic Image Synthesis with Stacked Generative Adversarial Networks
+Han Zhang, Tao Xu, Hongsheng Li, Shaoting Zhang, Xiaogang Wang, Xiaolei Huang, Dimitris Metaxas
+(Submitted on 19 Oct 2017 (v1), last revised 28 Jun 2018 (this version, v3))
+https://arxiv.org/abs/1710.10916
+
+https://github.com/hanzhanggit/StackGAN-v2
+
+https://github.com/hanzhanggit/StackGAN
+
+# Visual Dialogue task==>
+
+Reinforcement Learning and Generative Adversarial Networks (GANs)
+
+
