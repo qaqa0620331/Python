@@ -339,3 +339,8 @@ https://github.com/tolstikhin/wae
 ##### PyTorch實作
 
 https://github.com/schelotto/Wasserstein_Autoencoders
+
+
+### Transformative Generative Models
+
+https://www.youtube.com/watch?v=jBv-xIovN8o
