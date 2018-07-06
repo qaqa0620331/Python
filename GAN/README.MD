@@ -233,6 +233,17 @@ http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=8925528&fileOId=8
 
 ##### Lipschitz限制
 
+weight clipping
+
+gradient penalty
+
+https://www.zhihu.com/question/52602529/answer/158727900
+
+https://en.wikipedia.org/wiki/Wasserstein_metric
+
+Earth Mover’s Distance
+For discrete probability distributions, the Wasserstein distance is also descriptively called the earth mover’s distance (EMD). If we imagine the distributions as different heaps of a certain amount of earth, then the EMD is the minimal total amount of work it takes to transform one heap into the other. Work is defined as the amount of earth in a chunk times the distance it was moved. Let’s call our discrete distributions  and , each with  possible states  or respectively, and take two arbitrary distributions as an example.
+
 ##### Improved WGAN gradient penalty (WGAN-GP)
 
 Improved Training of Wasserstein GANs
@@ -247,3 +258,15 @@ https://arxiv.org/abs/1704.00028
 https://github.com/igul222/improved_wgan_training
 
 ##### PyTorch實作
+
+
+How to create a poet / writer using Deep Learning (Text Generation using Python)?
+https://www.analyticsvidhya.com/blog/2018/03/text-generation-using-python-nlp/
+
+Deep Learning with Tensorflow: Part 3 — Music and text generation
+https://towardsdatascience.com/deep-learning-with-tensorflow-part-3-music-and-text-generation-8a3fbfdc5e9b
+
+Text Generation With LSTM Recurrent Neural Networks in Python with Keras
+https://machinelearningmastery.com/text-generation-lstm-recurrent-neural-networks-python-keras/
+
+
