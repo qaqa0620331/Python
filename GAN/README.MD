@@ -270,3 +270,12 @@ Text Generation With LSTM Recurrent Neural Networks in Python with Keras
 https://machinelearningmastery.com/text-generation-lstm-recurrent-neural-networks-python-keras/
 
 
+Improved Techniques for Training GANs
+https://arxiv.org/pdf/1606.03498.pdf
+
+https://kknews.cc/zh-tw/other/9mrk4bq.html
+
+
+Wasserstein GAN and the Kantorovich-Rubinstein Duality
+https://vincentherrmann.github.io/blog/wasserstein/
+
