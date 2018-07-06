@@ -368,3 +368,19 @@ Noam Mor, Lior Wolf, Adam Polyak, Yaniv Taigman
 https://arxiv.org/abs/1802.06984
 
 https://arxiv.org/abs/1805.07848
+
+## Sliced-Wasserstein Autoencoder
+
+https://arxiv.org/pdf/1804.01947.pdf
+
+
+In this paper we study generative modeling via autoencoders while using the elegant geometric properties of the optimal transport (OT) problem and the Wasserstein distances. We introduce Sliced-Wasserstein Autoencoders (SWAE), which are generative models that enable one to shape the distribution of the latent space into any samplable probability distribution without the need for training an adversarial network or defining a closed-form for the distribution. In short, we regularize the autoencoder loss with the sliced-Wasserstein distance between the distribution of the encoded training samples and a predefined samplable distribution. We show that the proposed formulation has an efficient numerical solution that provides similar capabilities to Wasserstein Autoencoders (WAE) and Variational Autoencoders (VAE), while benefiting from an embarrassingly simple implementation.
+
+##### Tensorflow實作
+
+https://github.com/skolouri/swae
+
+##### PyTorch實作
+
+https://github.com/eifuentes/swae-pytorch
+
