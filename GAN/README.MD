@@ -7,6 +7,8 @@ https://blog.csdn.net/qq_31780525/article/details/71932020
 https://tw.wxwenku.com/d/100505574
 
 
+https://blog.csdn.net/qq_25737169/article/details/78857788
+
 [系列活動] 一日搞懂生成式對抗網路
 https://www.slideshare.net/tw_dsconf/ss-78795326
 
@@ -54,6 +56,33 @@ https://github.com/nashory/gans-awesome-applications
 
 
 https://github.com/tkarras/progressive_growing_of_gans
+
+# Mini-batch
+
+http://hp.stuhome.net/index.php/2016/09/20/tensorflow_batch_minibatch/
+
+
+https://zhuanlan.zhihu.com/p/25601482
+
+
+深度學習的優化演算法，說白了就是梯度下降。每次的參數更新有兩種方式。
+
+Batch gradient descent
+第一種，遍歷全部資料集算一次損失函數，然後算函數對各個參數的梯度，更新梯度。
+這種方法每更新一次參數都要把資料集裡的所有樣本都看一遍，計算量開銷大，計算速度慢，不支援線上學習，這稱為Batch gradient descent，批梯度下降。
+
+stochastic gradient descent
+另一種，每看一個資料就算一下損失函數，然後求梯度更新參數，這個稱為隨機梯度下降，stochastic gradient descent。
+這個方法速度比較快，但是收斂性能不太好，可能在最優點附近晃來晃去，hit不到最優點。
+兩次參數的更新也有可能互相抵消掉，造成目標函數震盪的比較劇烈。
+
+mini-batch gradient decent
+為了克服兩種方法的缺點，現在一般採用的是一種折中手段，mini-batch gradient decent，小批的梯度下降，
+這種方法把資料分為若干個批，按批來更新參數，這樣，一個批中的一組資料共同決定了本次梯度的方向，下降起來就不容易跑偏，減少了隨機性。
+另一方面因為批的樣本數與整個資料集相比小了很多，計算量也不是很大。
+
+
+https://zh-tw.coursera.org/learn/machine-learning
 
 ### 案例1:vanilla_gan
 
@@ -159,4 +188,62 @@ PADDING
 
 https://towardsdatascience.com/up-sampling-with-transposed-convolution-9ae4f2df52d0
 
+### 案例5:ACGAN ==> 多種class
 
+##### Tensorflow實作
+
+##### PyTorch實作
+
+gitlimlab/ACGAN-PyTorch
+
+https://github.com/gitlimlab/ACGAN-PyTorch
+
+### 6:EBGAN == energy-based GAN
+
+Energy-based Generative Adversarial Network
+Junbo Zhao, Michael Mathieu, Yann LeCun
+(Submitted on 11 Sep 2016 (v1), last revised 6 Mar 2017 (this version, v4))
+
+We introduce the "Energy-based Generative Adversarial Network" model (EBGAN) which views the discriminator as an energy function that attributes low energies to the regions near the data manifold and higher energies to other regions. 
+
+Similar to the probabilistic GANs, a generator is seen as being trained to produce contrastive samples with minimal energies, while the discriminator is trained to assign high energies to these generated samples. 
+Viewing the discriminator as an energy function allows to use a wide variety of architectures and loss functionals in addition to the usual binary classifier with logistic output. Among them, we show one instantiation of EBGAN framework as using an auto-encoder architecture, with the energy being the reconstruction error, in place of the discriminator. We show that this form of EBGAN exhibits more stable behavior than regular GANs during training. We also show that a single-scale architecture can be trained to generate high-resolution images.
+
+D==>使用autoencode
+
+Mean-squRED rECONSTRUCTION ERROR AS D(X)
+##### Tensorflow實作
+
+https://github.com/wiseodd/generative-models/tree/master/GAN/ebgan
+
+##### PyTorch實作
+
+https://github.com/wiseodd/generative-models/tree/master/GAN/ebgan
+
+### WGAN 
+
+GAN==>training instability
+WGAN==>generate only low-quality samples or fail to converge
+==>due to the use of weight clipping in WGAN to enforce a Lipschitz constraint on the critic, which can lead to undesired behavior
+
+
+News text generation with adversarial deep learning
+http://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=8925528&fileOId=8925531
+
+
+##### Lipschitz限制
+
+##### Improved WGAN gradient penalty (WGAN-GP)
+
+Improved Training of Wasserstein GANs
+Ishaan Gulrajani, Faruk Ahmed, Martin Arjovsky, Vincent Dumoulin, Aaron Courville
+
+https://arxiv.org/abs/1704.00028
+
+
+
+##### Tensorflow實作
+
+https://github.com/igul222/improved_wgan_training
+
+##### PyTorch實作
