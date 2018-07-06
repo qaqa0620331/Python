@@ -279,3 +279,50 @@ https://kknews.cc/zh-tw/other/9mrk4bq.html
 Wasserstein GAN and the Kantorovich-Rubinstein Duality
 https://vincentherrmann.github.io/blog/wasserstein/
 
+
+
+
+https://openreview.net/group?id=ICLR.cc/2018/Conference
+
+# Wasserstein Auto-Encoders
+
+https://www.zhihu.com/question/266154970
+
+表徵學習領域的進展，最初由監督學習推動，基於大量標注過的資料集取得了令人印象深刻的結果。
+
+另一方面，無監督學習長期以來一直基於概率方法處理低維資料。近幾年來，這兩種方法呈現出一種融合的趨勢。
+
+變分自動編碼器（variational auto-encoders），簡稱VAE，屬於無監督學習方法，卻能處理大量的圖像資料，而且理論上也很優雅。
+
+不過，VAE也有缺點，應用于自然圖像時，VAE生成的圖像通常比較模糊。
+
+生成對抗網路（generative adversarial network，GANs）倒是能生成品質更高的圖像，但不帶編碼器，訓練起來也更困難，
+也飽受“模態崩塌”（模型無法刻畫真實資料分佈的所有多樣性）之苦。
+
+有鑑於此，馬克斯普朗克學會與Google Brain的研究人員（Ilya Tolstikhin、Olivier Bousquet、Sylvain Gelly、Bernhard Schoelkopf）
+新提出了Wasserstein Auto-Encoder模型，能夠生成畫質更佳的圖像樣本。
+
+https://openreview.net/forum?id=HkL7n1-0b
+
+
+We propose the Wasserstein Auto-Encoder (WAE)---a new algorithm for building a generative model of the data distribution. 
+WAE minimizes a penalized form of the Wasserstein distance between the model distribution and the target distribution, which leads to a different regularizer than the one used by the Variational Auto-Encoder (VAE).
+
+This regularizer encourages the encoded training distribution to match the prior. We compare our algorithm with several other techniques and show that it is a generalization of adversarial auto-encoders (AAE). 
+
+Our experiments show that WAE shares many of the properties of VAEs (stable training, encoder-decoder architecture, nice latent manifold structure) while generating samples of better quality.
+
+##### CelebA資料集
+
+FID（Frechet Inception Distance）
+
+WAE重建的圖像畫質高於VAE
+
+##### CelebA資料集
+
+定量評估：（FID值越小意味著表現越好）
+
+##### Tensorflow實作
+
+https://github.com/tolstikhin/wae
+
