@@ -1,10 +1,9 @@
-unrolling the discriminator (Metz et al., 2016)
-to regularize its updates, and a “repelling regularizer” (Zhao et al., 2017) that adds a new loss term
-to the generator, trying to encourage it to orthogonalize the feature vectors in a minibatch. The
-multiple generators of Ghosh et al. (2017) also serve a similar goal.# PROGRESSIVE GROWING OF GANS FOR IMPROVED QUALITY, STABILITY, AND VARIATION
+
+# PROGRESSIVE GROWING OF GANS FOR IMPROVED QUALITY, STABILITY, AND VARIATION
 
 
 Progressive Growing of GANs for Improved Quality, Stability, and Variation
+
 https://www.youtube.com/watch?v=G06dEcZ-QTg&feature=youtu.be
 
 https://github.com/tkarras/progressive_growing_of_gans
@@ -32,3 +31,5 @@ a “repelling regularizer” (Zhao et al., 2017) that adds a new loss term
 to the generator, trying to encourage it to orthogonalize the feature vectors in a minibatch. 
 
 The multiple generators of Ghosh et al. (2017) also serve a similar goal.
+
+
